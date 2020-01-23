@@ -23,22 +23,27 @@
 
 Parameters:
 Serial interval ($T_{serial}$)
-R_{0} 
+R_{0}
 Initial cluster size ($N_{init}$)
 
-* Deterministic option: 
+* Deterministic option:
 
   No. Generations $G = (t/T_{serial})  - 1$
 
    $N = N_init * R_{0} ^ G$
 
+* Need to add seeding event size and duration (possibly by running a new outbreak from each daily seeding event)?
 * Use branching process model from Joel's work
 
-### Scenarios
+### Scenario analysis
 
-* Look at plausible transmission, generation time, initial point source size and duration estimates
-* The approach can either be probabilistic or scenario based (or a mixture of these).
-
+* Stratify the analysis by seeding event size and duration: 20, 40, 60, 80, 100
+  * Event size: 20, 40, 60, 80, 100
+  * Event duration: 7 days, 14 days, 28 days
+* Sampled parameters:
+  * Incubation period: 5 days (*CI needed*)
+  * Generation time: 8-9 days (*CI needed*)
+  * R0: 0-5 (*?*)
 
 ## Usage
 
