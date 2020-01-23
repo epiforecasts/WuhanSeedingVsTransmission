@@ -22,15 +22,17 @@
 ### Model
 
 Parameters:
-Serial interval ($T_{serial}$)
-R_{0}
-Initial cluster size ($N_{init}$)
+
+- Serial interval ($$T_{serial}$$)
+- $$R_{0}$$ 
+- Initial cluster size ($$N_{init}$$)
+
 
 * Deterministic option:
 
-  No. Generations $G = (t/T_{serial})  - 1$
+  No. Generations $$G = (t/T_{serial})  - 1$$
 
-   $N = N_init * R_{0} ^ G$
+  $$N = N_init * R_{0} ^ G$$
 
 * Need to add seeding event size and duration (possibly by running a new outbreak from each daily seeding event)?
 * Use branching process model from Joel's work
