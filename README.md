@@ -22,15 +22,15 @@
 ### Model
 
 Parameters:
-Serial interval ($$T_{serial}$$)
-$$R_{0}$$ 
-Initial cluster size ($$N_{init}$$)
+- Serial interval ($$T_{serial}$$)
+- $$R_{0}$$ 
+- Initial cluster size ($$N_{init}$$)
 
 * Deterministic option: 
 
   No. Generations $$G = (t/T_{serial})  - 1$$
 
-   $$N = N_init * R_{0} ^ G$$
+  $$N = N_init * R_{0} ^ G$$
 
 * Use branching process model from Joel's work
 
