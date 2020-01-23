@@ -17,7 +17,7 @@
 
 ### Data
 
-* **Need** Daily cases
+* Total cases
 
 ### Model
 
@@ -33,6 +33,7 @@ Initial cluster size ($N_{init}$)
    $N = N_init * R_{0} ^ G$
 
 * Need to add seeding event size and duration (possibly by running a new outbreak from each daily seeding event)?
+* Need an observation model (negative binomial?)
 * Use branching process model from Joel's work
 
 ### Scenario analysis
