@@ -38,13 +38,38 @@ Initial cluster size ($N_{init}$)
 
 ### Scenario analysis
 
-* Stratify the analysis by seeding event size and duration: 20, 40, 60, 80, 100
+* Stratify the analysis by seeding event size and duration:
   * Event size: 20, 40, 60, 80, 100
   * Event duration: 7 days, 14 days, 28 days
+  * Case detection (and definition): 0.2, 0.4, 0.6, 0.8
 * Sampled parameters:
   * Incubation period: 5 days (*CI needed*)
   * Generation time: 8-9 days (*CI needed*)
-  * R0: 0-5 (*?*)
+* Fitted parameters
+  * R0: Uniform(0, 5) prior
+
+  #### Analysis implementation
+
+  ##### Option 1
+
+  1. Base the branching process model on Joel's (initially Adam's) approach.
+  2. Run the model for each fixed parameter scenario.
+    * For each day of the seeding event, seeding the number of initial cases expected on that day
+    * Run the observation model on the overall number of expected cases for each seeded outbreak
+    * Summarise the overall outbreak
+    * Fit R0 for the sampled outbreaks - *How should this be done?*
+  3. Compare fitted R0s across scenarios.
+
+##### Option 2
+
+1. Implement the branching process model into STAN with an embedded observation model
+2. Fit the model as above but using MCMC and holding all parameters except for R0 at their prior distribution.
+3. Compare fitted R0s across scenarios.
+
+### Output
+
+* Grid of event size vs event duration with R0 estimates for each comparison for each case detection.
+* Grid acreas can be rejected based on?
 
 ## Usage
 
