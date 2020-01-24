@@ -10,8 +10,12 @@ Authors@R:
 Description: What the package does (one paragraph).
 License: What license it uses
 Imports:
- tidyverse,
- ringbp
+ ringbp,
+ tibble,
+ dplyr,
+ tidyr,
+ lubridate,
+ furrr
 Remotes: 
   epiforecasts/ringbp
 Encoding: UTF-8
