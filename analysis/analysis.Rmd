@@ -22,7 +22,7 @@ library(knitr)
 # Scenarios and parameter sampling
 
 * Stratify the analysis by seeding event size and duration:
-  * Event size: 20, 40, 60, 80
+  * Event size: 20, 40, 60, 80, 100
   * Event duration: 7 days, 14 days, 28 days
 * Sampled parameters:
   * Serial interval: 8.4 (SD: 3.8) from Lispsitch et al. (2003)
@@ -43,14 +43,14 @@ upper_R0 <- 1
 
 ## Set up scenarios
 scenarios <- tidyr::expand_grid(
-    event_size = c(20, 40, 60, 80),
+    event_size = c(20, 40, 60, 80, 100),
     event_duration = c(7, 14, 28)
     ) %>% 
   ## Add a scenario id
   dplyr::mutate(scenario = 1:dplyr::n())
 
 ## No. of samples
-samples <- 10000
+samples <- 1000
 
 ## Sample paramters and set assumptions
 ## See https://github.com/epiforecasts/ringbp for parameter definitions
@@ -109,27 +109,33 @@ scenario_sims <- scenarios %>%
 
 * Report number of accepted samples per scenario.
 
+* Condition on reported cases on the 3rd and the 20th of January
+
 ```{r}
+
+## Function for conditioning on known data around.
+source("../functions/condition_on_known.R")
+
+## Function to show proportion of samples by scenario that fit the condition
+source("../functions/proportion_allowed_by_condition.R")
+
 ## Filter by number of known cases on the 2nd of January
 allowed_scenarios_3rd_jan <- scenario_sims %>% 
-  dplyr::filter(time == event_duration + 3, size < 60, size > 40) %>% 
-  dplyr::select(sample, scenario, event_duration, event_size)
+  condition_on_known(days_since_31st = 3, lower_bound = 40, upper_bound = 60)
 
 ## Total allowed samples by scenario
-allowed_scenarios_2nd_jan %>% 
-  group_by(scenario, event_duration, event_size) %>% 
-  summarise(allowed_per = dplyr::n() / samples)
-
+allowed_scenarios_3rd_jan %>% 
+  proportion_allowed_by_condition(samples) %>% 
+    knitr::kable()
 
 ## Filter by number of known cases on the 2nd of January
 allowed_scenarios_20th_jan <- scenario_sims %>% 
-  dplyr::filter(time == event_duration + 20, size < 240, size > 200) %>% 
-  dplyr::select(sample, scenario, event_duration, event_size)
+    condition_on_known(days_since_31st = 20, lower_bound = 200, upper_bound = 240)
 
 ## Total allowed samples by scenario
 allowed_scenarios_20th_jan %>% 
-  group_by(scenario, event_duration, event_size) %>% 
-  summarise(allowed_per = dplyr::n() / samples)
+    proportion_allowed_by_condition(samples) %>% 
+    knitr::kable()
 
 restricted_scenarios <- scenario_sims %>% 
   dplyr::group_by(event_size, event_duration) %>% 
