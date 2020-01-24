@@ -16,7 +16,9 @@ Imports:
  tidyr,
  lubridate,
  purrr,
- furrr
+ furrr,
+ knitr,
+ rmarkdown
 Remotes: 
   sbfnk/bpmodels
 Encoding: UTF-8
