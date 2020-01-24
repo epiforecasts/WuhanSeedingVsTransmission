@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Packages and setup
 
 ```{r}
-library(ringbp)
+library(bpmodels)
 library(tibble)
 library(dplyr)
 library(tidyr)
@@ -27,8 +27,8 @@ library(furrr)
   * Event duration: 7 days, 14 days, 28 days
   * Case detection (and definition): 0.2, 0.4, 0.6, 0.8
 * Sampled parameters:
-  * Incubation period: 5 days (*CI needed*)
-  * Generation time: 8-9 days (*CI needed*)
+  * Serial interval: 8.4 (SD: 3.8) from Lispsitch et al. (2003)
+  * K: 0.16 from Lloyd-Smith (2005)
 * Fitted parameters
   * R0: Uniform(0, 5) prior
 
@@ -36,94 +36,71 @@ library(furrr)
 ## Set up scenarios
 scenarios <- tidyr::expand_grid(
     event_size = c(20, 40, 60, 80, 100),
-    event_duration = c(7, 14, 28),
-    case_detection_plus_isolation = c(0.2, 0.4, 0.6, 0.8, 1)
+    event_duration = c(7, 14, 28)
     ) %>% 
-  ## Add daily number of cases in the seeding event - rounded for speed, should be looked at later
-  dplyr::mutate(daily_cases_in_seeding = round(event_size / event_duration, 0)) %>% 
-  ## Add the number of days in an event as a vector
-  dplyr::mutate(event_day = purrr::map(event_duration, ~ 1:.)) %>% 
   ## Add a scenario id
   dplyr::mutate(scenario = 1:dplyr::n())
 
 ## No. of samples
-samples <- 10
+samples <- 1
 
 ## Sample paramters and set assumptions
 ## See https://github.com/epiforecasts/ringbp for parameter definitions
 sampled_and_set_parameters <- tibble(
   sample = 1:samples,
   ## Scenario analysis parameters
-  ## Index R0
-  index_R0  = runif(samples, min = 0, max = 5),
-  ## Incubation mean (sampled in model from gamma)
-  incubation_mean = 9,
-  ## Incubation variance (sampled in model from gamma)
-  incubation_var = 7.3,
-  ## Infectiousness mean (sampled in model from gamma)
-  inf_mean = 5.3,
-  ## Infectiosness variance (sampled in model from gamma)
-  inf_var = 4.3,
-  ## Parameters set from scenario analysis parameters
-  max_outbreak_length = (lubridate::as_date(Sys.Date()) - lubridate::as_date("2019-12-31")) %>% 
+  ## reproduction number
+  R0  = runif(samples, min = 0, max = 4),
+  ## Serial mean (normal)
+  serial_mean =  8.4, ## from Lispsitch et al. (2003)
+  ## Serial sd (normal)
+  serial_sd =  3.8, ## from Lispsitch et al. (2003)
+  ## k
+  k = 0.16, ## from Lloyd-Smith (2005).
+  ## This includes Amoy Gardens, which was a freak event and should probably be excluded; excluding this   would lead to a higher k
+  ##Outbreak length
+  outbreak_length = (lubridate::as_date(Sys.Date()) - lubridate::as_date("2019-12-31")) %>% 
     as.numeric(),
-  ## Assumed parameters - to be looked at later 
-  detected_R0 = 0,
-  neg_bin_disp = 1.6,
-  treatment_effectiveness = 1,
-  treatment_uptake = 1
 )
 ```
 
 # Scenario analysis
 
-1. Branching process from `ringbp`
-2. Run an outbreak for each day of the assumed seeding event
-3. Summarise outbreaks across a single seeding event
+1. Branching process from `bpmodels`.
+2. Run an outbreak for each day of the assumed seeding event.
+3. Summarise outbreaks across a single seeding event.
 
 ```{r}
-plan(multisession)
+#plan(multisession)
 
+
+## Source model function
+source("run_ncov_sim.R")
+
+
+## Run scenarios and samples against sims
 scenario_sims <- scenarios %>% 
-  tidyr::unnest("event_day") %>% 
   dplyr::rowwise() %>% 
   dplyr::mutate(sims = list(
-    furrr::future_map(
+    purrr::map(
     1:samples, 
-    ~ ringbp::wuhan_sim(n.cores = 1,
-                        n.sim = 1,
-                        wvaccYN = 0, 
-                        define_6m = 239, 
-                        initial.cases.pcluster = 1,
-                        initial.clusters = daily_cases_in_seeding, 
-                        prop.ascertain = case_detection_plus_isolation, 
-                        cap_cases = 4500, 
-                        cap_max_days = sampled_and_set_parameters$max_outbreak_length[.x] + event_duration - event_day, 
-                        r0within = sampled_and_set_parameters$detected_R0[.x], 
-                        r0Am = sampled_and_set_parameters$index_R0[.x],
-                        overkkmiss = sampled_and_set_parameters$neg_bin_disp[.x],
-                        overkk = 0.19, 
-                        vefficacy = sampled_and_set_parameters$treatment_effectiveness[.x],
-                        vuptake = sampled_and_set_parameters$treatment_uptake[.x],
-                        ring.size = 100, 
-                        time_to_protection = 10, 
-                        incub_mean = sampled_and_set_parameters$incubation_mean[.x], 
-                        incub_var = sampled_and_set_parameters$incubation_var[.x],
-                        inf_mean = sampled_and_set_parameters$inf_mean[.x], 
-                        inf_var = sampled_and_set_parameters$inf_var[.x], 
-                        delay_shape = 2.4114166, 
-                        delay_rate = 0.3261129,
-                        time_to_isolation = 1) %>% 
-      dplyr::mutate(
+    ~ tibble::tibble( 
+        size = run_ncov_sim(
+                     n = event_size,
+                     n_length = event_duration,
+                     mean_si = sampled_and_set_parameters$serial_mean[.x], 
+                     sd_si = sampled_and_set_parameters$serial_sd[.x], 
+                     R0 = sampled_and_set_parameters$R0[.x], 
+                     k = sampled_and_set_parameters$k[.x], 
+                     tf = sampled_and_set_parameters$outbreak_length[.x] + event_duration,
+                     max_potential_cases = 4001),
         sample = .x,
-        indexR0 = sampled_and_set_parameters$index_R0[.x]
+        R0 = sampled_and_set_parameters$R0[.x]
       )
   ))) %>% 
   dplyr::ungroup() %>% 
   tidyr::unnest(c("sims")) %>% 
-  tidyr::unnest("sims") %>% 
-  dplyr::group_by(scenario, sample, indexR0) %>% 
-  dplyr::summarise_at(.vars = c("outbreak_n_clusters", "outbreak_size", "outbreak_size_all"), sum)
+  tidyr::unnest("sims")
 ```
 
 # Restrict scenarios
@@ -132,12 +109,13 @@ Restrict potential scenarios based on an upper and lower bound of total cases.
 
 
 ```{r}
-upper_case_bound <- 5000
+upper_case_bound <- 4000
 lower_case_bound <- 500
 
 restricted_scenarios <- scenario_sims %>% 
-  dplyr::filter(outbreak_size > lower_case_bound, outbreak_size < upper_case_bound)
+  dplyr::filter(size > lower_case_bound, size < upper_case_bound)
 ```
+
 # Summarise analysis
 
 Summarise each outbreak across samples. Generate:
