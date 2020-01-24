@@ -366,17 +366,6 @@ summary {
 </div>
 
 
-<div id="packages-and-setup" class="section level1">
-<h1>Packages and setup</h1>
-<pre class="r"><code>library(bpmodels)
-library(tibble)
-library(dplyr)
-library(tidyr)
-library(lubridate)
-library(purrr)
-library(furrr)
-library(knitr)</code></pre>
-</div>
 <div id="scenarios-and-parameter-sampling" class="section level1">
 <h1>Scenarios and parameter sampling</h1>
 <ul>
@@ -396,43 +385,10 @@ library(knitr)</code></pre>
 </ul></li>
 <li>Case bounds:
 <ul>
-<li>Lower bound: 500,</li>
+<li>Lower bound: 830,</li>
 <li>Upper bound 4000</li>
 </ul></li>
 </ul>
-<pre class="r"><code>## Set up scenarios
-scenarios &lt;- tidyr::expand_grid(
-    event_size = c(20, 40, 60, 80),
-    event_duration = c(7, 14, 28)
-    ) %&gt;% 
-  ## Add a scenario id
-  dplyr::mutate(scenario = 1:dplyr::n())
-
-## No. of samples
-samples &lt;- 1000
-
-## Sample paramters and set assumptions
-## See https://github.com/epiforecasts/ringbp for parameter definitions
-sampled_and_set_parameters &lt;- tibble(
-  sample = 1:samples,
-  ## Scenario analysis parameters
-  ## reproduction number
-  R0  = runif(samples, min = 0, max = 5),
-  ## Serial mean (normal)
-  serial_mean =  8.4, ## from Lispsitch et al. (2003)
-  ## Serial sd (normal)
-  serial_sd =  3.8, ## from Lispsitch et al. (2003)
-  ## k
-  k = 0.16, ## from Lloyd-Smith (2005).
-  ## This includes Amoy Gardens, which was a freak event and should probably be excluded; excluding this   would lead to a higher k
-  ##Outbreak length
-  outbreak_length = (lubridate::as_date(Sys.Date()) - lubridate::as_date(&quot;2019-12-31&quot;)) %&gt;% 
-    as.numeric(),
-)
-
-## Case bounds
-upper_case_bound &lt;- 4000
-lower_case_bound &lt;- 830</code></pre>
 </div>
 <div id="scenario-analysis" class="section level1">
 <h1>Scenario analysis</h1>
@@ -447,37 +403,6 @@ lower_case_bound &lt;- 830</code></pre>
 <li>Run an outbreak for each day of the assumed seeding event.</li>
 <li>Summarise outbreaks across a single seeding event.</li>
 </ol>
-<pre class="r"><code>plan(multisession)
-
-
-## Source model function
-source(&quot;run_ncov_sim.R&quot;)
-
-
-## Run scenarios and samples against sims
-scenario_sims &lt;- scenarios %&gt;% 
-  dplyr::rowwise() %&gt;% 
-  dplyr::mutate(sims = list(
-    furrr::future_map(
-    1:samples, 
-    ~ tibble::tibble( 
-        size = run_ncov_sim(
-                     n = event_size,
-                     n_length = event_duration,
-                     mean_si = sampled_and_set_parameters$serial_mean[.x], 
-                     sd_si = sampled_and_set_parameters$serial_sd[.x], 
-                     R0 = sampled_and_set_parameters$R0[.x], 
-                     k = sampled_and_set_parameters$k[.x], 
-                     tf = sampled_and_set_parameters$outbreak_length[.x] + event_duration,
-                     max_potential_cases = upper_case_bound + 1),
-        sample = .x,
-        R0 = sampled_and_set_parameters$R0[.x]
-      ), 
-    .progress = FALSE
-  ))) %&gt;% 
-  dplyr::ungroup() %&gt;% 
-  tidyr::unnest(c(&quot;sims&quot;)) %&gt;% 
-  tidyr::unnest(&quot;sims&quot;)</code></pre>
 </div>
 <div id="restrict-scenarios-and-summarise-output" class="section level1">
 <h1>Restrict scenarios and summarise output</h1>
@@ -485,15 +410,6 @@ scenario_sims &lt;- scenarios %&gt;%
 <li><p>Restrict potential scenarios based on an upper and lower bound of total cases.</p></li>
 <li><p>Summarise each outbreak across samples.</p></li>
 </ul>
-<pre class="r"><code>restricted_scenarios &lt;- scenario_sims %&gt;% 
-  dplyr::filter(size &gt; lower_case_bound, size &lt; upper_case_bound) %&gt;% 
-  dplyr::group_by(event_size, event_duration) %&gt;% 
-  dplyr::summarise(median_R0 = median(R0), 
-                   lower_R0 = min(R0), 
-                   upper_R0 = max(R0)) %&gt;% 
-  dplyr::ungroup() %&gt;% 
-  dplyr::mutate_at(.vars = c(&quot;median_R0&quot;, &quot;lower_R0&quot;, &quot;upper_R0&quot;), ~ round(., 1)) %&gt;% 
-  dplyr::mutate(R0 = paste0(median_R0, &quot; (&quot;, lower_R0, &quot; - &quot;, upper_R0, &quot;)&quot;))</code></pre>
 </div>
 <div id="output" class="section level1">
 <h1>Output</h1>
@@ -501,12 +417,6 @@ scenario_sims &lt;- scenarios %&gt;%
 <ul>
 <li>Grid of event size vs event duration with R0 estimates.</li>
 </ul>
-<pre class="r"><code>restricted_scenarios %&gt;% 
-  dplyr::select(-median_R0, -lower_R0, -upper_R0) %&gt;% 
-  tidyr::spread(key = &quot;event_duration&quot;, 
-         value = &quot;R0&quot;) %&gt;% 
-  dplyr::rename(`Seeding event size vs. Seeding event duration` = event_size) %&gt;% 
-  knitr::kable()</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -519,27 +429,27 @@ scenario_sims &lt;- scenarios %&gt;%
 <tbody>
 <tr class="odd">
 <td align="right">20</td>
-<td align="left">4.2 (2.2 - 5)</td>
-<td align="left">3.8 (2.1 - 5)</td>
-<td align="left">3 (1.5 - 5)</td>
+<td align="left">4.3 (2.3 - 5)</td>
+<td align="left">3.9 (2 - 5)</td>
+<td align="left">3.1 (1.3 - 4.9)</td>
 </tr>
 <tr class="even">
 <td align="right">40</td>
-<td align="left">3.9 (2.1 - 5)</td>
-<td align="left">3.2 (1.6 - 5)</td>
-<td align="left">2.4 (1.1 - 4.5)</td>
+<td align="left">3.9 (2 - 5)</td>
+<td align="left">3.3 (1.8 - 5)</td>
+<td align="left">2.4 (1.3 - 4.3)</td>
 </tr>
 <tr class="odd">
 <td align="right">60</td>
-<td align="left">3.5 (1.8 - 4.9)</td>
-<td align="left">2.8 (1.5 - 4.9)</td>
-<td align="left">2.2 (1.2 - 3.6)</td>
+<td align="left">3.5 (1.9 - 5)</td>
+<td align="left">2.7 (1.6 - 4.6)</td>
+<td align="left">2.1 (1.4 - 3.4)</td>
 </tr>
 <tr class="even">
 <td align="right">80</td>
-<td align="left">3.1 (1.6 - 5)</td>
-<td align="left">2.5 (1.5 - 4.2)</td>
-<td align="left">1.9 (1.2 - 2.9)</td>
+<td align="left">3.1 (1.7 - 4.9)</td>
+<td align="left">2.5 (1.3 - 4.1)</td>
+<td align="left">1.9 (1.2 - 3)</td>
 </tr>
 </tbody>
 </table>

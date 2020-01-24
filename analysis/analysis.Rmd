@@ -4,11 +4,9 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
-
-# Packages and setup
 
 ```{r, message = FALSE}
 library(bpmodels)
@@ -84,7 +82,7 @@ plan(multisession)
 
 
 ## Source model function
-source("run_ncov_sim.R")
+source("../functions/run_ncov_sim.R")
 
 
 ## Run scenarios and samples against sims
