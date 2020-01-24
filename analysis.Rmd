@@ -31,6 +31,9 @@ library(furrr)
   * K: 0.16 from Lloyd-Smith (2005)
 * Fitted parameters
   * R0: Uniform(0, 5) prior
+* Case bounds:
+  * Lower bound: 500,
+  * Upper bound 4000
 
 ```{r}
 ## Set up scenarios
@@ -62,6 +65,10 @@ sampled_and_set_parameters <- tibble(
   outbreak_length = (lubridate::as_date(Sys.Date()) - lubridate::as_date("2019-12-31")) %>% 
     as.numeric(),
 )
+
+## Case bounds
+upper_case_bound <- 4000
+lower_case_bound <- 500
 ```
 
 # Scenario analysis
@@ -93,7 +100,7 @@ scenario_sims <- scenarios %>%
                      R0 = sampled_and_set_parameters$R0[.x], 
                      k = sampled_and_set_parameters$k[.x], 
                      tf = sampled_and_set_parameters$outbreak_length[.x] + event_duration,
-                     max_potential_cases = 4001),
+                     max_potential_cases = upper_case_bound + 1),
         sample = .x,
         R0 = sampled_and_set_parameters$R0[.x]
       )
@@ -103,24 +110,22 @@ scenario_sims <- scenarios %>%
   tidyr::unnest("sims")
 ```
 
-# Restrict scenarios
+# Restrict scenarios and summarise output
 
-Restrict potential scenarios based on an upper and lower bound of total cases.
+* Restrict potential scenarios based on an upper and lower bound of total cases.
+
+* Summarise each outbreak across samples.
 
 
 ```{r}
-upper_case_bound <- 4000
-lower_case_bound <- 500
-
 restricted_scenarios <- scenario_sims %>% 
-  dplyr::filter(size > lower_case_bound, size < upper_case_bound)
+  dplyr::filter(size > lower_case_bound, size < upper_case_bound) %>% 
+  dplyr::group_by(event_size, event_duration) %>% 
+  dplyr::summarise(median_R0 = median(R0), 
+                   lower_R0 = min(R0), 
+                   upper_R0 = max(R0))
 ```
 
-# Summarise analysis
-
-Summarise each outbreak across samples. Generate:
-  * Upper and lower bounds on the R0 value
-  
 # Output
 
 Compare R0s across scenarios (reporting only upper and lower bounds):
