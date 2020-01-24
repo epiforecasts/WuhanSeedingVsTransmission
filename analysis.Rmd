@@ -39,7 +39,8 @@ scenarios <- tidyr::expand_grid(
     case_detection_plus_isolation = c(0.2, 0.4, 0.6, 0.8, 1)
     ) %>% 
   ## Add daily number of cases in the seeding event - rounded for speed, should be looked at later
-  dplyr::mutate(daily_cases_in_seeding = round(event_size / event_duration, 0))
+  dplyr::mutate(daily_cases_in_seeding = round(event_size / event_duration, 0)) %>% 
+  dplyr::mutate(event_day = purrr::map(event_duration, ~ 1:.))
 
 ## No. of samples
 samples <- 10
@@ -79,6 +80,7 @@ sampled_and_set_parameters <- tibble(
 plan(multiprocess)
 
 scenario_sims <- scenarios %>% 
+  tidyr::unnest("event_day")
   dplyr::rowwise() %>% 
   dplyr::mutate(sims = list(
     furrr::future_map(
@@ -91,7 +93,7 @@ scenario_sims <- scenarios %>%
                         initial.clusters = daily_cases_in_seeding, 
                         prop.ascertain = case_detection_plus_isolation, 
                         cap_cases = 4500, 
-                        cap_max_days = sampled_and_set_parameters$max_outbreak_length[.], 
+                        cap_max_days = sampled_and_set_parameters$max_outbreak_length[.] - event_duration + event_day, 
                         r0within = sampled_and_set_parameters$detected_R0[.], 
                         r0Am = sampled_and_set_parameters$index_R0[.],
                         overkkmiss = sampled_and_set_parameters$neg_bin_disp[.],
@@ -108,10 +110,11 @@ scenario_sims <- scenarios %>%
                         delay_rate = 0.3261129,
                         time_to_isolation=1)
   ))) %>% 
-  dplyr::mutate(sample = list(1:samples)) %>% 
   dplyr::ungroup() %>% 
-  tidyr::unnest(c("sims", "sample")) %>% 
-  tidyr::unnest("sims")
+  tidyr::unnest(c("sims")) %>% 
+  tidyr::unnest("sims") %>% 
+  dplyr:group_by(event_size, event_duration, case_detection_plus_isolation) %>% 
+  dplyr::summarise_at(.vars = c("outbreak_n_clusters", "outbreak_size", "outbreak_size_all"), sum)
 ```
 
 # Restrict scenarios
