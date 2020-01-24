@@ -34,6 +34,13 @@ library(knitr)
   * Upper bound 880
 
 ```{r}
+
+## Scenario
+## All R0
+#upper_R0 <- 4
+## Subcritical
+upper_R0 <- 1
+
 ## Set up scenarios
 scenarios <- tidyr::expand_grid(
     event_size = c(20, 40, 60, 80),
@@ -51,11 +58,13 @@ sampled_and_set_parameters <- tibble(
   sample = 1:samples,
   ## Scenario analysis parameters
   ## reproduction number
-  R0  = runif(samples, min = 0, max = 5),
+  R0  = runif(samples, min = 0, max = upper_R0),
   ## Serial mean (normal)
-  serial_mean =  8.4, ## from Lispsitch et al. (2003)
+  #serial_mean =  8.4, ## from Lispsitch et al. (2003)
+  serial_mean = 12, ## from John
   ## Serial sd (normal)
-  serial_sd =  3.8, ## from Lispsitch et al. (2003)
+  #serial_sd =  3.8, ## from Lispsitch et al. (2003)
+  serial_sd = 4,
   ## k
   k = 0.16, ## from Lloyd-Smith (2005).
   ## This includes Amoy Gardens, which was a freak event and should probably be excluded; excluding this   would lead to a higher k
@@ -65,15 +74,15 @@ sampled_and_set_parameters <- tibble(
 )
 
 ## Case bounds
-upper_case_bound <- 880
-lower_case_bound <- 780
+upper_case_bound <- 5000 #880
+lower_case_bound <- 0 #780
 ```
 
 # Scenario analysis
 
 1. Branching process from `bpmodels`.
-  * Assumes a negative binomial distribution on new cases
-  * Assumes that the serial interval is gaussian distributed. 
+   * Assumes a negative binomial distribution on new cases
+   * Assumes that the serial interval is gaussian distributed. 
 2. Run an outbreak for each day of the assumed seeding event.
 3. Summarise outbreaks across a single seeding event.
 
@@ -84,31 +93,12 @@ plan(multisession)
 ## Source model function
 source("../functions/run_ncov_sim.R")
 
+## Source scenario analysis function
+source("../functions/scenario_analysis.R")
 
 ## Run scenarios and samples against sims
 scenario_sims <- scenarios %>% 
-  dplyr::rowwise() %>% 
-  dplyr::mutate(sims = list(
-    furrr::future_map(
-    1:samples, 
-    ~ tibble::tibble( 
-        size = run_ncov_sim(
-                     n = event_size,
-                     n_length = event_duration,
-                     mean_si = sampled_and_set_parameters$serial_mean[.x], 
-                     sd_si = sampled_and_set_parameters$serial_sd[.x], 
-                     R0 = sampled_and_set_parameters$R0[.x], 
-                     k = sampled_and_set_parameters$k[.x], 
-                     tf = sampled_and_set_parameters$outbreak_length[.x] + event_duration,
-                     max_potential_cases = upper_case_bound + 1),
-        sample = .x,
-        R0 = sampled_and_set_parameters$R0[.x]
-      ), 
-    .progress = FALSE
-  ))) %>% 
-  dplyr::ungroup() %>% 
-  tidyr::unnest(c("sims")) %>% 
-  tidyr::unnest("sims")
+  scenario_analysis(sampled_and_set_parameters)
 ```
 
 # Restrict scenarios and summarise output
@@ -120,12 +110,40 @@ scenario_sims <- scenarios %>%
 * Report number of accepted samples per scenario.
 
 ```{r}
+## Filter by number of known cases on the 2nd of January
+allowed_scenarios_3rd_jan <- scenario_sims %>% 
+  dplyr::filter(time == event_duration + 3, size < 60, size > 40) %>% 
+  dplyr::select(sample, scenario, event_duration, event_size)
+
+## Total allowed samples by scenario
+allowed_scenarios_2nd_jan %>% 
+  group_by(scenario, event_duration, event_size) %>% 
+  summarise(allowed_per = dplyr::n() / samples)
+
+
+## Filter by number of known cases on the 2nd of January
+allowed_scenarios_20th_jan <- scenario_sims %>% 
+  dplyr::filter(time == event_duration + 20, size < 240, size > 200) %>% 
+  dplyr::select(sample, scenario, event_duration, event_size)
+
+## Total allowed samples by scenario
+allowed_scenarios_20th_jan %>% 
+  group_by(scenario, event_duration, event_size) %>% 
+  summarise(allowed_per = dplyr::n() / samples)
+
 restricted_scenarios <- scenario_sims %>% 
+  dplyr::group_by(event_size, event_duration) %>% 
+  dplyr::filter(time == max(time)) %>% 
+  dplyr::ungroup() %>% 
+  dplyr::right_join(allowed_scenarios_3rd_jan, by = c("scenario", "sample", 
+                                             "event_duration", "event_size")) %>% 
+    dplyr::right_join(allowed_scenarios_20th_jan, by = c("scenario", "sample", 
+                                             "event_duration", "event_size")) %>% 
   dplyr::filter(size > lower_case_bound, size < upper_case_bound) %>% 
   dplyr::group_by(event_size, event_duration) %>% 
-  dplyr::summarise(median_R0 = median(R0), 
-                   lower_R0 = min(R0), 
-                   upper_R0 = max(R0),
+  dplyr::summarise(median_R0 = median(R0, na.rm = TRUE), 
+                   lower_R0 = min(R0, na.rm = TRUE), 
+                   upper_R0 = max(R0, na.rm = TRUE),
                    samples = dplyr::n()) %>% 
   dplyr::ungroup() %>% 
   dplyr::mutate_at(.vars = c("median_R0", "lower_R0", "upper_R0"), ~ round(., 1)) %>% 
@@ -133,7 +151,7 @@ restricted_scenarios <- scenario_sims %>%
 
 ##Samples per scenario
 restricted_scenarios %>% 
-  select(event_size, event_duration, samples) %>% 
+  dplyr::select(event_size, event_duration, samples) %>% 
   knitr::kable()
 ```
 
@@ -144,11 +162,8 @@ Compare R0s across scenarios (reporting median, maximum and minimum):
 * Grid of event size vs event duration with R0 estimates.
 
 ```{r}
-restricted_scenarios %>% 
-  dplyr::select(-median_R0, -lower_R0, -upper_R0, -samples) %>% 
-  tidyr::spread(key = "event_duration", 
-         value = "R0") %>% 
-  dplyr::rename(`Seeding event size vs. Seeding event duration` = event_size) %>% 
-  knitr::kable()
+source("../functions/make_duration_size_table.R")
+
+make_duration_size_table(restricted_scenarios)
 ```
 
