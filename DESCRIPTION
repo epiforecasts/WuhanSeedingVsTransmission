@@ -15,6 +15,7 @@ Imports:
  dplyr,
  tidyr,
  lubridate,
+ purrr,
  furrr
 Remotes: 
   epiforecasts/ringbp
