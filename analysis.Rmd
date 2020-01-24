@@ -82,11 +82,13 @@ sampled_and_set_parameters <- tibble(
 3. Summarise outbreaks across a single seeding event
 
 ```{r}
+plan(multisession)
+
 scenario_sims <- scenarios %>% 
   tidyr::unnest("event_day") %>% 
   dplyr::rowwise() %>% 
   dplyr::mutate(sims = list(
-    purrr::map(
+    furrr::future_map(
     1:samples, 
     ~ ringbp::wuhan_sim(n.cores = 1,
                         n.sim = 1,
