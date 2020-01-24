@@ -30,8 +30,8 @@ library(knitr)
 * Fitted parameters
   * R0: Uniform(0, 5) prior
 * Case bounds:
-  * Lower bound: 730
-  * Upper bound 930
+  * Lower bound: 780
+  * Upper bound 880
 
 ```{r}
 ## Set up scenarios
@@ -43,7 +43,7 @@ scenarios <- tidyr::expand_grid(
   dplyr::mutate(scenario = 1:dplyr::n())
 
 ## No. of samples
-samples <- 1000
+samples <- 10000
 
 ## Sample paramters and set assumptions
 ## See https://github.com/epiforecasts/ringbp for parameter definitions
@@ -65,8 +65,8 @@ sampled_and_set_parameters <- tibble(
 )
 
 ## Case bounds
-upper_case_bound <- 930
-lower_case_bound <- 730
+upper_case_bound <- 880
+lower_case_bound <- 780
 ```
 
 # Scenario analysis
@@ -117,6 +117,7 @@ scenario_sims <- scenarios %>%
 
 * Summarise each outbreak across samples.
 
+* Report number of accepted samples per scenario.
 
 ```{r}
 restricted_scenarios <- scenario_sims %>% 
@@ -124,10 +125,16 @@ restricted_scenarios <- scenario_sims %>%
   dplyr::group_by(event_size, event_duration) %>% 
   dplyr::summarise(median_R0 = median(R0), 
                    lower_R0 = min(R0), 
-                   upper_R0 = max(R0)) %>% 
+                   upper_R0 = max(R0),
+                   samples = dplyr::n()) %>% 
   dplyr::ungroup() %>% 
   dplyr::mutate_at(.vars = c("median_R0", "lower_R0", "upper_R0"), ~ round(., 1)) %>% 
   dplyr::mutate(R0 = paste0(median_R0, " (", lower_R0, " - ", upper_R0, ")"))
+
+##Samples per scenario
+restricted_scenarios %>% 
+  select(event_size, event_duration, samples) %>% 
+  knitr::kable()
 ```
 
 # Output
@@ -138,7 +145,7 @@ Compare R0s across scenarios (reporting median, maximum and minimum):
 
 ```{r}
 restricted_scenarios %>% 
-  dplyr::select(-median_R0, -lower_R0, -upper_R0) %>% 
+  dplyr::select(-median_R0, -lower_R0, -upper_R0, -samples) %>% 
   tidyr::spread(key = "event_duration", 
          value = "R0") %>% 
   dplyr::rename(`Seeding event size vs. Seeding event duration` = event_size) %>% 
