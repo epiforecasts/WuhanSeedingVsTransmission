@@ -30,8 +30,8 @@ library(knitr)
 * Fitted parameters
   * R0: Uniform(0, 5) prior
 * Case bounds:
-  * Lower bound: 830,
-  * Upper bound 4000
+  * Lower bound: 730
+  * Upper bound 930
 
 ```{r}
 ## Set up scenarios
@@ -65,8 +65,8 @@ sampled_and_set_parameters <- tibble(
 )
 
 ## Case bounds
-upper_case_bound <- 4000
-lower_case_bound <- 830
+upper_case_bound <- 930
+lower_case_bound <- 730
 ```
 
 # Scenario analysis
