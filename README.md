@@ -36,7 +36,7 @@ Rscript inst/scripts/run_grid.R
 
 ### Inspect results
 
-* Use `vignettes/output.Rmd.orig` to inspect the results of the analysis.
+* Use `vignettes/output.Rmd` to inspect the results of the analysis.
 
 ## Docker
 

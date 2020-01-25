@@ -22,7 +22,8 @@ Imports:
     magrittr
 Suggests:
     future,
-    fst
+    fst,
+    pkgdown
 Remotes: 
   sbfnk/bpmodels
 Encoding: UTF-8

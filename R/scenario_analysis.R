@@ -19,6 +19,7 @@ scenario_analysis <- function(scenarios = NULL,
                               sampled_and_set_parameters = NULL,
                               show_progress = FALSE) { 
   
+  
   ## Run scenarios and samples against sims
   scenario_sims <- scenarios %>% 
     dplyr::group_by(scenario) %>% 
