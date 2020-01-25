@@ -1,6 +1,3 @@
-
-
-
 #' Run the scenario analysis grid. 
 #'
 #' @param end_date Character string in the format `"2020-01-01"`. The date to run the model too.
@@ -8,6 +5,8 @@
 #' @param upper_case_bound Numeric, defaults to `NULL`. The upper bound on the number of cases that will be 
 #' modelled
 #'
+#' @importFrom tibble tibble
+#' @importFrom tidyr expand_grid
 #' @inheritParams scenario_analysis
 #' @return
 #' @export
@@ -38,7 +37,7 @@ run_scenario_grid <- function(end_date = NULL, samples = 1, upper_case_bound = N
     dplyr::mutate(scenario = 1:dplyr::n())
   
   ## Sample paramters and set assumptions
-  sampled_and_set_parameters <- tibble(
+  sampled_and_set_parameters <- tibble::tibble(
     sample = 1:samples,
     ## Scenario analysis parameters
     ## Serial sd (normal)

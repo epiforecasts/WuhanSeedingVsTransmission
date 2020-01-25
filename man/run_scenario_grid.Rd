@@ -29,5 +29,10 @@ Run the scenario analysis grid.
 }
 \examples{
 
-run_scenario_grid("2020-01-25", samples = 5, upper_case_bound = 2000, show_progress = TRUE)
+future::plan(future::multiprocess)
+
+grid_results <- run_scenario_grid("2020-01-25", samples = 100, 
+                  upper_case_bound = 2000, show_progress = TRUE)
+                  
+grid_results
 }

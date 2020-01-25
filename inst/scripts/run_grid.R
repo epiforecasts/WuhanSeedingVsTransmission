@@ -4,7 +4,7 @@ future::plan(future::multiprocess)
 # Run grid
 grid_results <- WuhanSeedingVsTransmission::run_scenario_grid(
                                   end_date = "2020-01-25", 
-                                  samples = 1000, 
+                                  samples = 10000, 
                                   upper_case_bound = 4000, 
                                   show_progress = TRUE)
 
