@@ -20,6 +20,9 @@ Imports:
     knitr,
     rmarkdown,
     magrittr
+Suggests:
+    future,
+    fst
 Remotes: 
   sbfnk/bpmodels
 Encoding: UTF-8
