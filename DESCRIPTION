@@ -1,12 +1,11 @@
 Package: WuhanSeedingVsTransmission
-Title: Evaluating seeding event size vs. duration compared to transmission in the Wuhan outbreak.
+Title: Evaluating seeding event size vs duration compared to transmission in the Wuhan outbreak
 Version: 0.0.1.0
-Authors@R: 
-    person(given = "First",
-           family = "Last",
+Authors@R: c(
+    person(given = "Sam Abbott",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           email = "contact@samabbott.co.uk",
+           comment = c(ORCID = "0000-0001-8057-8037")))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Imports:

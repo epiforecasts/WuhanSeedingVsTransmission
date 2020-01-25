@@ -6,3 +6,4 @@ vignettes/output
 ^docs$
 ^pkgdown$
 ^inst/results$
+^Dockerfile$

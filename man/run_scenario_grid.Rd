@@ -31,7 +31,7 @@ Run the scenario analysis grid.
 
 future::plan(future::multiprocess)
 
-grid_results <- run_scenario_grid("2020-01-25", samples = 100, 
+grid_results <- run_scenario_grid("2020-01-25", samples = 1, 
                   upper_case_bound = 2000, show_progress = TRUE)
                   
 grid_results

@@ -2,6 +2,8 @@
 #'
 #' @param condition_date A character string in the following format `"2020-01-01"`. Sets the 
 #' date on which to condition the data.
+#' @param end_of_seed_date  A character string in the following format `"2020-01-01"`. The assumed
+#' end date of the seeding event.
 #' @inheritParams condition_on_known 
 #' @inheritParams proportion_allowed_by_condition
 #' @inheritParams restrict_by_condition

@@ -24,6 +24,9 @@ date on which to condition the data.}
 \item{upper_bound}{Numeric, the estimated upper bound on cases.}
 
 \item{samples}{Numeric, the number of samples that were used.}
+
+\item{end_of_seed_date}{A character string in the following format \code{"2020-01-01"}. The assumed
+end date of the seeding event.}
 }
 \value{
 
