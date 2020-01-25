@@ -13,8 +13,7 @@ run_sim(
   k = 0.16,
   tf = 37,
   max_potential_cases,
-  delay_mean,
-  delay_sd
+  delay_sample
 )
 }
 \arguments{
@@ -34,9 +33,7 @@ run_sim(
 
 \item{max_potential_cases}{Numeric, the maximum number of cases}
 
-\item{delay_mean}{Numeric, the mean reporting delay}
-
-\item{delay_sd}{Numeric, the sd of  the reporting delay}
+\item{delay_sample}{A function to sample from reporting delays}
 }
 \value{
 

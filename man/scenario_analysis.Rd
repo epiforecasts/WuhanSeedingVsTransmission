@@ -7,6 +7,7 @@
 scenario_analysis(
   scenarios = NULL,
   sampled_and_set_parameters = NULL,
+  delay_sample_func = NULL,
   show_progress = FALSE
 )
 }
@@ -14,6 +15,8 @@ scenario_analysis(
 \item{scenarios}{Dataframe of potential scenarios}
 
 \item{sampled_and_set_parameters}{Dataframe of sampled and fixed parameter values}
+
+\item{delay_sample_func}{Function to generate sample reporting delays}
 
 \item{show_progress}{Logical, defaults to FALSE. Show progress be shown.}
 }

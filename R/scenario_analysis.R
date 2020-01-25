@@ -3,6 +3,7 @@
 #'
 #' @param scenarios Dataframe of potential scenarios
 #' @param sampled_and_set_parameters Dataframe of sampled and fixed parameter values
+#' @param delay_sample_func Function to generate sample reporting delays
 #' @param show_progress Logical, defaults to FALSE. Show progress be shown.
 #'
 #' @return
@@ -17,6 +18,7 @@
 #' 
 scenario_analysis <- function(scenarios = NULL, 
                               sampled_and_set_parameters = NULL,
+                              delay_sample_func = NULL,
                               show_progress = FALSE) { 
   
   
@@ -46,8 +48,7 @@ scenario_analysis <- function(scenarios = NULL,
               k = sampled_and_set_parameters$k[.x], 
               tf = sampled_and_set_parameters$outbreak_length[.x] + data$event_duration,
               max_potential_cases = sampled_and_set_parameters$upper_case_bound + 1,
-              delay_mean = sampled_and_set_parameters$delay_mean,
-              delay_sd = sampled_and_set_parameters$delay_sd)),
+              delay_sample = delay_sample_func)),
             sample = .x,
             R0 = sampled_R0[.x]
           ) %>% 

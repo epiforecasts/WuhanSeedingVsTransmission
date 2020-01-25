@@ -21,7 +21,20 @@
 #'grid_results
 run_scenario_grid <- function(end_date = NULL, samples = 1, upper_case_bound = NULL,
                               show_progress = FALSE) {
-  
+  ## Default reporting delay
+  delay_mean <- 6.17
+  ## Default standard deviation of the reporting delay
+  delay_sd <- 2
+  ## Try getting empirical reporting distribution from Google Sheet, otherwise
+  ## use default value 
+  delay_sample_func <-
+    tryCatch(get_rep_sample_fun(),
+             error = function(e) {
+               warning("Could not get Google Sheet; ",
+                       "will use default reporting values" )
+               function(n) rnorm(n, mean = 6.17, sd = 2)
+             })
+             
   ## Set up scenarios
   scenarios <- tidyr::expand_grid(
     event_size = c(20, 40, 60, 80, 100, 200),
@@ -44,11 +57,6 @@ run_scenario_grid <- function(end_date = NULL, samples = 1, upper_case_bound = N
     serial_sd =  3.8, ## from Lispsitch et al. (2003)
     ## k
     k = 0.16, ## from Lloyd-Smith (2005).
-    ## This includes Amoy Gardens, which was a freak event and should probably be excluded; excluding this   would lead to a higher k
-    ## Mean estimated reporting delay
-    delay_mean = 6.17,
-    ## Standard deviation of the reporting delay
-    delay_sd = 2,
     ##Outbreak length
     outbreak_length = (lubridate::as_date(end_date) - lubridate::as_date("2019-12-31")) %>% 
       as.numeric(),
@@ -60,6 +68,7 @@ run_scenario_grid <- function(end_date = NULL, samples = 1, upper_case_bound = N
   ## Run scenarios and samples against sims
   scenario_sims <- scenarios %>% 
     WuhanSeedingVsTransmission::scenario_analysis(sampled_and_set_parameters, 
+                                                  delay_sample_func,
                                                   show_progress = show_progress)
   
   return(scenario_sims)
