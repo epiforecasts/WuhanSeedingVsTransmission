@@ -33,7 +33,7 @@ get_rep_sample_fun <- function() {
                     date_admission_hospital - date_onset_symptoms)
 
   confirmation_delays <- linelist %>%
-    dplyr::filter(!is.na(delay_confirmation)) %>%
+    dplyr::filter(!is.na(delay_confirmation), country == "China") %>%
     .$delay_confirmation %>%
     as.integer()
 
