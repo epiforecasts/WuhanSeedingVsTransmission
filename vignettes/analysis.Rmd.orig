@@ -4,16 +4,12 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, eval = FALSE)
 ```
 
 
 ```{r, message = FALSE}
 library(WuhanSeedingVsTransmission)
-library(tibble)
-library(dplyr)
-library(tidyr)
-library(lubridate)
 library(knitr)
 ```
 
@@ -31,47 +27,6 @@ library(knitr)
   * Lower bound: 780
   * Upper bound 880
 
-```{r}
-## Set up scenarios
-scenarios <- tidyr::expand_grid(
-    event_size = c(20, 40, 60, 80, 100, 200),
-    event_duration = c(7, 14, 28),
-    ## Serial mean (normal)
-    serial_mean = c(4, 8.4, 12),
-      #8.4 from Lispsitch et al. (2003); 4 and 12 are assumption driven
-    ## Uppper bound on the reproduction number
-    ## Sampled from a uniform distribution with a lower bound of 0
-    upper_R0 = c(1, 3, 5),
-    ) %>% 
-  ## Add a scenario id
-  dplyr::mutate(scenario = 1:dplyr::n())
-
-## No. of samples
-samples <- 10
-
-## Sample paramters and set assumptions
-## See https://github.com/epiforecasts/ringbp for parameter definitions
-sampled_and_set_parameters <- tibble(
-  sample = 1:samples,
-  ## Scenario analysis parameters
-  ## Serial sd (normal)
-  serial_sd =  3.8, ## from Lispsitch et al. (2003)
-  ## k
-  k = 0.16, ## from Lloyd-Smith (2005).
-  ## This includes Amoy Gardens, which was a freak event and should probably be excluded; excluding this   would lead to a higher k
-  ## Mean estimated reporting delay
-  delay_mean = 6.17,
-  ## Standard deviation of the reporting delay
-  delay_sd = 2,
-  ##Outbreak length
-  outbreak_length = (lubridate::as_date(Sys.Date()) - lubridate::as_date("2019-12-31")) %>% 
-    as.numeric(),
-  ## Define an upper case bound currently
-  upper_case_bound = 5000
-)
-
-```
-
 # Scenario analysis
 
 1. Branching process from `bpmodels`.
@@ -80,13 +35,7 @@ sampled_and_set_parameters <- tibble(
 2. Run an outbreak for each day of the assumed seeding event.
 3. Summarise outbreaks across a single seeding event.
 
-```{r}
-plan(multisession)
 
-## Run scenarios and samples against sims
-scenario_sims <- scenarios %>% 
-  scenario_analysis(sampled_and_set_parameters)
-```
 
 # Restrict scenarios and summarise output
 
@@ -102,7 +51,7 @@ scenario_sims <- scenarios %>%
 ## Filter by known cases on the 3rd of January
 jan3_conditioned <- condition_and_report_on_cases(scenario_sims, 
                                                   condition_date = "2020-01-03",
-                                                  samples = samples,
+                                                  samples = max(scenario_sims$sample),
                                                   lower_bound = 40, 
                                                   upper_bound = 400)
   
@@ -110,7 +59,7 @@ jan3_conditioned <- condition_and_report_on_cases(scenario_sims,
 ## Filter by known cases on the 20th of January
 jan20_conditioned <- condition_and_report_on_cases(jan3_conditioned$conditioned_sims, 
                                                   condition_date = "2020-01-20",
-                                                  samples = samples,
+                                                  samples =  max(scenario_sims$sample),
                                                   lower_bound = 200, 
                                                   upper_bound = 4000)
 
@@ -119,8 +68,8 @@ jan20_conditioned <- condition_and_report_on_cases(jan3_conditioned$conditioned_
 ## Filter by known cases on the 25th of January
 jan25_conditioned <- condition_and_report_on_cases(jan20_conditioned$conditioned_sims, 
                                                   condition_date = "2020-01-25",
-                                                  samples = samples,
-                                                  lower_bound = 1200, 
+                                                  samples =  max(scenario_sims$sample),
+                                                  lower_bound = 1400, 
                                                   upper_bound = 4000)
 
 ## Make current r0 summary based on current time
