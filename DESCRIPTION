@@ -1,6 +1,6 @@
 Package: WuhanSeedingVsTransmission
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Evaluating seeding event size vs. duration compared to transmission in the Wuhan outbreak.
+Version: 0.0.1.0
 Authors@R: 
     person(given = "First",
            family = "Last",
@@ -8,18 +8,21 @@ Authors@R:
            email = "first.last@example.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: What the package does (one paragraph).
-License: What license it uses
+License: MIT + file LICENSE
 Imports:
- bpmodels,
- tibble,
- dplyr,
- tidyr,
- lubridate,
- purrr,
- furrr,
- knitr,
- rmarkdown
+    bpmodels,
+    tibble,
+    dplyr,
+    tidyr,
+    lubridate,
+    purrr,
+    furrr,
+    knitr,
+    rmarkdown,
+    magrittr
 Remotes: 
   sbfnk/bpmodels
 Encoding: UTF-8
 LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.0.2
