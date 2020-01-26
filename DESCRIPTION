@@ -17,6 +17,7 @@ License: MIT + file LICENSE
 Imports:
     bpmodels,
     tibble,
+    data.table,
     dplyr,
     tidyr,
     lubridate,

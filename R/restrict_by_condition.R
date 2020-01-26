@@ -6,18 +6,16 @@
 #'
 #' @return
 #' @export
-#' @importFrom dplyr right_join select
+#' @import data.table
 #' @author Sam Abbott
 #' @examples
 #' 
 #' 
 restrict_by_condition <- function(sims, allowed_scenarios) {
   
-  allowed_scenarios <- allowed_scenarios %>% 
-    dplyr::select(scenario, sample)
+  allowed_scenarios <- allowed_scenarios[, .(scenario, sample)]
   
-  restrict_sims <- sims %>% 
-    dplyr::right_join(allowed_scenarios, by = c("scenario", "sample")) 
+  restrict_sims <- sims[allowed_scenarios, on = .(scenario, sample)]
   
   return(restrict_sims)
 }

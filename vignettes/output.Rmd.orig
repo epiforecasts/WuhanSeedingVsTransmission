@@ -51,47 +51,14 @@ We modelled the outbreak using a stochastic branching process. We assumed that c
 
 We simulated the branching process model 10,000 times for all combinations of the following parameters: seeding event size (20, 40, 60, 80, 200), seeding event duration (7 days, 14 days, 21 days, and 28 days), the mean of the serial interval (4 days, 8.4 days [@Lipsitch:2003], 12)), and the upper bound of the reproduction number (1, 2, 3, 4). Parameter values used in the scenario analysis were either assumptions based on the current knowledge of the Wuhan outbreak or based on those used previously for SARs[@Lipsitch:2003]. We ran the model from the beginning of the outbreak for each scenario until the 25th of January 2020. The start date was determined by combining the duration of the seeding event with the date the fish market in Wuhan - the source of the outbreak - closed (31st of December 2019). Outbreak simulation was stopped if a sample exceeded 5000 cases by the end of simulation period.
 
-```{r read-in-results}
-## Run the analysis using inst/scripts/run_grid.R
-## Read in saved analysis results
-scenario_sims <- fst::read_fst("../inst/results/grid.fst")
-```
-
 **Conditioning on available case numbers**
 
 We evaluated each scenario sample based on the cases observed on the 3rd of January (41 observed cases with an assumed upper bound of 400 cases), the 18th of Janurary (200 cases with an assumed upper bound of 2000 cases), and the 25th of January (1975 cases with an assumed upper bound of 5000 cases). Samples were rejected if their simulated cumulative cases were not consistent with these data. Uncertainty in the observed number of cases was assumed to be 10 times the number of observed cases for the 3rd and 18th of January and the number of observed plus the number of potential cases reported on the 25th of January. 
 
-```{r condition-results-on-data}
-## Filter by known cases on the 3rd of January - 10* uncertainty on cases
-jan3_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
-                                                  scenario_sims, 
-                                                  condition_date = "2020-01-03",
-                                                  samples = max(scenario_sims$sample),
-                                                  lower_bound = 41, 
-                                                  upper_bound = 400)
-  
-
-## Filter by known cases on the 18th of January (saturday with reporting spike due to changing reporting)
-## 10* uncertainty on cases
-jan18_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
-                                                  jan3_conditioned$conditioned_sims, 
-                                                  condition_date = "2020-01-18",
-                                                  samples =  max(scenario_sims$sample),
-                                                  lower_bound = 200, 
-                                                  upper_bound = 2000)
-
-
-
-## Filter by known cases on the 25th of January - bounded by potential cases
-jan25_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
-                                                  jan18_conditioned$conditioned_sims, 
-                                                  condition_date = "2020-01-25",
-                                                  samples =  max(scenario_sims$sample),
-                                                  lower_bound = 1975, 
-                                                  upper_bound = 5000)
-
-## Select results condition
-results <- jan25_conditioned
+```{r read-in-results}
+## Run the analysis using inst/scripts/run_grid.R
+## Read in saved analysis results
+results <- fst::read_fst("../inst/scripts/conditioned_grid.fst")
 ```
 
 

@@ -11,6 +11,7 @@
 #' @return
 #' @export
 #' @importFrom lubridate as_date
+#' @import data.table
 #' @examples
 #' 
 #' 
@@ -18,27 +19,29 @@ condition_and_report_on_cases <- function(sims, condition_date = NULL, lower_bou
                                           upper_bound = NULL, samples = NULL,
                                           end_of_seed_date = "2019-12-31") {
   
+  ## Convert simulations to data.table for speed
+  sims <- data.table::setDT(sims)
+  
   ## Days since the end of the seeding event
   days_since_end_seed <- (lubridate::as_date(condition_date) -
                             lubridate::as_date(end_of_seed_date)) %>%
     as.numeric()
   
   ## Filter to allowed cases
-  allowed_scenarios <- sims %>% 
-    WuhanSeedingVsTransmission::condition_on_known(
-      days_since_end_seed = days_since_end_seed, 
-      lower_bound = lower_bound, 
-      upper_bound = upper_bound
+  allowed_scenarios <- WuhanSeedingVsTransmission::condition_on_known(
+    sims,
+    days_since_end_seed = days_since_end_seed, 
+    lower_bound = lower_bound, 
+    upper_bound = upper_bound
       )
   
   ##Summarise allowed cases
-  prop_allowed <- allowed_scenarios %>% 
-    WuhanSeedingVsTransmission::proportion_allowed_by_condition(samples = samples)
+  prop_allowed <- WuhanSeedingVsTransmission::proportion_allowed_by_condition(allowed_scenarios, 
+                                                                              samples = samples)
   
   
   ## Restrict sims to allowed scenarios
-  restrict_sims <- sims %>% 
-    WuhanSeedingVsTransmission::restrict_by_condition(allowed_scenarios)
+  restrict_sims <- WuhanSeedingVsTransmission::restrict_by_condition(sims, allowed_scenarios)
   
   
   ## Return output
