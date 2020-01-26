@@ -11,3 +11,6 @@ WORKDIR /home/rstudio/WuhanSeedingVsTransmission
 
 ## Install missing packages - using pacman.
 RUN Rscript -e "devtools::install_dev_deps()"
+
+## Install latex using tinytex
+RUN Rscript -e "tinytex::install_latex()"

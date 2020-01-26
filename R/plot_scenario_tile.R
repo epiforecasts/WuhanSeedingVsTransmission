@@ -1,6 +1,7 @@
 #' Plot a heat map of accepted samples by scenario
 #'
-#' @param conditioned_output A list of dataframes as produced 
+#' @param proportion_allowed data.frame of allowed proportions as 
+#' produced by `proportion_allowed_by_condition`
 #' by `condition_and_report_on_cases`.
 #'
 #' @return
@@ -14,9 +15,9 @@
 #' @examples
 #' 
 #' 
-plot_scenario_tile <- function(conditioned_output = NULL) {
+plot_scenario_tile <- function(proportion_allowed = NULL) {
   
-  conditioned_output$proportion_allowed_sims %>% 
+  proportion_allowed %>% 
     tidyr::complete(event_duration, event_size, serial_mean, upper_R0,
                     fill = list(allowed_per = 0)) %>% 
     dplyr::mutate_at(.vars = c("event_duration", "event_size"), factor) %>% 

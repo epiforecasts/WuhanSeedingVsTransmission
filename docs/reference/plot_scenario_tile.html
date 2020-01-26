@@ -121,14 +121,15 @@
     <p>Plot a heat map of accepted samples by scenario</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plot_scenario_tile</span>(<span class='kw'>conditioned_output</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>plot_scenario_tile</span>(<span class='kw'>proportion_allowed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>conditioned_output</th>
-      <td><p>A list of dataframes as produced
+      <th>proportion_allowed</th>
+      <td><p>data.frame of allowed proportions as
+produced by <code>proportion_allowed_by_condition</code>
 by <code>condition_and_report_on_cases</code>.</p></td>
     </tr>
     </table>

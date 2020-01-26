@@ -1,8 +1,8 @@
 Authors (*needs updating to correct names*)
 -------------------------------------------
 
-S. Abbott<sup>1</sup>, J. Munday<sup>1</sup>, J. Hellewell<sup>1</sup>,
-J. Edmunds<sup>1</sup>, S. Funk<sup>1</sup>
+S. Abbott (1), J. Munday (1), J. Hellewell (1), J. Edmunds (1), S. Funk
+(1)
 
 Correspondence to:
 <a href="mailto:sam.abbott@lshtm.ac.uk" class="email">sam.abbott@lshtm.ac.uk</a>
@@ -119,67 +119,161 @@ machine.
 Results
 -------
 
-**Percentage of accepted outbreak simulation**
+**Percentage of outbreak simulations accepted**
 
-![plot of chunk plot-probs](figures/plot-probs-1.png)
+Overall, the highest acceptance rate was for scenarios with a large
+event size (200), short duration (7 days), an upper bound on the
+reproduction number of 3 and a SARs like mean serial interval (8.4
+days). Scenarios with a longer event duration (14 days), a higher
+reproduction number bound (4), and a longer mean serial interval (12
+days) also had a high acceptance rate compared to other scenarios. In
+scenarios with a SARs like mean serial interval (8.4 days), and a longer
+serial interval (12 days) the acceptance rate decreased as the event
+size decreased and the event duration increased from the maxima
+discussed above.
+
+There were no scenarios in which an upper bound on the reproduction of 1
+resulted in scenarios that were accepted after conditioning on observed
+data, regardless of the mean serial interval, event size, or event
+duration. There were few scenarios that were accepted after conditioning
+on data for scenarios with an upper bound of 2 on the reproduction
+number with this scenario being most likely if the seeding event was
+large (200), 14 days in duration, and had a SARs like serial interval
+(8.4 days). For a short serial interval (4 days) the percentage of
+accepted samples was low for all scenarios with the highest accepted
+proportion for scenarios with an upper bound on the reproduction number
+of 2. Across all reproduction number bounds this scenario was most
+likely if the seeding event was of a medium size (40 - 80 cases) and a
+short duration (7-14 days).
+
+![Heatmaps of the percentage of samples accepted by scenario. The figure
+is stratified by the upper bound on the reproduction number (columns)
+and the mean of the serial interval (rows).](figures/plot-probs-1.png)
 
 **Estimated reproduction number**
 
 <table>
+<caption>Median, minimum, and maximum reproduction numbers of the Wuhan outbreak conditioned on case data from the 3rd, 18th and 25th of January - for scenarios with a mean serial interval of 4. Stratified by initial seeding event size and duration.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Seeding event size vs. Seeding event duration</th>
 <th style="text-align: left;">7</th>
 <th style="text-align: left;">14</th>
+<th style="text-align: left;">21</th>
 <th style="text-align: left;">28</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">20</td>
-<td style="text-align: left;">3.6 (3.3 - 3.8)</td>
-<td style="text-align: left;">3.5 (2 - 4)</td>
-<td style="text-align: left;">3.1 (1.6 - 4)</td>
+<td style="text-align: left;">1.9 (1.3 - 3.6)</td>
+<td style="text-align: left;">1.8 (1.2 - 3.7)</td>
+<td style="text-align: left;">1.8 (1.2 - 4)</td>
+<td style="text-align: left;">1.7 (1.2 - 4)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">40</td>
-<td style="text-align: left;">3.5 (2.7 - 4)</td>
-<td style="text-align: left;">3.3 (2.1 - 4)</td>
-<td style="text-align: left;">2.6 (1.4 - 4)</td>
+<td style="text-align: left;">1.7 (1.2 - 2.8)</td>
+<td style="text-align: left;">1.6 (1.1 - 3.4)</td>
+<td style="text-align: left;">1.5 (1.1 - 2.8)</td>
+<td style="text-align: left;">1.5 (1.1 - 2.8)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">60</td>
-<td style="text-align: left;">3.4 (2.3 - 4)</td>
-<td style="text-align: left;">3.1 (1.8 - 4)</td>
-<td style="text-align: left;">2.3 (1.6 - 4)</td>
+<td style="text-align: left;">1.6 (1.1 - 2.4)</td>
+<td style="text-align: left;">1.5 (1.1 - 2.3)</td>
+<td style="text-align: left;">1.4 (1.1 - 2)</td>
+<td style="text-align: left;">1.4 (1.1 - 2.1)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">80</td>
-<td style="text-align: left;">3.3 (2.1 - 4)</td>
-<td style="text-align: left;">2.8 (1.9 - 4)</td>
-<td style="text-align: left;">2.1 (1.5 - 3.4)</td>
+<td style="text-align: left;">1.5 (1.1 - 2.1)</td>
+<td style="text-align: left;">1.4 (1.1 - 1.8)</td>
+<td style="text-align: left;">1.4 (1 - 1.9)</td>
+<td style="text-align: left;">1.4 (1.1 - 1.7)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">100</td>
-<td style="text-align: left;">3.1 (2.1 - 4)</td>
-<td style="text-align: left;">2.6 (1.7 - 4)</td>
-<td style="text-align: left;">2 (1.5 - 3.1)</td>
+<td style="text-align: left;">1.4 (1 - 2.1)</td>
+<td style="text-align: left;">1.3 (1 - 1.9)</td>
+<td style="text-align: left;">1.3 (1.1 - 1.7)</td>
+<td style="text-align: left;">1.3 (1.1 - 1.6)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">200</td>
-<td style="text-align: left;">2.4 (1.6 - 3.8)</td>
-<td style="text-align: left;">2 (1.3 - 2.9)</td>
-<td style="text-align: left;">1.7 (1.6 - 2.1)</td>
+<td style="text-align: left;">1.2 (1 - 1.5)</td>
+<td style="text-align: left;">1.2 (0.9 - 1.4)</td>
+<td style="text-align: left;">1.1 (1.1 - 1.1)</td>
+<td style="text-align: left;">-</td>
 </tr>
 </tbody>
 </table>
 
 <table>
+<caption>Median, minimum, and maximum reproduction numbers of the Wuhan outbreak conditioned on case data from the 3rd, 18th and 25th of January - for scenarios with a mean serial interval of 8.4 (SARs like). Stratified by initial seeding event size and duration.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Seeding event size vs. Seeding event duration</th>
 <th style="text-align: left;">7</th>
 <th style="text-align: left;">14</th>
+<th style="text-align: left;">21</th>
+<th style="text-align: left;">28</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">3.8 (3.1 - 4)</td>
+<td style="text-align: left;">3.5 (2.4 - 4)</td>
+<td style="text-align: left;">3.3 (1.8 - 4)</td>
+<td style="text-align: left;">3 (1.7 - 4)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">3.6 (2.9 - 4)</td>
+<td style="text-align: left;">3.4 (1.9 - 4)</td>
+<td style="text-align: left;">2.9 (1.7 - 4)</td>
+<td style="text-align: left;">2.6 (1.6 - 4)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">60</td>
+<td style="text-align: left;">3.5 (2.3 - 4)</td>
+<td style="text-align: left;">3.1 (1.9 - 4)</td>
+<td style="text-align: left;">2.6 (1.7 - 4)</td>
+<td style="text-align: left;">2.3 (1.5 - 3.9)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">80</td>
+<td style="text-align: left;">3.3 (2.1 - 4)</td>
+<td style="text-align: left;">2.8 (1.8 - 4)</td>
+<td style="text-align: left;">2.4 (1.5 - 3.7)</td>
+<td style="text-align: left;">2.2 (1.4 - 3.2)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">100</td>
+<td style="text-align: left;">3.1 (2 - 4)</td>
+<td style="text-align: left;">2.6 (1.6 - 4)</td>
+<td style="text-align: left;">2.3 (1.5 - 3.4)</td>
+<td style="text-align: left;">2 (1.4 - 3.4)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">200</td>
+<td style="text-align: left;">2.4 (1.6 - 3.9)</td>
+<td style="text-align: left;">2 (1.4 - 3.1)</td>
+<td style="text-align: left;">1.8 (1.3 - 2.5)</td>
+<td style="text-align: left;">1.7 (1.5 - 1.9)</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<caption>Median, minimum, and maximum reproduction numbers of the Wuhan outbreak conditioned on case data from the 3rd, 18th and 25th of January - for scenarios with a mean serial interval of 12. Stratified by initial seeding event size and duration.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Seeding event size vs. Seeding event duration</th>
+<th style="text-align: left;">7</th>
+<th style="text-align: left;">14</th>
+<th style="text-align: left;">21</th>
 <th style="text-align: left;">28</th>
 </tr>
 </thead>
@@ -187,38 +281,44 @@ Results
 <tr class="odd">
 <td style="text-align: left;">20</td>
 <td style="text-align: left;">-</td>
-<td style="text-align: left;">-</td>
-<td style="text-align: left;">3.6 (2.4 - 4)</td>
+<td style="text-align: left;">3.7 (3.7 - 3.7)</td>
+<td style="text-align: left;">3.8 (3.2 - 4)</td>
+<td style="text-align: left;">3.7 (2.2 - 4)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">40</td>
 <td style="text-align: left;">-</td>
-<td style="text-align: left;">3.9 (3.8 - 4)</td>
+<td style="text-align: left;">3.9 (3.6 - 4)</td>
+<td style="text-align: left;">3.7 (2.9 - 4)</td>
 <td style="text-align: left;">3.6 (2.3 - 4)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">60</td>
 <td style="text-align: left;">-</td>
-<td style="text-align: left;">3.8 (3.3 - 4)</td>
-<td style="text-align: left;">3.4 (2.2 - 4)</td>
+<td style="text-align: left;">3.8 (3 - 4)</td>
+<td style="text-align: left;">3.7 (2.5 - 4)</td>
+<td style="text-align: left;">3.4 (2.1 - 4)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">80</td>
-<td style="text-align: left;">-</td>
-<td style="text-align: left;">3.8 (3 - 4)</td>
-<td style="text-align: left;">3.3 (1.9 - 4)</td>
+<td style="text-align: left;">3.9 (3.9 - 3.9)</td>
+<td style="text-align: left;">3.8 (2.9 - 4)</td>
+<td style="text-align: left;">3.6 (2.3 - 4)</td>
+<td style="text-align: left;">3.3 (2 - 4)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">100</td>
 <td style="text-align: left;">3.9 (3.8 - 4)</td>
 <td style="text-align: left;">3.7 (2.7 - 4)</td>
-<td style="text-align: left;">3.1 (1.7 - 4)</td>
+<td style="text-align: left;">3.5 (2.2 - 4)</td>
+<td style="text-align: left;">3.1 (1.8 - 4)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">200</td>
-<td style="text-align: left;">3.7 (2.5 - 4)</td>
-<td style="text-align: left;">3.3 (2.1 - 4)</td>
-<td style="text-align: left;">2.4 (1.7 - 3.3)</td>
+<td style="text-align: left;">3.7 (2.7 - 4)</td>
+<td style="text-align: left;">3.3 (2 - 4)</td>
+<td style="text-align: left;">2.7 (1.7 - 4)</td>
+<td style="text-align: left;">2.4 (1.6 - 3.9)</td>
 </tr>
 </tbody>
 </table>

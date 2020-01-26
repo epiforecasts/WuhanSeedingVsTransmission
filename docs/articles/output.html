@@ -85,7 +85,7 @@
 <div id="authors-needs-updating-to-correct-names" class="section level2">
 <h2 class="hasAnchor">
 <a href="#authors-needs-updating-to-correct-names" class="anchor"></a>Authors (<em>needs updating to correct names</em>)</h2>
-<p>S. Abbott<sup>1</sup>, J. Munday<sup>1</sup>, J. Hellewell<sup>1</sup>, J. Edmunds<sup>1</sup>, S. Funk<sup>1</sup></p>
+<p>S. Abbott (1), J. Munday (1), J. Hellewell (1), J. Edmunds (1), S. Funk (1)</p>
 <p>Correspondence to: <a href="mailto:sam.abbott@lshtm.ac.uk" class="email">sam.abbott@lshtm.ac.uk</a></p>
 </div>
 <div id="affiliations-needs-full-affiliations" class="section level2">
@@ -118,100 +118,174 @@
 <div id="results" class="section level2">
 <h2 class="hasAnchor">
 <a href="#results" class="anchor"></a>Results</h2>
-<p><strong>Percentage of accepted outbreak simulation</strong></p>
+<p><strong>Percentage of outbreak simulations accepted</strong></p>
+<p>Overall, the highest acceptance rate was for scenarios with a large event size (200), short duration (7 days), an upper bound on the reproduction number of 3 and a SARs like mean serial interval (8.4 days). Scenarios with a longer event duration (14 days), a higher reproduction number bound (4), and a longer mean serial interval (12 days) also had a high acceptance rate compared to other scenarios. In scenarios with a SARs like mean serial interval (8.4 days), and a longer serial interval (12 days) the acceptance rate decreased as the event size decreased and the event duration increased from the maxima discussed above.</p>
+<p>There were no scenarios in which an upper bound on the reproduction of 1 resulted in scenarios that were accepted after conditioning on observed data, regardless of the mean serial interval, event size, or event duration. There were few scenarios that were accepted after conditioning on data for scenarios with an upper bound of 2 on the reproduction number with this scenario being most likely if the seeding event was large (200), 14 days in duration, and had a SARs like serial interval (8.4 days). For a short serial interval (4 days) the percentage of accepted samples was low for all scenarios with the highest accepted proportion for scenarios with an upper bound on the reproduction number of 2. Across all reproduction number bounds this scenario was most likely if the seeding event was of a medium size (40 - 80 cases) and a short duration (7-14 days).</p>
 <div class="figure">
-<img src="figures/plot-probs-1.png" alt="plot of chunk plot-probs"><p class="caption">plot of chunk plot-probs</p>
+<img src="figures/plot-probs-1.png" alt="Heatmaps of the percentage of samples accepted by scenario. The figure is stratified by the upper bound on the reproduction number (columns) and the mean of the serial interval (rows)." width="2560"><p class="caption">
+Heatmaps of the percentage of samples accepted by scenario. The figure is stratified by the upper bound on the reproduction number (columns) and the mean of the serial interval (rows).
+</p>
 </div>
 <p><strong>Estimated reproduction number</strong></p>
 <table class="table">
+<caption>Median, minimum, and maximum reproduction numbers of the Wuhan outbreak conditioned on case data from the 3rd, 18th and 25th of January - for scenarios with a mean serial interval of 4. Stratified by initial seeding event size and duration.</caption>
 <thead><tr class="header">
 <th align="left">Seeding event size vs. Seeding event duration</th>
 <th align="left">7</th>
 <th align="left">14</th>
+<th align="left">21</th>
 <th align="left">28</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">20</td>
-<td align="left">3.6 (3.3 - 3.8)</td>
-<td align="left">3.5 (2 - 4)</td>
-<td align="left">3.1 (1.6 - 4)</td>
+<td align="left">1.9 (1.3 - 3.6)</td>
+<td align="left">1.8 (1.2 - 3.7)</td>
+<td align="left">1.8 (1.2 - 4)</td>
+<td align="left">1.7 (1.2 - 4)</td>
 </tr>
 <tr class="even">
 <td align="left">40</td>
-<td align="left">3.5 (2.7 - 4)</td>
-<td align="left">3.3 (2.1 - 4)</td>
-<td align="left">2.6 (1.4 - 4)</td>
+<td align="left">1.7 (1.2 - 2.8)</td>
+<td align="left">1.6 (1.1 - 3.4)</td>
+<td align="left">1.5 (1.1 - 2.8)</td>
+<td align="left">1.5 (1.1 - 2.8)</td>
 </tr>
 <tr class="odd">
 <td align="left">60</td>
-<td align="left">3.4 (2.3 - 4)</td>
-<td align="left">3.1 (1.8 - 4)</td>
-<td align="left">2.3 (1.6 - 4)</td>
+<td align="left">1.6 (1.1 - 2.4)</td>
+<td align="left">1.5 (1.1 - 2.3)</td>
+<td align="left">1.4 (1.1 - 2)</td>
+<td align="left">1.4 (1.1 - 2.1)</td>
 </tr>
 <tr class="even">
 <td align="left">80</td>
-<td align="left">3.3 (2.1 - 4)</td>
-<td align="left">2.8 (1.9 - 4)</td>
-<td align="left">2.1 (1.5 - 3.4)</td>
+<td align="left">1.5 (1.1 - 2.1)</td>
+<td align="left">1.4 (1.1 - 1.8)</td>
+<td align="left">1.4 (1 - 1.9)</td>
+<td align="left">1.4 (1.1 - 1.7)</td>
 </tr>
 <tr class="odd">
 <td align="left">100</td>
-<td align="left">3.1 (2.1 - 4)</td>
-<td align="left">2.6 (1.7 - 4)</td>
-<td align="left">2 (1.5 - 3.1)</td>
+<td align="left">1.4 (1 - 2.1)</td>
+<td align="left">1.3 (1 - 1.9)</td>
+<td align="left">1.3 (1.1 - 1.7)</td>
+<td align="left">1.3 (1.1 - 1.6)</td>
 </tr>
 <tr class="even">
 <td align="left">200</td>
-<td align="left">2.4 (1.6 - 3.8)</td>
-<td align="left">2 (1.3 - 2.9)</td>
-<td align="left">1.7 (1.6 - 2.1)</td>
+<td align="left">1.2 (1 - 1.5)</td>
+<td align="left">1.2 (0.9 - 1.4)</td>
+<td align="left">1.1 (1.1 - 1.1)</td>
+<td align="left">-</td>
 </tr>
 </tbody>
 </table>
 <table class="table">
+<caption>Median, minimum, and maximum reproduction numbers of the Wuhan outbreak conditioned on case data from the 3rd, 18th and 25th of January - for scenarios with a mean serial interval of 8.4 (SARs like). Stratified by initial seeding event size and duration.</caption>
 <thead><tr class="header">
 <th align="left">Seeding event size vs. Seeding event duration</th>
 <th align="left">7</th>
 <th align="left">14</th>
+<th align="left">21</th>
+<th align="left">28</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">20</td>
+<td align="left">3.8 (3.1 - 4)</td>
+<td align="left">3.5 (2.4 - 4)</td>
+<td align="left">3.3 (1.8 - 4)</td>
+<td align="left">3 (1.7 - 4)</td>
+</tr>
+<tr class="even">
+<td align="left">40</td>
+<td align="left">3.6 (2.9 - 4)</td>
+<td align="left">3.4 (1.9 - 4)</td>
+<td align="left">2.9 (1.7 - 4)</td>
+<td align="left">2.6 (1.6 - 4)</td>
+</tr>
+<tr class="odd">
+<td align="left">60</td>
+<td align="left">3.5 (2.3 - 4)</td>
+<td align="left">3.1 (1.9 - 4)</td>
+<td align="left">2.6 (1.7 - 4)</td>
+<td align="left">2.3 (1.5 - 3.9)</td>
+</tr>
+<tr class="even">
+<td align="left">80</td>
+<td align="left">3.3 (2.1 - 4)</td>
+<td align="left">2.8 (1.8 - 4)</td>
+<td align="left">2.4 (1.5 - 3.7)</td>
+<td align="left">2.2 (1.4 - 3.2)</td>
+</tr>
+<tr class="odd">
+<td align="left">100</td>
+<td align="left">3.1 (2 - 4)</td>
+<td align="left">2.6 (1.6 - 4)</td>
+<td align="left">2.3 (1.5 - 3.4)</td>
+<td align="left">2 (1.4 - 3.4)</td>
+</tr>
+<tr class="even">
+<td align="left">200</td>
+<td align="left">2.4 (1.6 - 3.9)</td>
+<td align="left">2 (1.4 - 3.1)</td>
+<td align="left">1.8 (1.3 - 2.5)</td>
+<td align="left">1.7 (1.5 - 1.9)</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<caption>Median, minimum, and maximum reproduction numbers of the Wuhan outbreak conditioned on case data from the 3rd, 18th and 25th of January - for scenarios with a mean serial interval of 12. Stratified by initial seeding event size and duration.</caption>
+<thead><tr class="header">
+<th align="left">Seeding event size vs. Seeding event duration</th>
+<th align="left">7</th>
+<th align="left">14</th>
+<th align="left">21</th>
 <th align="left">28</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">20</td>
 <td align="left">-</td>
-<td align="left">-</td>
-<td align="left">3.6 (2.4 - 4)</td>
+<td align="left">3.7 (3.7 - 3.7)</td>
+<td align="left">3.8 (3.2 - 4)</td>
+<td align="left">3.7 (2.2 - 4)</td>
 </tr>
 <tr class="even">
 <td align="left">40</td>
 <td align="left">-</td>
-<td align="left">3.9 (3.8 - 4)</td>
+<td align="left">3.9 (3.6 - 4)</td>
+<td align="left">3.7 (2.9 - 4)</td>
 <td align="left">3.6 (2.3 - 4)</td>
 </tr>
 <tr class="odd">
 <td align="left">60</td>
 <td align="left">-</td>
-<td align="left">3.8 (3.3 - 4)</td>
-<td align="left">3.4 (2.2 - 4)</td>
+<td align="left">3.8 (3 - 4)</td>
+<td align="left">3.7 (2.5 - 4)</td>
+<td align="left">3.4 (2.1 - 4)</td>
 </tr>
 <tr class="even">
 <td align="left">80</td>
-<td align="left">-</td>
-<td align="left">3.8 (3 - 4)</td>
-<td align="left">3.3 (1.9 - 4)</td>
+<td align="left">3.9 (3.9 - 3.9)</td>
+<td align="left">3.8 (2.9 - 4)</td>
+<td align="left">3.6 (2.3 - 4)</td>
+<td align="left">3.3 (2 - 4)</td>
 </tr>
 <tr class="odd">
 <td align="left">100</td>
 <td align="left">3.9 (3.8 - 4)</td>
 <td align="left">3.7 (2.7 - 4)</td>
-<td align="left">3.1 (1.7 - 4)</td>
+<td align="left">3.5 (2.2 - 4)</td>
+<td align="left">3.1 (1.8 - 4)</td>
 </tr>
 <tr class="even">
 <td align="left">200</td>
-<td align="left">3.7 (2.5 - 4)</td>
-<td align="left">3.3 (2.1 - 4)</td>
-<td align="left">2.4 (1.7 - 3.3)</td>
+<td align="left">3.7 (2.7 - 4)</td>
+<td align="left">3.3 (2 - 4)</td>
+<td align="left">2.7 (1.7 - 4)</td>
+<td align="left">2.4 (1.6 - 3.9)</td>
 </tr>
 </tbody>
 </table>

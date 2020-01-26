@@ -4,10 +4,11 @@
 \alias{plot_scenario_tile}
 \title{Plot a heat map of accepted samples by scenario}
 \usage{
-plot_scenario_tile(conditioned_output = NULL)
+plot_scenario_tile(proportion_allowed = NULL)
 }
 \arguments{
-\item{conditioned_output}{A list of dataframes as produced
+\item{proportion_allowed}{data.frame of allowed proportions as
+produced by \code{proportion_allowed_by_condition}
 by \code{condition_and_report_on_cases}.}
 }
 \value{
