@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Condition on known cases — condition_on_known • WuhanSeedingVsTransmission</title>
+<title>Plot a heat map of accepted samples by scenario — plot_scenario_tile • WuhanSeedingVsTransmission</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Condition on known cases — condition_on_known" />
-<meta property="og:description" content="Condition on known cases" />
+<meta property="og:title" content="Plot a heat map of accepted samples by scenario — plot_scenario_tile" />
+<meta property="og:description" content="Plot a heat map of accepted samples by scenario" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,40 +112,24 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Condition on known cases</h1>
+    <h1>Plot a heat map of accepted samples by scenario</h1>
     
-    <div class="hidden name"><code>condition_on_known.Rd</code></div>
+    <div class="hidden name"><code>plot_scenario_tile.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Condition on known cases</p>
+    <p>Plot a heat map of accepted samples by scenario</p>
     </div>
 
-    <pre class="usage"><span class='fu'>condition_on_known</span>(
-  <span class='no'>sims</span>,
-  <span class='kw'>days_since_end_seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>lower_bound</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>upper_bound</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>plot_scenario_tile</span>(<span class='kw'>conditioned_output</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>sims</th>
-      <td><p>A dataframe as produced by <code>scenario_analysis</code>.</p></td>
-    </tr>
-    <tr>
-      <th>days_since_end_seed</th>
-      <td><p>Numeric, the number of days since the end of the seeding event.</p></td>
-    </tr>
-    <tr>
-      <th>lower_bound</th>
-      <td><p>Numeric, the estimated lower bound on cases.</p></td>
-    </tr>
-    <tr>
-      <th>upper_bound</th>
-      <td><p>Numeric, the estimated upper bound on cases.</p></td>
+      <th>conditioned_output</th>
+      <td><p>A list of dataframes as produced
+by <code>condition_and_report_on_cases</code>.</p></td>
     </tr>
     </table>
 
