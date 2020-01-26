@@ -6,6 +6,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 bibliography: resources/library.bib
+csl: resources/vancouver.csl
 ---
 
 
@@ -26,11 +27,7 @@ S. Abbott^[1*], J. Munday^[1], J. Hellewell^[1], J. Edmunds^[1], S. Funk^[1]
 
 ## Introduction
 
-*Why*
-
-*Detail*
-
-*What*
+The ongoing pneumonia outbreak appears to have originated from an animal-to-human transmission event at Huanan seafood wholesale market in Wuhan, China which was closed on the 31st of December 2019 [@Imai:webreport;  @Thompson:2020bc]. As of the 26th of January 2020 there are over 2000 confirmed case with the majority in China [@bbc:wuhan:report]. Globally, countries are on high alert with wide implementation of airport checks and contact tracing. In China, officials have restricted travel aross a wide area. There is still uncertainty around the precise scale and duration of the initial transmission (seeding) event. This has implications for the likely transmissibility of the infectious agent responsible for the outbreak and as such it is important that these potential scenarios are explored and their likelihood quantified. 
 
 We used a stochastic branching process model - parameterised with available data where possible and otherwise informed by the 2002-2003 SARS outbreak - to simulate the Wuhan outbreak. We considered a range of parameters where data was not available, quantifying how likely these scenarios were to occur using reported cases (with reporting uncertainty). We focussed on the size and duration of the animal-to-human crossover event in particular, and the impact this has on the estimated level of human-to-human transmission. We aimed to provide decision makers, and researchers, with probability estimates for each scenario considered, along with estimates of the reproduction number (including uncertainty) across all scenarios.
 
@@ -114,3 +111,7 @@ There are no competing interests.
 
 The code for this analysis, interim results, and final results can be found at: *need zenodo DOI link*
 
+
+## References
+
+<div id = 'refs'></div>
