@@ -36,3 +36,6 @@ grid_results <- run_scenario_grid("2020-01-25", samples = 1,
                   
 grid_results
 }
+\author{
+Sam Abbott
+}

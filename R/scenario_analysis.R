@@ -12,7 +12,7 @@
 #' @importFrom tidyr unnest 
 #' @importFrom purrr map_dfr
 #' @importFrom furrr future_map
-#'
+#' @author Sam Abbott
 #' @examples
 #' 
 #' 

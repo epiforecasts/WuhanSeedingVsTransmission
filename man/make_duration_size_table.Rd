@@ -19,3 +19,6 @@ Make seeding event duration vs event size table
 
 
 }
+\author{
+Sam Abbott
+}

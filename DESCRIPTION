@@ -5,7 +5,13 @@ Authors@R: c(
     person(given = "Sam Abbott",
            role = c("aut", "cre"),
            email = "contact@samabbott.co.uk",
-           comment = c(ORCID = "0000-0001-8057-8037")))
+           comment = c(ORCID = "0000-0001-8057-8037")),
+    person("James", "Munday", 
+           email = "james.munday@lshtm.ac.uk", 
+           role = c("aut")),     
+    person("Sebastian", "Funk", 
+            email = "sebastian.funk@lshtm.ac.uk", 
+            role = c("aut")))
 Description: Evaluate seeding event size vs duration compared to transmission in the Wuhan outbreak.
 License: MIT + file LICENSE
 Imports:
@@ -20,7 +26,8 @@ Imports:
     rmarkdown,
     magrittr,
     fitdistrplus,
-    googlesheets4
+    googlesheets4,
+    scales
 Suggests:
     future,
     fst,

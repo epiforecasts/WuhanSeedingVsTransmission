@@ -7,7 +7,7 @@
 #' @inheritParams condition_on_known 
 #' @inheritParams proportion_allowed_by_condition
 #' @inheritParams restrict_by_condition
-#' 
+#' @author Sam Abbott
 #' @return
 #' @export
 #' @importFrom lubridate as_date

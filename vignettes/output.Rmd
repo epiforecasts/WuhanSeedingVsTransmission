@@ -12,6 +12,8 @@ knitr::opts_chunk$set(echo = FALSE, eval = TRUE)
 library(WuhanSeedingVsTransmission)
 library(fst)
 library(tidyr)
+library(tidyr)
+library(purrr)
 library(knitr)
 ```
 
@@ -56,7 +58,8 @@ scenario_sims <- fst::read_fst("../inst/results/grid.fst")
 
 ```{r}
 ## Filter by known cases on the 3rd of January
-jan3_conditioned <- condition_and_report_on_cases(scenario_sims, 
+jan3_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
+                                                  scenario_sims, 
                                                   condition_date = "2020-01-03",
                                                   samples = max(scenario_sims$sample),
                                                   lower_bound = 40, 
@@ -64,7 +67,8 @@ jan3_conditioned <- condition_and_report_on_cases(scenario_sims,
   
 
 ## Filter by known cases on the 20th of January
-jan20_conditioned <- condition_and_report_on_cases(jan3_conditioned$conditioned_sims, 
+jan20_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
+                                                  jan3_conditioned$conditioned_sims, 
                                                   condition_date = "2020-01-20",
                                                   samples =  max(scenario_sims$sample),
                                                   lower_bound = 200, 
@@ -73,43 +77,39 @@ jan20_conditioned <- condition_and_report_on_cases(jan3_conditioned$conditioned_
 
 
 ## Filter by known cases on the 25th of January
-jan25_conditioned <- condition_and_report_on_cases(jan20_conditioned$conditioned_sims, 
+jan25_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
+                                                  jan20_conditioned$conditioned_sims, 
                                                   condition_date = "2020-01-25",
                                                   samples =  max(scenario_sims$sample),
                                                   lower_bound = 1400, 
                                                   upper_bound = 4000)
-
-## Make current r0 summary based on current time
-end_r0 <- summarise_end_r0(jan25_conditioned$conditioned_sims)
 ```
 
-
-```{r plot-probs}
-jan25_conditioned$proportion_allowed_sims %>% 
-  tidyr::complete(event_duration, event_size, serial_mean, upper_R0,
-                  fill = list(allowed_per = 0)) %>% 
-  dplyr::mutate_at(.vars = c("event_duration", "event_size"), factor) %>% 
-  ggplot2::ggplot(ggplot2::aes(x = event_duration, 
-                               y = event_size, fill = allowed_per)) + 
-  ggplot2::geom_tile(alpha = 0.9) +
-  ggplot2::scale_fill_continuous(label = scales::percent,
-                                 type = "viridis", direction = 1) + 
-  ggplot2::facet_grid(serial_mean ~ upper_R0) +
-  ggplot2::theme_minimal() +
-  ggplot2::theme(legend.position = "bottom") +
-  ggplot2::guides(fill = ggplot2::guide_colorbar(title = "Percentage of samples accepted")) +
-  ggplot2::labs(x = "Seeding event duration", 
-                y = "Seeding event size")
-```
 # Output
 
 Compare R0s across scenarios (reporting median, maximum and minimum):
 
 * Grid of event size vs event duration with R0 estimates.
 
-```{r}
-end_r0
-make_duration_size_table() %>% 
-  knitr::kable()
+
+```{r plot-probs}
+WuhanSeedingVsTransmission::plot_scenario_tile(jan25_conditioned)
 ```
 
+```{r summarise_r0s}
+## Make current r0 summary based on current time
+summarised_r0s <- jan25_conditioned$conditioned_sims %>% 
+  dplyr::filter(upper_R0 == 4) %>% 
+  dplyr::group_split(serial_mean) %>% 
+  purrr::map(  ~ WuhanSeedingVsTransmission::summarise_end_r0(.) %>% 
+  WuhanSeedingVsTransmission::make_duration_size_table() %>% 
+  knitr::kable()) 
+```
+
+```{r low_serial_r0}
+summarised_r0s[[1]]
+```
+
+```{r high_serial_r0}
+summarised_r0s[[2]]
+```

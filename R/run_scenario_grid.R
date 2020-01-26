@@ -10,6 +10,7 @@
 #' @inheritParams scenario_analysis
 #' @return
 #' @export
+#' @author Sam Abbott
 #'
 #' @examples
 #' 

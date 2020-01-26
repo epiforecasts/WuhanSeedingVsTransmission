@@ -13,7 +13,7 @@
 #' @return
 #' @export
 #' @importFrom bpmodels chain_sim
-#' @author Sebastian Funk
+#' @author Sebastian Funk, Sam Abbott, James Munday
 #' @examples
 #' 
 #' 

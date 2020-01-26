@@ -8,6 +8,7 @@
 #' @return
 #' @export
 #' @importFrom dplyr filter select
+#' @author Sam Abbott
 #' @examples
 #' 
 #' 

@@ -6,6 +6,7 @@
 #' @export
 #' @inheritParams restrict_by_condition
 #' @importFrom dplyr group_by summarise n ungroup
+#' @author Sam Abbott
 #' @examples
 #' 
 #' 
