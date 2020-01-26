@@ -149,11 +149,11 @@ summarised_r0s[[2]]
 
 **Strengths and Weaknesses**
 
-**Conclusions**
-
 **Further work**
 
-The R package we have developed alongside our analysis may be generalisable to other point source outbreaks. Additional work is needed to ensure the robustness of this tool but this may allow this analysis to be repeated for future outbreaks with little additional work.
+As the outbreak progress more data will become available on the number of cases, and the duration of the serial interval. These data are likely to improve our estimates of the reproduction number and also alter the probability estimates by scenario. Additional data may also lead to a reevaluation of the suitability of the negative binomial distribution for generating new cases - or at least provide an outbreak specific estimate of the dispersion. The R package we have developed alongside our analysis may be generalisable to other point source outbreaks. Additional work is needed to ensure the robustness of this tool but this may allow this analysis to be repeated during future outbreaks with little additional overhead.
+
+**Conclusions**
 
 **Contributors**
 
