@@ -19,3 +19,6 @@ Summarise R0 estimates across samples
 
 
 }
+\author{
+Sam Abbott
+}

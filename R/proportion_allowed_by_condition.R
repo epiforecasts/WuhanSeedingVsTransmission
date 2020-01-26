@@ -5,12 +5,14 @@
 #' @return
 #' @export
 #' @inheritParams restrict_by_condition
-#' @importFrom dplyr group_by summarise n
+#' @importFrom dplyr group_by summarise n ungroup
+#' @author Sam Abbott
 #' @examples
 #' 
 #' 
 proportion_allowed_by_condition <- function(sims, samples = NULL) {
   sims %>% 
     group_by(scenario, event_duration, event_size, serial_mean, upper_R0) %>% 
-    summarise(allowed_per = dplyr::n() / samples)
+    summarise(allowed_per = dplyr::n() / samples) %>% 
+    dplyr::ungroup()
 }

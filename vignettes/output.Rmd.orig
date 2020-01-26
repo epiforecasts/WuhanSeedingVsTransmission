@@ -1,0 +1,119 @@
+---
+title: "Wuhan: Seeding vs transmission"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Wuhan: Seeding vs transmission}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, eval = TRUE, fig.path = "figures/")
+```
+
+
+```{r, message = FALSE}
+library(WuhanSeedingVsTransmission)
+library(fst)
+library(tidyr)
+library(tidyr)
+library(purrr)
+library(knitr)
+```
+
+# Scenarios and parameter sampling
+
+* Stratify the analysis by seeding event size and duration:
+  * Event size: 20, 40, 60, 80, 100
+  * Event duration: 7 days, 14 days, 28 days
+* Sampled parameters:
+  * Serial interval: 8.4 (SD: 3.8) from Lispsitch et al. (2003)
+  * K: 0.16 from Lloyd-Smith (2005)
+* Fitted parameters
+  * R0: Uniform(0, 5) prior
+* Case bounds:
+  * Lower bound: 780
+  * Upper bound 880
+
+# Scenario analysis
+
+1. Branching process from `bpmodels`.
+   * Assumes a negative binomial distribution on new cases
+   * Assumes that the serial interval is gaussian distributed. 
+2. Run an outbreak for each day of the assumed seeding event.
+3. Summarise outbreaks across a single seeding event.
+
+
+
+# Restrict scenarios and summarise output
+
+* Restrict potential scenarios based on an upper and lower bound of total cases.
+
+* Summarise each outbreak across samples.
+
+* Report number of accepted samples per scenario.
+
+* Condition on reported cases on the 3rd and the 20th of January
+
+
+```{r read-in-results}
+scenario_sims <- fst::read_fst("../inst/results/grid.fst")
+```
+
+```{r condition-results-on-data}
+## Filter by known cases on the 3rd of January
+jan3_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
+                                                  scenario_sims, 
+                                                  condition_date = "2020-01-03",
+                                                  samples = max(scenario_sims$sample),
+                                                  lower_bound = 40, 
+                                                  upper_bound = 400)
+  
+
+## Filter by known cases on the 20th of January
+jan20_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
+                                                  jan3_conditioned$conditioned_sims, 
+                                                  condition_date = "2020-01-20",
+                                                  samples =  max(scenario_sims$sample),
+                                                  lower_bound = 200, 
+                                                  upper_bound = 2000)
+
+
+
+## Filter by known cases on the 25th of January
+jan25_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
+                                                  jan20_conditioned$conditioned_sims, 
+                                                  condition_date = "2020-01-25",
+                                                  samples =  max(scenario_sims$sample),
+                                                  lower_bound = 1400, 
+                                                  upper_bound = 4000)
+```
+
+# Output
+
+Compare R0s across scenarios (reporting median, maximum and minimum):
+
+* Grid of event size vs event duration with R0 estimates.
+
+
+```{r plot-probs}
+WuhanSeedingVsTransmission::plot_scenario_tile(jan25_conditioned)
+```
+
+```{r summarise_r0s}
+## Make current r0 summary based on current time
+summarised_r0s <- jan25_conditioned$conditioned_sims %>% 
+  dplyr::filter(upper_R0 == 4) %>% 
+  dplyr::group_split(serial_mean) %>% 
+  purrr::map(  ~ WuhanSeedingVsTransmission::summarise_end_r0(.) %>% 
+  WuhanSeedingVsTransmission::make_duration_size_table() %>% 
+  knitr::kable()) 
+```
+
+```{r low_serial_r0}
+summarised_r0s[[1]]
+```
+
+```{r high_serial_r0}
+summarised_r0s[[2]]
+```

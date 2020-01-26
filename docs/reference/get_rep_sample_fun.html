@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Negative binomial branching process model — run_sim • WuhanSeedingVsTransmission</title>
+<title>Get a sampling function for reporting delays — get_rep_sample_fun • WuhanSeedingVsTransmission</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,9 @@
 
 
 
-<meta property="og:title" content="Negative binomial branching process model — run_sim" />
-<meta property="og:description" content="Negative binomial branching process model" />
+<meta property="og:title" content="Get a sampling function for reporting delays — get_rep_sample_fun" />
+<meta property="og:description" content="This connects to the Google Sheet containing the collated linelist; the
+first time this is run, it may require authentiction with Google" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,89 +113,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Negative binomial branching process model</h1>
+    <h1>Get a sampling function for reporting delays</h1>
     
-    <div class="hidden name"><code>run_sim.Rd</code></div>
+    <div class="hidden name"><code>get_rep_sample_fun.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Negative binomial branching process model</p>
+    <p>This connects to the Google Sheet containing the collated linelist; the
+first time this is run, it may require authentiction with Google</p>
     </div>
 
-    <pre class="usage"><span class='fu'>run_sim</span>(
-  <span class='no'>n</span>,
-  <span class='no'>n_length</span>,
-  <span class='no'>mean_si</span>,
-  <span class='no'>sd_si</span>,
-  <span class='no'>R0</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>0.16</span>,
-  <span class='kw'>tf</span> <span class='kw'>=</span> <span class='fl'>37</span>,
-  <span class='no'>max_potential_cases</span>,
-  <span class='no'>delay_sample</span>
-)</pre>
+    <pre class="usage"><span class='fu'>get_rep_sample_fun</span>()</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>n</th>
-      <td><p>Numeric, number of initial cases</p></td>
-    </tr>
-    <tr>
-      <th>n_length</th>
-      <td><p>Numeric, the number of days in the initial seeding event</p></td>
-    </tr>
-    <tr>
-      <th>mean_si</th>
-      <td><p>Numeric, the mean of the serial interval</p></td>
-    </tr>
-    <tr>
-      <th>sd_si</th>
-      <td><p>Numeric, the sd of the serial interval</p></td>
-    </tr>
-    <tr>
-      <th>R0</th>
-      <td><p>Numeric, the estimated reproduction number</p></td>
-    </tr>
-    <tr>
-      <th>k</th>
-      <td><p>Numeric, the dispersion of the negative binomial branching process</p></td>
-    </tr>
-    <tr>
-      <th>tf</th>
-      <td><p>Numeric, the end time of the branching process</p></td>
-    </tr>
-    <tr>
-      <th>max_potential_cases</th>
-      <td><p>Numeric, the maximum number of cases</p></td>
-    </tr>
-    <tr>
-      <th>delay_sample</th>
-      <td><p>A function to sample from reporting delays</p></td>
+      <td><p>nu</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    
+    <p>a function that takes one parameter, <code>n</code>, the number of reporting
+delays to randomly sample</p>
 
-
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
     </ul>
 
     <h2>Author</h2>
-    <p>Sebastian Funk, Sam Abbott, James Munday</p>
+    <p>Sebastian Funk <a href='mailto:sebastian.funk@lshtm.ac.uk'>sebastian.funk@lshtm.ac.uk</a></p>
   </div>
 </div>
 

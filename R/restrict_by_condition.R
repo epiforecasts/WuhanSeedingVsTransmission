@@ -7,6 +7,7 @@
 #' @return
 #' @export
 #' @importFrom dplyr right_join select
+#' @author Sam Abbott
 #' @examples
 #' 
 #' 

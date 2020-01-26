@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Negative binomial branching process model — run_sim • WuhanSeedingVsTransmission</title>
+<title>Plot a heat map of accepted samples by scenario — plot_scenario_tile • WuhanSeedingVsTransmission</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Negative binomial branching process model — run_sim" />
-<meta property="og:description" content="Negative binomial branching process model" />
+<meta property="og:title" content="Plot a heat map of accepted samples by scenario — plot_scenario_tile" />
+<meta property="og:description" content="Plot a heat map of accepted samples by scenario" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,65 +112,24 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Negative binomial branching process model</h1>
+    <h1>Plot a heat map of accepted samples by scenario</h1>
     
-    <div class="hidden name"><code>run_sim.Rd</code></div>
+    <div class="hidden name"><code>plot_scenario_tile.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Negative binomial branching process model</p>
+    <p>Plot a heat map of accepted samples by scenario</p>
     </div>
 
-    <pre class="usage"><span class='fu'>run_sim</span>(
-  <span class='no'>n</span>,
-  <span class='no'>n_length</span>,
-  <span class='no'>mean_si</span>,
-  <span class='no'>sd_si</span>,
-  <span class='no'>R0</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>0.16</span>,
-  <span class='kw'>tf</span> <span class='kw'>=</span> <span class='fl'>37</span>,
-  <span class='no'>max_potential_cases</span>,
-  <span class='no'>delay_sample</span>
-)</pre>
+    <pre class="usage"><span class='fu'>plot_scenario_tile</span>(<span class='kw'>conditioned_output</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>n</th>
-      <td><p>Numeric, number of initial cases</p></td>
-    </tr>
-    <tr>
-      <th>n_length</th>
-      <td><p>Numeric, the number of days in the initial seeding event</p></td>
-    </tr>
-    <tr>
-      <th>mean_si</th>
-      <td><p>Numeric, the mean of the serial interval</p></td>
-    </tr>
-    <tr>
-      <th>sd_si</th>
-      <td><p>Numeric, the sd of the serial interval</p></td>
-    </tr>
-    <tr>
-      <th>R0</th>
-      <td><p>Numeric, the estimated reproduction number</p></td>
-    </tr>
-    <tr>
-      <th>k</th>
-      <td><p>Numeric, the dispersion of the negative binomial branching process</p></td>
-    </tr>
-    <tr>
-      <th>tf</th>
-      <td><p>Numeric, the end time of the branching process</p></td>
-    </tr>
-    <tr>
-      <th>max_potential_cases</th>
-      <td><p>Numeric, the maximum number of cases</p></td>
-    </tr>
-    <tr>
-      <th>delay_sample</th>
-      <td><p>A function to sample from reporting delays</p></td>
+      <th>conditioned_output</th>
+      <td><p>A list of dataframes as produced
+by <code>condition_and_report_on_cases</code>.</p></td>
     </tr>
     </table>
 
@@ -194,7 +153,7 @@
     </ul>
 
     <h2>Author</h2>
-    <p>Sebastian Funk, Sam Abbott, James Munday</p>
+    <p>Sam Abbott</p>
   </div>
 </div>
 

@@ -38,3 +38,6 @@ Condition on cases and return accepted sample size by scenario
 
 
 }
+\author{
+Sam Abbott
+}

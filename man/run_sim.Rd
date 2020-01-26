@@ -46,5 +46,5 @@ Negative binomial branching process model
 
 }
 \author{
-Sebastian Funk
+Sebastian Funk, Sam Abbott, James Munday
 }
