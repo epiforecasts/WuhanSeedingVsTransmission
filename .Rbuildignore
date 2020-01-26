@@ -1,9 +1,12 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
-vignettes/output
+^vignettes/rendered_output$
+^vignettes/output.Rmd.orig$
+^vignettes/output.md$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
 ^inst/results$
 ^Dockerfile$
+

@@ -15,7 +15,7 @@ rmarkdown::render("output.Rmd",
                   output_format = c("html_document"))
 
 rmarkdown::render("output.Rmd", 
-                  output_dir = "rendered_output", 
+                  output_dir = ".", 
                   knit_root_dir = c("."),
                   output_format = c("md_document"))
 
