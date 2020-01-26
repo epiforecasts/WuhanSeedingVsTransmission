@@ -9,4 +9,4 @@
 ^pkgdown$
 ^inst/results$
 ^Dockerfile$
-
+^vignettes/resources$
