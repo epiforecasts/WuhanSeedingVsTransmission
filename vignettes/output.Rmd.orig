@@ -22,10 +22,17 @@ library(purrr)
 library(knitr)
 ```
 
-
-## Abstract 
-
 ## Introduction
+
+*Why*
+
+*Detail*
+
+*What*
+
+
+We used a stochastic branching process model - parameterised with available data where possible and otherwise informed by the 2002-2003 SARS outbreak - to simulate the Wuhan outbreak. We considered a range of parameters where data was not available, quantifying how likely these scenarios were to occur using reported cases (with reporting uncertainty). We focussed on the size and duration of the animal-to-human crossover event in particular, and the impact this has on the estimated level of human-to-human transmission. We aimed to provide decision makers, and researchers, with probability estimates for each scenario considered, along with estimates of the reproduction number (including uncertainty) across all scenarios.
+
 
 ## Methods
 
