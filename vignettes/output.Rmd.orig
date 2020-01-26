@@ -21,44 +21,32 @@ library(purrr)
 library(knitr)
 ```
 
-# Scenarios and parameter sampling
 
-* Stratify the analysis by seeding event size and duration:
-  * Event size: 20, 40, 60, 80, 100
-  * Event duration: 7 days, 14 days, 28 days
-* Sampled parameters:
-  * Serial interval: 8.4 (SD: 3.8) from Lispsitch et al. (2003)
-  * K: 0.16 from Lloyd-Smith (2005)
-* Fitted parameters
-  * R0: Uniform(0, 5) prior
-* Case bounds:
-  * Lower bound: 780
-  * Upper bound 880
+## Abstract 
 
-# Scenario analysis
+## Introduction
+
+## Methods
+
+### Branching process model
 
 1. Branching process from `bpmodels`.
    * Assumes a negative binomial distribution on new cases
    * Assumes that the serial interval is gaussian distributed. 
-2. Run an outbreak for each day of the assumed seeding event.
-3. Summarise outbreaks across a single seeding event.
+   
+### Scenario analysis
 
-
-
-# Restrict scenarios and summarise output
-
-* Restrict potential scenarios based on an upper and lower bound of total cases.
-
-* Summarise each outbreak across samples.
-
-* Report number of accepted samples per scenario.
-
-* Condition on reported cases on the 3rd and the 20th of January
-
+We simulated the branching process model 10,000 times for all combinations of the following parameters: seeding event size (20, 40, 60, 80, 200), seeding event duration (7 days, 14 days, 21 days, and 28 days), the mean of the serial interval (4 days, 8.4 days[@Lispsitch2003], 12)), and the upper bound of the reproduction number (1, 2, 3, 4). Parameter values used in the scenario analysis were either assumptions based on the current knowledge of the Wuhan outbreak or based on those used previously for SARs[@Lispsitch2003]. We ran the model from the beginning of the outbreak for each scenario until the 25th of January 2020. The start date was determined by combining the duration of the seeding event with the date the fish market in Wuhan - the source of the outbreak - closed (31st of December 2019). Outbreak simulation was stopped if a sample exceeded 5000 cases by the end of simulation period.
 
 ```{r read-in-results}
+## Run the analysis using inst/scripts/run_grid.R
+## Read in saved analysis results
 scenario_sims <- fst::read_fst("../inst/results/grid.fst")
 ```
+
+### Conditioning on available case numbers
+
+We evaluated each scenario sample based on the cases observed on the 3rd of January (41 observed cases with an assumed upper bound of 400 cases), the 18th of Janurary (200 cases with an assumed upper bound of 2000 cases), and the 25th of January (1975 cases with an assumed upper bound of 5000 cases). Samples were rejected if their simulated cumulative cases were not consistent with these data. Uncertainty in the observed number of cases was assumed to be 10 times the number of observed cases for the 3rd and 18th of January and the number of observed plus the number of potential cases reported on the 25th of January. 
 
 ```{r condition-results-on-data}
 ## Filter by known cases on the 3rd of January - 10* uncertainty on cases
@@ -66,7 +54,7 @@ jan3_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
                                                   scenario_sims, 
                                                   condition_date = "2020-01-03",
                                                   samples = max(scenario_sims$sample),
-                                                  lower_bound = 40, 
+                                                  lower_bound = 41, 
                                                   upper_bound = 400)
   
 
@@ -93,16 +81,10 @@ jan25_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
 results <- jan25_conditioned
 ```
 
-# Output
 
-Compare R0s across scenarios (reporting median, maximum and minimum):
+### Analysis
 
-* Grid of event size vs event duration with R0 estimates.
-
-
-```{r plot-probs}
-WuhanSeedingVsTransmission::plot_scenario_tile(results)
-```
+We compared the percentage of samples that were accepted stratified by the seeding event size and seeding event duration for every combination of upper reproduction number bounds and mean serial intervals. We then used heatmaps to identify which scenarios were more likely to represent the underlying outbreak. We then reported the median, maximum, and minimum reproduction numbers of samples accepted after conditioning on the observed data, stratified by the seeding event size, seeding event duration and the assumed mean serial interval.
 
 ```{r summarise_r0s}
 ## Make current r0 summary based on current time
@@ -122,6 +104,17 @@ names(summarised_r0s) <- results$conditioned_sims %>%
   {unique(.$serial_mean)}  
 ```
 
+## Results
+
+### Percentage of accepted outbreak simulation
+
+```{r plot-probs}
+WuhanSeedingVsTransmission::plot_scenario_tile(results)
+```
+
+
+### Estimated reproduction number
+
 ```{r low_serial_r0}
 summarised_r0s[[1]]
 ```
@@ -129,3 +122,8 @@ summarised_r0s[[1]]
 ```{r high_serial_r0}
 summarised_r0s[[2]]
 ```
+
+
+## Discussion
+
+
