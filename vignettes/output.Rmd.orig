@@ -144,9 +144,6 @@ summarised_r0s[[2]]
 
 ## Discussion
 
-
-**Summary**
-
 In this study we explored a range of scenarios for the initial event size and duration of the animal-to-human crossover event which initiated the 2019-20 Wuhan coronavirus outbreak. We conditioned on observed cases to establish the probability of each scenario, given our model, and then estimated the reproduction number of coronavirus virus. We found that there was a very low probability that the reproduction number was less than 1 for any scenario considered. *Add more as results become available*
 
 Our study used a stochastic model to capture the transmission dynamics of the outbreak with parameters informed from data were possible or assumed to be similar to those estimated for SARs [@Lipsitch:2003]. As the outbreak progresses direct simulation may become too computationally demanding to be practical so other approaches may be required. More data is likely to become available, in particular disease specific estimates for the serial interval, during the course of the outbreak. This will make it possible to estimate the reproduction number with greater precision with less risk of bias due to unknown paramters. The number of scenarios that need to be evaluated will also be reduced as additional information about cases connected to the initial animal-to-human crossover event becomes available. Though our estimates had wide credible intervals it is possible that we could not fully account for the numerous sources of bias and uncertainty present in the available data. This means that our model estimates may be both spuriously precise and potentially biased. However, until more is known about the outbreak this cannot be easily assessed. However, we made use of a highly reproducible framework (an R package) and have released all of our code as open-source. This means that this analysis may be repeated - both by the authors and others - as more data becomes available. In addition, subject area experts may be able to adapt our analysis using this open-source code to reduce the potential for bias using their expert knowledge. 
@@ -157,7 +154,7 @@ This analysis use a stochastic branching process to explore scenarios around the
 
 **Contributors**
 
-All authors conceived and designed the work. SA undertook the analysis with advice from all other authors. SF developed the branching process model. SA wrote the first draft of the paper and all authors contributed to subsequent drafts. All authors approve the work for publication and agree to be accountable for the work.
+All authors conceived and designed the work. SA undertook the analysis with advice from all other authors. SF developed the branching process model. SA wrote the first draft of the paper and all authors contributed to subsequent drafts. *placeholder* reviewed the analysis code. All authors approve the work for publication and agree to be accountable for the work.
 
 **Funding**
 
