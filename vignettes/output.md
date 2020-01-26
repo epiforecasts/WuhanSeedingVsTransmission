@@ -1,13 +1,41 @@
-Abstract
---------
+Authors (*needs updating to correct names*)
+-------------------------------------------
+
+S. Abbott[1], J. Munday[2], J. Hellewell[3], J. Edmunds[4], S. Funk[5]
+
+\*Correspondence to:
+<a href="mailto:sam.abbott@lshtm.ac.uk" class="email">sam.abbott@lshtm.ac.uk</a>
+
+Affiliations (*needs full affiliations*)
+----------------------------------------
+
+1.  London School of Hygiene and Tropical Medicine
 
 Introduction
 ------------
 
+*Why*
+
+*Detail*
+
+*What*
+
+We used a stochastic branching process model - parameterised with
+available data where possible and otherwise informed by the 2002-2003
+SARS outbreak - to simulate the Wuhan outbreak. We considered a range of
+parameters where data was not available, quantifying how likely these
+scenarios were to occur using reported cases (with reporting
+uncertainty). We focussed on the size and duration of the
+animal-to-human crossover event in particular, and the impact this has
+on the estimated level of human-to-human transmission. We aimed to
+provide decision makers, and researchers, with probability estimates for
+each scenario considered, along with estimates of the reproduction
+number (including uncertainty) across all scenarios.
+
 Methods
 -------
 
-### Branching process model
+**Branching process model**
 
 We modelled the outbreak using a stochastic branching process. We
 assumed that cases from the initial seeding event were uniformly
@@ -32,7 +60,7 @@ statistic. If no good fit was determined - using an arbitary thresold of
 0.05 - then the reporting delay was instead sampled from the reported
 delays in the linelist.
 
-### Scenario analysis
+**Scenario analysis**
 
 We simulated the branching process model 10,000 times for all
 combinations of the following parameters: seeding event size (20, 40,
@@ -48,7 +76,7 @@ seeding event with the date the fish market in Wuhan - the source of the
 outbreak - closed (31st of December 2019). Outbreak simulation was
 stopped if a sample exceeded 5000 cases by the end of simulation period.
 
-### Conditioning on available case numbers
+**Conditioning on available case numbers**
 
 We evaluated each scenario sample based on the cases observed on the 3rd
 of January (41 observed cases with an assumed upper bound of 400 cases),
@@ -60,7 +88,7 @@ number of cases was assumed to be 10 times the number of observed cases
 for the 3rd and 18th of January and the number of observed plus the
 number of potential cases reported on the 25th of January.
 
-### Analysis
+**Analysis**
 
 We compared the percentage of samples that were accepted stratified by
 the seeding event size and seeding event duration for every combination
@@ -71,7 +99,7 @@ minimum reproduction numbers of samples accepted after conditioning on
 the observed data, stratified by the seeding event size, seeding event
 duration and the assumed mean serial interval.
 
-### Implementatation
+**Implementatation**
 
 All analysis was carried out using R version 3.6.2(R Core Team 2019).
 The branching process model was implemented using the `bpmodels`
@@ -83,11 +111,11 @@ analysis was run on a 16 core 4Ghz machine.
 Results
 -------
 
-### Percentage of accepted outbreak simulation
+**Percentage of accepted outbreak simulation**
 
 ![plot of chunk plot-probs](figures/plot-probs-1.png)
 
-### Estimated reproduction number
+**Estimated reproduction number**
 
 <table>
 <thead>
@@ -190,6 +218,27 @@ Results
 Discussion
 ----------
 
+**Contributors**
+
+All authors conceived and designed the work. SA undertook the analysis
+with advice from all other authors. SF developed the branching process
+model. SA wrote the first draft of the paper and all authors contributed
+to subsequent drafts. All authors approve the work for publication and
+agree to be accountable for the work.
+
+**Funding**
+
+*Need funding statement*
+
+**Competing interests**
+
+There are no competing interests.
+
+**Accessibility of data and programming code**
+
+The code for this analysis, interim results, and final results can be
+found at: *need zenodo DOI link*
+
 Boettiger, Carl. 2015. “An introduction to Docker for reproducible
 research.” *ACM SIGOPS Operating Systems Review* 49 (1): 71–79.
 
@@ -202,3 +251,13 @@ Respiratory Syndrome.” *Science* 300 (5627): 1966–70.
 R Core Team. 2019. *R: A Language and Environment for Statistical
 Computing*. Vienna, Austria: R Foundation for Statistical Computing.
 <https://www.R-project.org/>.
+
+[1] 1\*
+
+[2] 1
+
+[3] 1
+
+[4] 1
+
+[5] 1
