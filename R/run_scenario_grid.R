@@ -14,15 +14,11 @@
 #'
 #' @examples
 #' 
-#' future::plan(future::multiprocess)
-#' 
-#'\dontrun{
 #' 
 #' grid_results <- run_scenario_grid("2020-01-25", samples = 1, 
 #'                   upper_case_bound = 1000, show_progress = TRUE)
 #'                   
 #'grid_results
-#'}
 run_scenario_grid <- function(end_date = NULL, samples = 1, upper_case_bound = NULL,
                               show_progress = FALSE) {
   ## Default reporting delay
