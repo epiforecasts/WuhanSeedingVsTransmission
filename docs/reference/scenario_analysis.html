@@ -124,6 +124,7 @@
     <pre class="usage"><span class='fu'>scenario_analysis</span>(
   <span class='kw'>scenarios</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>sampled_and_set_parameters</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>delay_sample_func</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>show_progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</pre>
 
@@ -137,6 +138,10 @@
     <tr>
       <th>sampled_and_set_parameters</th>
       <td><p>Dataframe of sampled and fixed parameter values</p></td>
+    </tr>
+    <tr>
+      <th>delay_sample_func</th>
+      <td><p>Function to generate sample reporting delays</p></td>
     </tr>
     <tr>
       <th>show_progress</th>
@@ -163,13 +168,15 @@
       <li><a href="#examples">Examples</a></li>
     </ul>
 
+    <h2>Author</h2>
+    <p>Sam Abbott</p>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Sam Abbott.</p>
+  <p>Developed by Sam Abbott, James Munday, Sebastian Funk.</p>
 </div>
 
 <div class="pkgdown">

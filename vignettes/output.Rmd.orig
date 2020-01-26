@@ -60,7 +60,7 @@ library(knitr)
 scenario_sims <- fst::read_fst("../inst/results/grid.fst")
 ```
 
-```{r}
+```{r condition-results-on-data}
 ## Filter by known cases on the 3rd of January
 jan3_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
                                                   scenario_sims, 

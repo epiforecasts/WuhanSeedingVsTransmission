@@ -130,8 +130,7 @@
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>0.16</span>,
   <span class='kw'>tf</span> <span class='kw'>=</span> <span class='fl'>37</span>,
   <span class='no'>max_potential_cases</span>,
-  <span class='no'>delay_mean</span>,
-  <span class='no'>delay_sd</span>
+  <span class='no'>delay_sample</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -170,12 +169,8 @@
       <td><p>Numeric, the maximum number of cases</p></td>
     </tr>
     <tr>
-      <th>delay_mean</th>
-      <td><p>Numeric, the mean reporting delay</p></td>
-    </tr>
-    <tr>
-      <th>delay_sd</th>
-      <td><p>Numeric, the sd of  the reporting delay</p></td>
+      <th>delay_sample</th>
+      <td><p>A function to sample from reporting delays</p></td>
     </tr>
     </table>
 
@@ -199,14 +194,14 @@
     </ul>
 
     <h2>Author</h2>
-    <p>Sebastian Funk</p>
+    <p>Sebastian Funk, Sam Abbott, James Munday</p>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Sam Abbott.</p>
+  <p>Developed by Sam Abbott, James Munday, Sebastian Funk.</p>
 </div>
 
 <div class="pkgdown">
