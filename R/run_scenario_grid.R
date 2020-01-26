@@ -44,7 +44,7 @@ run_scenario_grid <- function(end_date = NULL, samples = 1, upper_case_bound = N
     event_size = c(20, 40, 60, 80, 100, 200),
     event_duration = c(7, 14, 21, 28),
     ## Serial mean (normal)
-    serial_mean = c(8.4, 12),
+    serial_mean = c(4, 8.4, 12),
     #8.4 from Lispsitch et al. (2003);  12 is assumption driven
     ## Uppper bound on the reproduction number
     ## Sampled from a uniform distribution with a lower bound of 0
