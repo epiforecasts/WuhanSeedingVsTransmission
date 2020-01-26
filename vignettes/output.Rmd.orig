@@ -61,7 +61,7 @@ scenario_sims <- fst::read_fst("../inst/results/grid.fst")
 ```
 
 ```{r condition-results-on-data}
-## Filter by known cases on the 3rd of January
+## Filter by known cases on the 3rd of January - 10* uncertainty on cases
 jan3_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
                                                   scenario_sims, 
                                                   condition_date = "2020-01-03",
@@ -70,23 +70,24 @@ jan3_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
                                                   upper_bound = 400)
   
 
-## Filter by known cases on the 20th of January
-jan20_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
+## Filter by known cases on the 18th of January (saturday with reporting spike due to changing reporting)
+## 10* uncertainty on cases
+jan18_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
                                                   jan3_conditioned$conditioned_sims, 
-                                                  condition_date = "2020-01-20",
+                                                  condition_date = "2020-01-18",
                                                   samples =  max(scenario_sims$sample),
                                                   lower_bound = 200, 
                                                   upper_bound = 2000)
 
 
 
-## Filter by known cases on the 25th of January
+## Filter by known cases on the 25th of January - bounded by potential cases
 jan25_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
-                                                  jan20_conditioned$conditioned_sims, 
+                                                  jan18_conditioned$conditioned_sims, 
                                                   condition_date = "2020-01-25",
                                                   samples =  max(scenario_sims$sample),
-                                                  lower_bound = 1400, 
-                                                  upper_bound = 4000)
+                                                  lower_bound = 1975, 
+                                                  upper_bound = 5000)
 ```
 
 # Output
