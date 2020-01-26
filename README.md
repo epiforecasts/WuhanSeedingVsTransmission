@@ -55,25 +55,25 @@ This analysis was developed in a docker container based on the tidyverse docker 
 To build the docker image run (from the `WuhanSeedingVsTransmission` directory):
 
 ```bash
-docker build . -t WuhanSeedingVsTransmission
+docker build . -t wuhansvst
 ```
 
 To run the docker image run:
 
 ```bash
-docker run -d -p 8787:8787 --name WuhanSeedingVsTransmission -e USER=WuhanSeedingVsTransmission -e PASSWORD=WuhanSeedingVsTransmission WuhanSeedingVsTransmission
+docker run -d -p 8787:8787 --name wuhansvst -e USER=wuhansvst -e PASSWORD=wuhansvst wuhansvst
 ```
 
-The rstudio client can be found on port :8787 at your local machines ip. The default username:password is WuhanSeedingVsTransmission:WuhanSeedingVsTransmission, set the user with -e USER=username, and the password with - e PASSWORD=newpasswordhere. The default is to save the analysis files into the user directory.
+The rstudio client can be found on port :8787 at your local machines ip. The default username:password is wuhansvst:wuhansvst, set the user with -e USER=username, and the password with - e PASSWORD=newpasswordhere. The default is to save the analysis files into the user directory.
 
-To mount a folder (from your current working directory - here assumed to be `tmp`) in the docker container to your local system use the following in the above docker run command (as given mounts the whole `WuhanSeedingVsTransmission` directory to `tmp`).
+To mount a folder (from your current working directory - here assumed to be `tmp`) in the docker container to your local system use the following in the above docker run command (as given mounts the whole `wuhansvst` directory to `tmp`).
 
 ```{bash, eval = FALSE}
---mount type=bind,source=$(pwd)/tmp,target=/home/WuhanSeedingVsTransmission
+--mount type=bind,source=$(pwd)/tmp,target=/home/wuhansvst
 ```
 
 To access the command line run the following:
 
 ```{bash, eval = FALSE}
-docker exec -ti WuhanSeedingVsTransmission bash
+docker exec -ti wuhansvst bash
 ```
