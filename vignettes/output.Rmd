@@ -4,12 +4,14 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, eval = FALSE)
+knitr::opts_chunk$set(echo = FALSE, eval = TRUE)
 ```
 
 
 ```{r, message = FALSE}
 library(WuhanSeedingVsTransmission)
+library(fst)
+library(tidyr)
 library(knitr)
 ```
 
@@ -47,6 +49,11 @@ library(knitr)
 
 * Condition on reported cases on the 3rd and the 20th of January
 
+
+```{r read-in-results}
+scenario_sims <- fst::read_fst("../inst/results/grid.fst")
+```
+
 ```{r}
 ## Filter by known cases on the 3rd of January
 jan3_conditioned <- condition_and_report_on_cases(scenario_sims, 
@@ -61,7 +68,7 @@ jan20_conditioned <- condition_and_report_on_cases(jan3_conditioned$conditioned_
                                                   condition_date = "2020-01-20",
                                                   samples =  max(scenario_sims$sample),
                                                   lower_bound = 200, 
-                                                  upper_bound = 4000)
+                                                  upper_bound = 2000)
 
 
 
@@ -76,6 +83,24 @@ jan25_conditioned <- condition_and_report_on_cases(jan20_conditioned$conditioned
 end_r0 <- summarise_end_r0(jan25_conditioned$conditioned_sims)
 ```
 
+
+```{r plot-probs}
+jan25_conditioned$proportion_allowed_sims %>% 
+  tidyr::complete(event_duration, event_size, serial_mean, upper_R0,
+                  fill = list(allowed_per = 0)) %>% 
+  dplyr::mutate_at(.vars = c("event_duration", "event_size"), factor) %>% 
+  ggplot2::ggplot(ggplot2::aes(x = event_duration, 
+                               y = event_size, fill = allowed_per)) + 
+  ggplot2::geom_tile(alpha = 0.9) +
+  ggplot2::scale_fill_continuous(label = scales::percent,
+                                 type = "viridis", direction = 1) + 
+  ggplot2::facet_grid(serial_mean ~ upper_R0) +
+  ggplot2::theme_minimal() +
+  ggplot2::theme(legend.position = "bottom") +
+  ggplot2::guides(fill = ggplot2::guide_colorbar(title = "Percentage of samples accepted")) +
+  ggplot2::labs(x = "Seeding event duration", 
+                y = "Seeding event size")
+```
 # Output
 
 Compare R0s across scenarios (reporting median, maximum and minimum):

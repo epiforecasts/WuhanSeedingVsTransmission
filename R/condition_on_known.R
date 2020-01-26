@@ -16,5 +16,5 @@ condition_on_known <- function(sims, days_since_end_seed = NULL, lower_bound = N
   sims %>% 
     dplyr::filter(time == event_duration + days_since_end_seed,
                   size < upper_bound, size > lower_bound) %>% 
-    dplyr::select(sample, scenario, event_duration, event_size)
+    dplyr::select(sample, scenario,  event_duration, event_size, serial_mean, upper_R0)
 }
