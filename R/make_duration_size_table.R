@@ -4,8 +4,8 @@
 #'
 #' @return
 #' @export
-#' @importFrom dplyr select rename
-#' @importFrom tidyr spread
+#' @importFrom dplyr select rename mutate_all
+#' @importFrom tidyr spread replace_na
 #' @author Sam Abbott
 #' @examples
 #' 
@@ -15,5 +15,6 @@ make_duration_size_table <- function(results = NULL) {
     dplyr::select(-median_R0, -min_R0, -max_R0, -samples) %>% 
     tidyr::spread(key = "event_duration", 
                   value = "R0") %>% 
+    dplyr::mutate_all(tidyr::replace_na, " - ") %>% 
     dplyr::rename(`Seeding event size vs. Seeding event duration` = event_size)
 }

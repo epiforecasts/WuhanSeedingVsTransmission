@@ -88,6 +88,9 @@ jan25_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
                                                   samples =  max(scenario_sims$sample),
                                                   lower_bound = 1975, 
                                                   upper_bound = 5000)
+
+## Select results condition
+results <- jan25_conditioned
 ```
 
 # Output
@@ -98,17 +101,25 @@ Compare R0s across scenarios (reporting median, maximum and minimum):
 
 
 ```{r plot-probs}
-WuhanSeedingVsTransmission::plot_scenario_tile(jan25_conditioned)
+WuhanSeedingVsTransmission::plot_scenario_tile(results)
 ```
 
 ```{r summarise_r0s}
 ## Make current r0 summary based on current time
-summarised_r0s <- jan25_conditioned$conditioned_sims %>% 
+summarised_r0s <- results$conditioned_sims %>% 
   dplyr::filter(upper_R0 == 4) %>% 
+  dplyr::arrange(serial_mean) %>% 
   dplyr::group_split(serial_mean) %>% 
   purrr::map(  ~ WuhanSeedingVsTransmission::summarise_end_r0(.) %>% 
   WuhanSeedingVsTransmission::make_duration_size_table() %>% 
-  knitr::kable()) 
+  knitr::kable() %>% 
+  {.}
+    ) 
+
+## Add names
+names(summarised_r0s) <- results$conditioned_sims %>% 
+    dplyr::arrange(serial_mean) %>% 
+  {unique(.$serial_mean)}  
 ```
 
 ```{r low_serial_r0}

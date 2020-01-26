@@ -46,7 +46,7 @@ Compare R0s across scenarios (reporting median, maximum and minimum):
 <table>
 <thead>
 <tr class="header">
-<th style="text-align: right;">Seeding event size vs. Seeding event duration</th>
+<th style="text-align: left;">Seeding event size vs. Seeding event duration</th>
 <th style="text-align: left;">7</th>
 <th style="text-align: left;">14</th>
 <th style="text-align: left;">28</th>
@@ -54,37 +54,37 @@ Compare R0s across scenarios (reporting median, maximum and minimum):
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">20</td>
+<td style="text-align: left;">20</td>
 <td style="text-align: left;">3.6 (3.3 - 3.8)</td>
 <td style="text-align: left;">3.6 (2 - 4)</td>
 <td style="text-align: left;">3.1 (1.6 - 4)</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">40</td>
+<td style="text-align: left;">40</td>
 <td style="text-align: left;">3.5 (2.7 - 4)</td>
 <td style="text-align: left;">3.3 (2.1 - 4)</td>
 <td style="text-align: left;">2.6 (1.4 - 4)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">60</td>
+<td style="text-align: left;">60</td>
 <td style="text-align: left;">3.5 (2.3 - 4)</td>
 <td style="text-align: left;">3.1 (1.8 - 4)</td>
 <td style="text-align: left;">2.3 (1.6 - 4)</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">80</td>
+<td style="text-align: left;">80</td>
 <td style="text-align: left;">3.3 (2.1 - 4)</td>
 <td style="text-align: left;">2.8 (1.9 - 4)</td>
 <td style="text-align: left;">2.1 (1.5 - 3.4)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">100</td>
+<td style="text-align: left;">100</td>
 <td style="text-align: left;">3.1 (2.1 - 4)</td>
 <td style="text-align: left;">2.6 (1.7 - 4)</td>
 <td style="text-align: left;">2 (1.5 - 3.1)</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">200</td>
+<td style="text-align: left;">200</td>
 <td style="text-align: left;">2.4 (1.6 - 3.8)</td>
 <td style="text-align: left;">2 (1.3 - 2.9)</td>
 <td style="text-align: left;">1.7 (1.6 - 2.1)</td>
@@ -95,7 +95,7 @@ Compare R0s across scenarios (reporting median, maximum and minimum):
 <table>
 <thead>
 <tr class="header">
-<th style="text-align: right;">Seeding event size vs. Seeding event duration</th>
+<th style="text-align: left;">Seeding event size vs. Seeding event duration</th>
 <th style="text-align: left;">7</th>
 <th style="text-align: left;">14</th>
 <th style="text-align: left;">28</th>
@@ -103,37 +103,37 @@ Compare R0s across scenarios (reporting median, maximum and minimum):
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">20</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">-</td>
 <td style="text-align: left;">3.6 (2.4 - 4)</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">40</td>
-<td style="text-align: left;">NA</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">-</td>
 <td style="text-align: left;">3.9 (3.8 - 4)</td>
 <td style="text-align: left;">3.6 (2.3 - 4)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">60</td>
-<td style="text-align: left;">NA</td>
+<td style="text-align: left;">60</td>
+<td style="text-align: left;">-</td>
 <td style="text-align: left;">3.8 (3.3 - 4)</td>
 <td style="text-align: left;">3.4 (2.2 - 4)</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">80</td>
+<td style="text-align: left;">80</td>
 <td style="text-align: left;">3.9 (3.9 - 3.9)</td>
 <td style="text-align: left;">3.8 (3 - 4)</td>
 <td style="text-align: left;">3.3 (1.9 - 4)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">100</td>
+<td style="text-align: left;">100</td>
 <td style="text-align: left;">3.9 (3.8 - 4)</td>
 <td style="text-align: left;">3.7 (2.7 - 4)</td>
 <td style="text-align: left;">3.1 (1.7 - 4)</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">200</td>
+<td style="text-align: left;">200</td>
 <td style="text-align: left;">3.7 (2.5 - 4)</td>
 <td style="text-align: left;">3.3 (2.1 - 4)</td>
 <td style="text-align: left;">2.4 (1.7 - 3.3)</td>

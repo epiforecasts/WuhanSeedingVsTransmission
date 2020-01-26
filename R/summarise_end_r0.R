@@ -4,7 +4,6 @@
 #' @return
 #' @export
 #' @importFrom dplyr group_by filter summarise ungroup mutate_at mutate n
-#' @importFrom tidyr replace_na
 #' @author Sam Abbott
 #' @examples
 #' 
@@ -20,7 +19,6 @@ summarise_end_r0 <- function(sims) {
                      samples = dplyr::n()) %>% 
     dplyr::ungroup() %>% 
     dplyr::mutate_at(.vars = c("median_R0", "min_R0", "max_R0"), ~ round(., 1)) %>% 
-    dplyr::mutate(R0 = paste0(median_R0, " (", min_R0, " - ", max_R0, ")") %>% 
-                    tidyr::replace_na(replace = " - "))
+    dplyr::mutate(R0 = paste0(median_R0, " (", min_R0, " - ", max_R0, ")"))
 }
 
