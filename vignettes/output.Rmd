@@ -17,7 +17,7 @@ csl: resources/bmj.csl
 
 ## Authors (*needs updating to correct names*)
 
-S. Abbott^[1*], J. Munday^[1], J. Hellewell^[1], J. Edmunds^[1], S. Funk^[1]
+S. Abbott<sup>1*</sup>, J. Munday<sup>1</sup>, J. Hellewell<sup>1</sup, J. Edmunds<sup>1</sup, S. Funk<sup>1</sup
 
 *Correspondence to: sam.abbott@lshtm.ac.uk
 
@@ -104,7 +104,7 @@ This analysis use a stochastic branching process to explore scenarios around the
 
 **Contributors**
 
-All authors conceived and designed the work. SA undertook the analysis with advice from all other authors. SF developed the branching process model. SA wrote the first draft of the paper and all authors contributed to subsequent drafts. All authors approve the work for publication and agree to be accountable for the work.
+All authors conceived and designed the work. SA undertook the analysis with advice from all other authors. SF developed the branching process model. SA wrote the first draft of the paper and all authors contributed to subsequent drafts. *placeholder* reviewed the analysis code. All authors approve the work for publication and agree to be accountable for the work.
 
 **Funding**
 
