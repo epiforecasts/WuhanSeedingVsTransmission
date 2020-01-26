@@ -18,7 +18,9 @@ Imports:
     furrr,
     knitr,
     rmarkdown,
-    magrittr
+    magrittr,
+    fitdistrplus,
+    googlesheets4
 Suggests:
     future,
     fst,
