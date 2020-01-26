@@ -17,9 +17,9 @@ csl: resources/bmj.csl
 
 ## Authors (*needs updating to correct names*)
 
-S. Abbott<sup>1*</sup>, J. Munday<sup>1</sup>, J. Hellewell<sup>1</sup, J. Edmunds<sup>1</sup, S. Funk<sup>1</sup
+S. Abbott<sup>1</sup>, J. Munday<sup>1</sup>, J. Hellewell<sup>1</sup>, J. Edmunds<sup>1</sup>, S. Funk<sup>1</sup>
 
-*Correspondence to: sam.abbott@lshtm.ac.uk
+Correspondence to: sam.abbott@lshtm.ac.uk
 
 ## Affiliations (*needs full affiliations*)
 
