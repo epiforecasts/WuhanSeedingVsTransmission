@@ -1,4 +1,4 @@
-# Wuhan: Seeding vs transmission
+# Evaluating the transmissibility of the coronavirus virus in the 2019-20 Wuhan Outbreak: Exploring initial animal-to-human event sizes and durations using scenario analysis
 
 ## Abstract
 

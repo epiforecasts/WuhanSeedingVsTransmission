@@ -8,7 +8,7 @@
 #'
 #' @return
 #' @export
-#' @importFrom dplyr rowwise mutate ungroup
+#' @importFrom dplyr rowwise mutate ungroup sample_frac
 #' @importFrom tidyr unnest 
 #' @importFrom purrr map_dfr
 #' @importFrom furrr future_map
@@ -27,6 +27,8 @@ scenario_analysis <- function(scenarios = NULL,
     dplyr::group_by(scenario) %>% 
     tidyr::nest() %>% 
     dplyr::ungroup() %>% 
+    ##Randomise the order of scenarios - helps share the load across cores
+    dplyr::sample_frac(size = 1, replace = FALSE) %>%
     dplyr::mutate(sims = 
       furrr::future_map(
         data, 
