@@ -119,15 +119,23 @@
 <li>Use <code>vignettes/output.Rmd.orig</code> to inspect the results of the analysis interactively.</li>
 </ul>
 </div>
+<div id="render-output" class="section level3">
+<h3 class="hasAnchor">
+<a href="#render-output" class="anchor"></a>Render output</h3>
+<ul>
+<li>Render the output to all formats with the following:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="ex">Rscript</span> inst/scripts/render_output.R</a></code></pre></div>
+</div>
 </div>
 <div id="docker" class="section level2">
 <h2 class="hasAnchor">
 <a href="#docker" class="anchor"></a>Docker</h2>
 <p>This analysis was developed in a docker container based on the tidyverse docker image.</p>
 <p>To build the docker image run (from the <code>WuhanSeedingVsTransmission</code> directory):</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="ex">docker</span> build . -t WuhanSeedingVsTransmission</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="ex">docker</span> build . -t WuhanSeedingVsTransmission</a></code></pre></div>
 <p>To run the docker image run:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="ex">docker</span> run -d -p 8787:8787 --name WuhanSeedingVsTransmission -e USER=WuhanSeedingVsTransmission -e PASSWORD=WuhanSeedingVsTransmission WuhanSeedingVsTransmission</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="ex">docker</span> run -d -p 8787:8787 --name WuhanSeedingVsTransmission -e USER=WuhanSeedingVsTransmission -e PASSWORD=WuhanSeedingVsTransmission WuhanSeedingVsTransmission</a></code></pre></div>
 <p>The rstudio client can be found on port :8787 at your local machines ip. The default username:password is WuhanSeedingVsTransmission:WuhanSeedingVsTransmission, set the user with -e USER=username, and the password with - e PASSWORD=newpasswordhere. The default is to save the analysis files into the user directory.</p>
 <p>To mount a folder (from your current working directory - here assumed to be <code>tmp</code>) in the docker container to your local system use the following in the above docker run command (as given mounts the whole <code>WuhanSeedingVsTransmission</code> directory to <code>tmp</code>).</p>
 <p><code>{bash, eval = FALSE} --mount type=bind,source=$(pwd)/tmp,target=/home/WuhanSeedingVsTransmission</code></p>

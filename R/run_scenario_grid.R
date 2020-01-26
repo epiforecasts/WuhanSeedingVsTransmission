@@ -16,10 +16,13 @@
 #' 
 #' future::plan(future::multiprocess)
 #' 
+#'\dontrun{
+#' 
 #' grid_results <- run_scenario_grid("2020-01-25", samples = 1, 
 #'                   upper_case_bound = 1000, show_progress = TRUE)
 #'                   
 #'grid_results
+#'}
 run_scenario_grid <- function(end_date = NULL, samples = 1, upper_case_bound = NULL,
                               show_progress = FALSE) {
   ## Default reporting delay
@@ -39,13 +42,13 @@ run_scenario_grid <- function(end_date = NULL, samples = 1, upper_case_bound = N
   ## Set up scenarios
   scenarios <- tidyr::expand_grid(
     event_size = c(20, 40, 60, 80, 100, 200),
-    event_duration = c(7, 14, 28),
+    event_duration = c(7, 14, 21, 28),
     ## Serial mean (normal)
     serial_mean = c(8.4, 12),
     #8.4 from Lispsitch et al. (2003);  12 is assumption driven
     ## Uppper bound on the reproduction number
     ## Sampled from a uniform distribution with a lower bound of 0
-    upper_R0 = c(1, 2, 4),
+    upper_R0 = c(1, 2, 3, 4),
   ) %>% 
     ## Add a scenario id
     dplyr::mutate(scenario = 1:dplyr::n())
