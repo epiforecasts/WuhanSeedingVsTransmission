@@ -2,7 +2,6 @@
 ##'
 ##' This connects to the Google Sheet containing the collated linelist; the
 ##'   first time this is run, it may require authentiction with Google
-##' @param n nu
 ##' @return a function that takes one parameter, `n`, the number of reporting
 ##'   delays to randomly sample
 ##' @importFrom dplyr mutate bind_rows rename filter
