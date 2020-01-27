@@ -14,7 +14,6 @@
 #' @import data.table
 #' @examples
 #' 
-#' 
 condition_and_report_on_cases <- function(sims, condition_date = NULL, lower_bound = NULL,
                                           upper_bound = NULL, samples = NULL,
                                           end_of_seed_date = "2019-12-31") {

@@ -6,9 +6,6 @@
 \usage{
 get_rep_sample_fun()
 }
-\arguments{
-\item{n}{nu}
-}
 \value{
 a function that takes one parameter, \code{n}, the number of reporting
 delays to randomly sample
