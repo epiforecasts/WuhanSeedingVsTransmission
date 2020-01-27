@@ -29,7 +29,7 @@ library(knitr)
 
 ## Authors (*needs updating to correct names*)
 
-S. Abbott (1), J. Munday (1), J. Hellewell (1), J. Edmunds (1), S. Funk (1)
+S. Abbott (1), J. Munday (1), J. Hellewell (1), CMMID Coronavirus working group, S. Funk (1)
 
 Correspondence to: sam.abbott@lshtm.ac.uk
 
