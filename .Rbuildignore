@@ -10,3 +10,4 @@
 ^inst/results$
 ^Dockerfile$
 ^vignettes/resources$
+^data-raw$

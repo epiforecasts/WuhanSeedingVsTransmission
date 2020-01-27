@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • WuhanSeedingVsTransmission</title>
+<title>Fitted delay sampling function — fitted_delay_sample_func • WuhanSeedingVsTransmission</title>
 
 
 <!-- jquery -->
@@ -35,7 +35,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Fitted delay sampling function — fitted_delay_sample_func" />
+<meta property="og:description" content="A function fitted to linelist data to estimate reporting data in model simultions. Update using data-raw/fitted_delay_sample_func.R." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -54,7 +56,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -108,108 +110,31 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Fitted delay sampling function</h1>
+    
+    <div class="hidden name"><code>fitted_delay_sample_func.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>A function fitted to linelist data to estimate reporting data in model simultions. Update using <code>data-raw/fitted_delay_sample_func.R</code>.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='no'>fitted_delay_sample_func</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="condition_and_report_on_cases.html">condition_and_report_on_cases()</a></code> </p>
-        </td>
-        <td><p>Condition on cases and return accepted sample size by scenario</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="condition_on_known.html">condition_on_known()</a></code> </p>
-        </td>
-        <td><p>Condition on known cases</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fitted_delay_sample_func.html">fitted_delay_sample_func</a></code> </p>
-        </td>
-        <td><p>Fitted delay sampling function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_rep_sample_fun.html">get_rep_sample_fun()</a></code> </p>
-        </td>
-        <td><p>Get a sampling function for reporting delays</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_duration_size_table.html">make_duration_size_table()</a></code> </p>
-        </td>
-        <td><p>Make seeding event duration vs event size table</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_scenario_tile.html">plot_scenario_tile()</a></code> </p>
-        </td>
-        <td><p>Plot a heat map of accepted samples by scenario</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="proportion_allowed_by_condition.html">proportion_allowed_by_condition()</a></code> </p>
-        </td>
-        <td><p>Proportion of samples per scenario allowed by condition</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="restrict_by_condition.html">restrict_by_condition()</a></code> </p>
-        </td>
-        <td><p>Restrict scenarios based on allowed scenarios</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="run_scenario_grid.html">run_scenario_grid()</a></code> </p>
-        </td>
-        <td><p>Run the scenario analysis grid.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="run_sim.html">run_sim()</a></code> </p>
-        </td>
-        <td><p>Negative binomial branching process model</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="scenario_analysis.html">scenario_analysis()</a></code> </p>
-        </td>
-        <td><p>Run a scenario analyis</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="summarise_end_r0.html">summarise_end_r0()</a></code> </p>
-        </td>
-        <td><p>Summarise R0 estimates across samples</p></td>
-      </tr>
-    </tbody>
-    </table>
+
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>A function with a single argument n that accepts integer values. Returns a vector of sampled reporting delays.</p>
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#format">Format</a></li>
     </ul>
+
   </div>
 </div>
 

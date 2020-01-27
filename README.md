@@ -13,9 +13,9 @@
 
 ### Set up
 
-* Set your working directory to the home directory of this project (or use the provided Rstudio project).
+ your working directory to the home directory of this project (or use the provided Rstudio project).
 
-* Install the analysis and all dependencies with: 
+Install the analysis and all dependencies with: 
 
 ```r
 remotes::install_github("epiforecasts/WuhanSeedingVsTransmission", dependencies = TRUE)
@@ -23,7 +23,7 @@ remotes::install_github("epiforecasts/WuhanSeedingVsTransmission", dependencies 
 
 ### Run analysis
 
-* Run the analysis with the following:
+Run the analysis with the following:
 
 ```bash
 Rscript inst/scripts/run_grid.R
@@ -32,16 +32,26 @@ Rscript inst/scripts/run_grid.R
 
 ### Inspect results
 
-* Use `vignettes/output.Rmd.orig` to inspect the results of the analysis interactively.
+Use `vignettes/output.Rmd.orig` to inspect the results of the analysis interactively.
 
 
 ### Render output
 
-* Render the output to all formats with the following:
+Render the output to all formats with the following:
 
 ```bash
 Rscript inst/scripts/render_output.R
 ```
+
+### Update the fitted reporting delay function
+
+In order to refit the reporting delay from linelist date on cases in China use the following:
+
+```bash
+Rscript data-raw/fitted_delay_sample_func.R
+```
+
+It is then neccessary to either rebuild the package or pass the updated function to `run_scenario_grid` explicitly. In normal usage this should not be neccessary for users of this analysis.
 
 ## Docker
 

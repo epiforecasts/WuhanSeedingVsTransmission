@@ -8,7 +8,8 @@ run_scenario_grid(
   end_date = NULL,
   samples = 1,
   upper_case_bound = NULL,
-  show_progress = FALSE
+  show_progress = FALSE,
+  delay_sample_func = NULL
 )
 }
 \arguments{
@@ -20,6 +21,9 @@ run_scenario_grid(
 modelled}
 
 \item{show_progress}{Logical, defaults to FALSE. Show progress be shown.}
+
+\item{delay_sample_func}{Function to generate sample reporting delays. If not supplied defaults to
+a delay function fitted to the linelist of Chinese cases.}
 }
 \value{
 

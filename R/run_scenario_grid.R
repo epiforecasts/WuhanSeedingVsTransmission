@@ -4,7 +4,8 @@
 #' @param samples Numeric, defaults to 1. The number of samples to take for each scenario.
 #' @param upper_case_bound Numeric, defaults to `NULL`. The upper bound on the number of cases that will be 
 #' modelled
-#'
+#' @param delay_sample_func Function to generate sample reporting delays. If not supplied defaults to 
+#' a delay function fitted to the linelist of Chinese cases.
 #' @importFrom tibble tibble
 #' @importFrom tidyr expand_grid
 #' @inheritParams scenario_analysis
@@ -22,21 +23,13 @@
 #' }
 
 run_scenario_grid <- function(end_date = NULL, samples = 1, upper_case_bound = NULL,
-                              show_progress = FALSE) {
-  ## Default reporting delay
-  delay_mean <- 6.17
-  ## Default standard deviation of the reporting delay
-  delay_sd <- 2
-  ## Try getting empirical reporting distribution from Google Sheet, otherwise
-  ## use default value 
-  delay_sample_func <-
-    tryCatch(get_rep_sample_fun(),
-             error = function(e) {
-               warning("Could not get Google Sheet; ",
-                       "will use default reporting values" )
-               function(n) rnorm(n, mean = 6.17, sd = 2)
-             })
-             
+                              show_progress = FALSE, delay_sample_func = NULL) {
+
+  ## Use default delay func if not supplied
+  if (is.null(delay_sample_func)) {
+    delay_sample_func <- WuhanSeedingVsTransmission::fitted_delay_sample_func
+  }
+
   ## Set up scenarios
   scenarios <- tidyr::expand_grid(
     event_size = c(20, 40, 60, 80, 100, 200),

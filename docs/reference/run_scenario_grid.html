@@ -125,7 +125,8 @@
   <span class='kw'>end_date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>upper_case_bound</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>show_progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  <span class='kw'>show_progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>delay_sample_func</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -147,6 +148,11 @@ modelled</p></td>
     <tr>
       <th>show_progress</th>
       <td><p>Logical, defaults to FALSE. Show progress be shown.</p></td>
+    </tr>
+    <tr>
+      <th>delay_sample_func</th>
+      <td><p>Function to generate sample reporting delays. If not supplied defaults to
+a delay function fitted to the linelist of Chinese cases.</p></td>
     </tr>
     </table>
 
