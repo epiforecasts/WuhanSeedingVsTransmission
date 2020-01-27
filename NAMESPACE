@@ -3,6 +3,7 @@
 export("%>%")
 export(condition_and_report_on_cases)
 export(condition_on_known)
+export(get_rep_sample_fun)
 export(make_duration_size_table)
 export(plot_scenario_tile)
 export(proportion_allowed_by_condition)
