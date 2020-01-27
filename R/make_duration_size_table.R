@@ -16,5 +16,5 @@ make_duration_size_table <- function(results = NULL) {
     tidyr::spread(key = "event_duration", 
                   value = "R0") %>% 
     dplyr::mutate_all(tidyr::replace_na, " - ") %>% 
-    dplyr::rename(`Seeding event size vs. Seeding event duration` = event_size)
+    dplyr::rename(`Transmission event size vs. Transmission event duration` = event_size)
 }

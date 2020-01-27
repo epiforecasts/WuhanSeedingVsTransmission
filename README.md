@@ -22,7 +22,7 @@ Our results indicate that an R0 of less than 1 was highly unlikely unless the si
 
 ### Set up
 
- your working directory to the home directory of this project (or use the provided Rstudio project).
+Set your working directory to the home directory of this project (or use the provided Rstudio project).
 
 Install the analysis and all dependencies with: 
 
@@ -42,7 +42,6 @@ Rscript inst/scripts/run_grid.R
 ### Inspect results
 
 Use `vignettes/output.Rmd.orig` to inspect the results of the analysis interactively.
-
 
 ### Render output
 
