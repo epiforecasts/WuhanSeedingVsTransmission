@@ -4,36 +4,13 @@
 ##'   first time this is run, it may require authentiction with Google
 ##' @return a function that takes one parameter, `n`, the number of reporting
 ##'   delays to randomly sample
-##' @importFrom dplyr mutate bind_rows rename filter
-##' @importFrom googlesheets4 read_sheet
+##' @importFrom dplyr filter
 ##' @importFrom fitdistrplus fitdist gofstat
 ##' @author Sebastian Funk <sebastian.funk@lshtm.ac.uk>
 ##' 
 ##' @export
 get_rep_sample_fun <- function() {
-  url <- "https://docs.google.com/spreadsheets/d/1itaohdPiAeniCXNlntNztZ_oRvjh0HsGuJXUJWET008/edit#gid=0"
-  hubei <- googlesheets4::read_sheet(url, sheet = "Hubei")
-  outside_hubei <- googlesheets4::read_sheet(url, sheet = "outside_Hubei")
-
-  linelist <- hubei %>%
-    dplyr::mutate(sheet = "Hubei") %>%
-    dplyr::bind_rows(outside_hubei %>%
-                     mutate(sheet = "outside_Hubei")) %>%
-    dplyr::rename(date_onset_symptoms_str = "date_onset_symptoms",
-                  date_admission_hospital_str = "date_admission_hospital",
-                  date_confirmation_str = "date_confirmation") %>%
-    dplyr::mutate(date_onset_symptoms =
-                    as.Date(date_onset_symptoms_str, format = "%d.%m.%Y"),
-                  date_admission_hospital =
-                    as.Date(date_admission_hospital_str, format = "%d.%m.%Y"),
-                  date_confirmation =
-                    as.Date(date_confirmation_str, format = "%d.%m.%Y")) %>%
-    dplyr::mutate(delay_confirmation =
-                    date_confirmation - date_onset_symptoms,
-                  delay_admission =
-                    date_admission_hospital - date_onset_symptoms)
-
-  confirmation_delays <- linelist %>%
+  confirmation_delays <- get_linelist() %>%
     dplyr::filter(!is.na(delay_confirmation), country == "China") %>%
     .$delay_confirmation %>%
     as.integer()

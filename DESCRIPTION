@@ -29,7 +29,7 @@ Imports:
     rmarkdown,
     magrittr,
     fitdistrplus,
-    googlesheets4,
+    readr,
     scales,
     ggplot2
 Suggests:
