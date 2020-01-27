@@ -4,14 +4,18 @@
 #' @param allowed_scenarios A dataframe of allowed scenarios. Must include a scenario and sample
 #' variable.
 #'
-#' @return
+#' @return A data frame of scenarios restricted by the allowed scenarios
 #' @export
 #' @import data.table
 #' @author Sam Abbott
 #' @examples
 #' 
-#' 
+#' ## Code 
+#' restrict_by_condition
 restrict_by_condition <- function(sims, allowed_scenarios) {
+  
+  ## NULL out for CRAN 
+  scenario <- NULL; sample <- NULL; . <- NULL;
   
   allowed_scenarios <- allowed_scenarios[, .(scenario, sample)]
   

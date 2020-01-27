@@ -10,14 +10,15 @@ summarise_end_r0(sims)
 \item{sims}{A dataframe as produced by \code{scenario_analysis}.}
 }
 \value{
-
+A dataframe of R0 estimates for each scenario
 }
 \description{
 Summarise R0 estimates across samples
 }
 \examples{
 
-
+## Code
+summarise_end_r0
 }
 \author{
 Sam Abbott

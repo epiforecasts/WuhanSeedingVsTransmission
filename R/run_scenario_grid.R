@@ -9,7 +9,7 @@
 #' @importFrom tibble tibble
 #' @importFrom tidyr expand_grid
 #' @inheritParams scenario_analysis
-#' @return
+#' @return A data.frame of scenarios as returned by `scenario_analysis`
 #' @export
 #' @author Sam Abbott
 #'

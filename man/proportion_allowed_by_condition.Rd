@@ -12,14 +12,15 @@ proportion_allowed_by_condition(sims, samples = NULL)
 \item{samples}{Numeric, the number of samples that were used.}
 }
 \value{
-
+A data.table listing the proportion allowed by scenario
 }
 \description{
 Proportion of samples per scenario allowed by condition
 }
 \examples{
 
-
+## Code 
+proportion_allowed_by_condition
 }
 \author{
 Sam Abbott

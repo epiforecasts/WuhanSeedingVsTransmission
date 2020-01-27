@@ -21,14 +21,15 @@ condition_on_known(
 \item{upper_bound}{Numeric, the estimated upper bound on cases.}
 }
 \value{
-
+A data.table of conditioned scenarios
 }
 \description{
 Condition on known cases
 }
 \examples{
 
-
+## Code
+condition_on_known
 }
 \author{
 Sam Abbott

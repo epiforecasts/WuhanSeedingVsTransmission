@@ -10,21 +10,23 @@
 #' @param max_potential_cases Numeric, the maximum number of cases
 #' @param delay_sample A function to sample from reporting delays
 #'
-#' @return
+#' @return A dataframe containing the simulation time and outbreak size
 #' @export
 #' @importFrom bpmodels chain_sim
 #' @author Sebastian Funk, Sam Abbott, James Munday
 #' @examples
 #' 
-#' 
+#' ## Code
+#' run_sim
 run_sim  = function(n, n_length, mean_si, sd_si, R0, 
                     k=0.16, tf=37, max_potential_cases,
                     delay_sample) {
   
+  
   t0 <- sample(seq(1, n_length), n, replace = TRUE)  
 
   ## simulate chains
-  sim <- bpmodels::chain_sim(n, "nbinom", serial = function(x) rnorm(x, mean_si, sd_si),
+  sim <- bpmodels::chain_sim(n, "nbinom", serial = function(x) stats::rnorm(x, mean_si, sd_si),
                    mu = R0, size = k, t0 = t0, tf = tf, infinite = max_potential_cases)
   
   ## add reporting delays

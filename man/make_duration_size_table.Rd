@@ -10,14 +10,15 @@ make_duration_size_table(results = NULL)
 \item{results}{The output from \code{summarised_end_r0}}
 }
 \value{
-
+A data.frame comparing transmission event size with duration
 }
 \description{
 Make seeding event duration vs event size table
 }
 \examples{
 
-
+## Code
+make_duration_size_table
 }
 \author{
 Sam Abbott
