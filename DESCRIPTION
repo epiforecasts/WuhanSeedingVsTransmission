@@ -28,7 +28,8 @@ Imports:
     magrittr,
     fitdistrplus,
     googlesheets4,
-    scales
+    scales,
+    ggplot2
 Suggests:
     future,
     fst,
