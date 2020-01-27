@@ -316,19 +316,23 @@ become available, in particular disease specific estimates for the
 serial interval, during the course of the outbreak. This will make it
 possible to estimate the reproduction number with greater precision with
 less risk of bias due to unknown paramters. The number of scenarios that
-need to be evaluated will also be reduced as additional information
-about cases connected to the initial animal-to-human crossover event
-becomes available. Though our estimates had wide credible intervals it
-is possible that we could not fully account for the numerous sources of
+need to be evaluated may also be reduced as additional information about
+cases connected to the initial animal-to-human crossover event becomes
+available. Though our estimates had wide credible intervals it is
+possible that we could not fully account for the numerous sources of
 bias and uncertainty present in the available data. This means that our
 model estimates may be both spuriously precise and potentially biased.
-However, until more is known about the outbreak this cannot be easily
-assessed. However, we made use of a highly reproducible framework (an R
-package) and have released all of our code as open-source. This means
-that this analysis may be repeated - both by the authors and others - as
-more data becomes available. In addition, subject area experts may be
-able to adapt our analysis using this open-source code to reduce the
-potential for bias using their expert knowledge.
+There is some evidence of this in our results as the scenarios with the
+highest acceptance rate were on the edge of our scenario grid both for
+event size and reproduction number. However, until more is known about
+the outbreak this cannot be easily assessed and our scenarios represent
+our understanding of the current state of knowledge. We made use of a
+highly reproducible framework (an R package) and have released all of
+our code as open-source. This means that this analysis may be repeated -
+both by the authors and others - as more data becomes available. In
+addition, subject area experts may be able to adapt our analysis using
+this open-source code to reduce the potential for bias using their
+expert knowledge or privately held data.
 
 As the outbreak progress more data will become available on the number
 of cases, and the duration of the serial interval. These data are likely
@@ -351,13 +355,20 @@ out some scenarios and to assess the likelihood of others. Our results
 indicate that it is very unlikely that the infectious agent responsible
 for the Wuhan outbreak has a reproduction number of less than 1, unless
 the size of the seeding event was much greater than currently reported.
-As more information becomes available it may also be possible to further
-refine our results and establish the reproduction number of the outbreak
-more firmly. Providing clear quantitive information for decision makers
-on the transmissibility of the infectious agent is of clear public
-health importance during outbreaks. Our work to make this process
-reproducible may reduce the time these estimates take to be made
-available in future outbreaks.
+We also found that a large initial crossover event was likely with a
+relatively short duration. This corresponds with the evidence of rapid
+detection by Public Health Officials in Wuhan. These scenarios resulted
+in reproduction number estimates that are comparable to those estimated
+during the 2002-2003 SARs outbreak. Unfortunately, we could not identify
+whether scenarios with a SARs like or longer serial interval were more
+likely. As more information becomes available it may be possible to
+further refine our results and establish the reproduction number of the
+outbreak more firmly. Providing clear quantitive information for
+decision makers on the transmissibility of the infectious agent is of
+clear public health importance during outbreaks. Our work to make this
+process reproducible may reduce the time these estimates take to be made
+available in future outbreaks and increase knowledge sharing across
+response teams.
 
 **Contributors**
 
