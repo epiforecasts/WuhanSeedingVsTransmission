@@ -107,15 +107,15 @@ WuhanSeedingVsTransmission::plot_scenario_tile(prop_allowed_samples)
 
 **Estimated reproduction number**
 
-```{r low_serial_r0, results = "asis"}
+```{r low_serial_r0, eval = FALSE}
 knitr::kable(summarised_r0s[[1]], caption = "Median, minimum, and maximum reproduction numbers of the Wuhan outbreak conditioned on case data from the 3rd, 18th and 25th of January - for scenarios with a mean serial interval of 4. Stratified by initial seeding event size and duration.")
 ```
 
-```{r sars_serial_r0, results = "asis"}
+```{r sars_serial_r0}
 knitr::kable(summarised_r0s[[2]], caption = "Median, minimum, and maximum reproduction numbers of the Wuhan outbreak conditioned on case data from the 3rd, 18th and 25th of January - for scenarios with a mean serial interval of 8.4 (SARs like). Stratified by initial seeding event size and duration.")
 ```
 
-```{r high_serial_r0, results = "asis"}
+```{r high_serial_r0}
 knitr::kable(summarised_r0s[[3]], caption = "Median, minimum, and maximum reproduction numbers of the Wuhan outbreak conditioned on case data from the 3rd, 18th and 25th of January - for scenarios with a mean serial interval of 12. Stratified by initial seeding event size and duration.")
 ```
 

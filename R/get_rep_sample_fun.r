@@ -9,6 +9,8 @@
 ##' @importFrom googlesheets4 read_sheet
 ##' @importFrom fitdistrplus fitdist gofstat
 ##' @author Sebastian Funk <sebastian.funk@lshtm.ac.uk>
+##' 
+##' @export
 get_rep_sample_fun <- function() {
   url <- "https://docs.google.com/spreadsheets/d/1itaohdPiAeniCXNlntNztZ_oRvjh0HsGuJXUJWET008/edit#gid=0"
   hubei <- googlesheets4::read_sheet(url, sheet = "Hubei")
