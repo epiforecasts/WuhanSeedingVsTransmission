@@ -12,14 +12,15 @@ produced by \code{proportion_allowed_by_condition}
 by \code{condition_and_report_on_cases}.}
 }
 \value{
-
+A ggplot2 heat-map of accepted percentages by scenario
 }
 \description{
 Plot a heat map of accepted samples by scenario
 }
 \examples{
 
-
+## Code
+plot_scenario_tile
 }
 \author{
 Sam Abbott

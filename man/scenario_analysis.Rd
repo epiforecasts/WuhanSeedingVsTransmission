@@ -21,14 +21,15 @@ scenario_analysis(
 \item{show_progress}{Logical, defaults to FALSE. Show progress be shown.}
 }
 \value{
-
+A nested dataframe of scenarios combined with model simulations
 }
 \description{
 Run a scenario analyis
 }
 \examples{
 
-
+## Code 
+scenario_analysis
 }
 \author{
 Sam Abbott

@@ -13,14 +13,15 @@ restrict_by_condition(sims, allowed_scenarios)
 variable.}
 }
 \value{
-
+A data frame of scenarios restricted by the allowed scenarios
 }
 \description{
 Restrict scenarios based on allowed scenarios
 }
 \examples{
 
-
+## Code 
+restrict_by_condition
 }
 \author{
 Sam Abbott

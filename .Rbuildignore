@@ -11,3 +11,4 @@
 ^Dockerfile$
 ^vignettes/resources$
 ^data-raw$
+^vignettes/figures$

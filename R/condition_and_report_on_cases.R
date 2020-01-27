@@ -8,12 +8,16 @@
 #' @inheritParams proportion_allowed_by_condition
 #' @inheritParams restrict_by_condition
 #' @author Sam Abbott
-#' @return
+#' @return A list of 3 data.frames as produced by `condition_on_known`, `proportion_allowed_by_condition`, and
+#' `restrict_by_condition`.
 #' @export
 #' @importFrom lubridate as_date
 #' @import data.table
 #' @examples
 #' 
+#' 
+#' ## Code
+#' condition_and_report_on_cases
 condition_and_report_on_cases <- function(sims, condition_date = NULL, lower_bound = NULL,
                                           upper_bound = NULL, samples = NULL,
                                           end_of_seed_date = "2019-12-31") {

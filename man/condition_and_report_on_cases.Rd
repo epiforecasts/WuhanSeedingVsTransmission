@@ -29,13 +29,17 @@ date on which to condition the data.}
 end date of the seeding event.}
 }
 \value{
-
+A list of 3 data.frames as produced by \code{condition_on_known}, \code{proportion_allowed_by_condition}, and
+\code{restrict_by_condition}.
 }
 \description{
 Condition on cases and return accepted sample size by scenario
 }
 \examples{
 
+
+## Code
+condition_and_report_on_cases
 }
 \author{
 Sam Abbott

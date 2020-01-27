@@ -36,14 +36,15 @@ run_sim(
 \item{delay_sample}{A function to sample from reporting delays}
 }
 \value{
-
+A dataframe containing the simulation time and outbreak size
 }
 \description{
 Negative binomial branching process model
 }
 \examples{
 
-
+## Code
+run_sim
 }
 \author{
 Sebastian Funk, Sam Abbott, James Munday

@@ -6,7 +6,7 @@
 #' @param delay_sample_func Function to generate sample reporting delays
 #' @param show_progress Logical, defaults to FALSE. Show progress be shown.
 #'
-#' @return
+#' @return A nested dataframe of scenarios combined with model simulations
 #' @export
 #' @importFrom dplyr rowwise mutate ungroup sample_frac
 #' @importFrom tidyr unnest 
@@ -15,12 +15,16 @@
 #' @author Sam Abbott
 #' @examples
 #' 
-#' 
+#' ## Code 
+#' scenario_analysis
 scenario_analysis <- function(scenarios = NULL, 
                               sampled_and_set_parameters = NULL,
                               delay_sample_func = NULL,
                               show_progress = FALSE) { 
   
+  ## NULL out for CRAN
+  scenario <- NULL; data <- NULL;
+
   
   ## Run scenarios and samples against sims
   scenario_sims <- scenarios %>% 
@@ -35,7 +39,9 @@ scenario_analysis <- function(scenarios = NULL,
         function(data) {
           
           ## sample R0 from scenario
-          sampled_R0 <- runif(nrow(sampled_and_set_parameters), 0, data$upper_R0)
+          sampled_R0 <- stats::runif(nrow(sampled_and_set_parameters),
+                                     0, 
+                                     data$upper_R0)
           
           ## Run model for specified number of samples
           purrr::map_dfr(

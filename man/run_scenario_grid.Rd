@@ -26,7 +26,7 @@ modelled}
 a delay function fitted to the linelist of Chinese cases.}
 }
 \value{
-
+A data.frame of scenarios as returned by \code{scenario_analysis}
 }
 \description{
 Run the scenario analysis grid.
