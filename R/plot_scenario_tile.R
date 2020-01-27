@@ -30,6 +30,6 @@ plot_scenario_tile <- function(proportion_allowed = NULL) {
     ggplot2::theme_minimal() +
     ggplot2::theme(legend.position = "bottom") +
     ggplot2::guides(fill = ggplot2::guide_colorbar(title = "Percentage of samples accepted")) +
-    ggplot2::labs(x = "Seeding event duration", 
-                  y = "Seeding event size")
+    ggplot2::labs(x = "Transmission event duration", 
+                  y = "Transmission event size")
 }
