@@ -1,7 +1,7 @@
 message("Moving into the vignettes directory")
 setwd("vignettes")
 
-message("Rendering render to all other formats")
+message("Rendering output to all formats")
 ## Render to analysis to required output formats
 rmarkdown::render("output.Rmd", 
                   output_dir = "rendered_output", 
