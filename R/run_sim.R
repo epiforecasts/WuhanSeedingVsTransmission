@@ -16,6 +16,10 @@
 #' @author Sebastian Funk, Sam Abbott, James Munday
 #' @examples
 #' 
+#' 
+#' run_sim(n = 1, n_length = 7, mean_si = 5, sd_si = 2, R0 = 2, 
+#'         k=0.16, tf=37, max_potential_cases= 100, 
+#'         delay_sample = function(x) {rnorm(x, 6, 1)})
 #' ## Code
 #' run_sim
 run_sim  = function(n, n_length, mean_si, sd_si, R0, 

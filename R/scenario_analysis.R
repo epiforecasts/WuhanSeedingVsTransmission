@@ -40,7 +40,7 @@ scenario_analysis <- function(scenarios = NULL,
           
           ## sample R0 from scenario
           sampled_R0 <- stats::runif(nrow(sampled_and_set_parameters),
-                                     0, 
+                                     data$lower_R0, 
                                      data$upper_R0)
           
           ## Run model for specified number of samples

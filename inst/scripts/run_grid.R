@@ -8,7 +8,7 @@ message("Running scenario grid")
 grid_results <- WuhanSeedingVsTransmission::run_scenario_grid(
                                   end_date = "2020-01-25", 
                                   samples = 10000, 
-                                  upper_case_bound = 1975*1.05 + 1, 
+                                  upper_case_bound = round(1975*1.05, 0), 
                                   show_progress = TRUE)
 
 
