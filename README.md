@@ -1,10 +1,10 @@
-# Evaluating the transmissibility of the coronavirus virus in the 2019-20 Wuhan Outbreak: Exploring initial animal-to-human event sizes and durations using scenario analysis
+# Evaluating the transmissibility of the coronavirus in the 2019-20 Wuhan Outbreak: Exploring initial animal-to-human event sizes and durations using scenario analysis
 
 ## Abstract
 
 ### Background
 
-The current coronavirus virus outbreak appears to have originated from an animal-to-human transmission event at Huanan seafood wholesale market in Wuhan, China. There is still uncertainty around the scale and duration of the initial transmission event. This has implications for the likely transmissibility of the coronavirus virus and as such, these potential scenarios should be explored. 
+The current coronavirus outbreak appears to have originated from an animal-to-human transmission event at Huanan seafood wholesale market in Wuhan, China. There is still uncertainty around the scale and duration of the initial transmission event. This has implications for the likely transmissibility of the coronavirus and as such, these potential scenarios should be explored. 
 
 ### Methods
 
