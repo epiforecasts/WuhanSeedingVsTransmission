@@ -13,4 +13,4 @@ WORKDIR /home/rstudio/WuhanSeedingVsTransmission
 RUN Rscript -e "devtools::install_dev_deps()"
 
 ## Install latex using tinytex
-RUN Rscript -e "tinytex::install_latex()"
+RUN Rscript -e "tinytex::install_tinytex()"
