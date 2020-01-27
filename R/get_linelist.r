@@ -3,6 +3,7 @@
 ##' @return a tibble with the lineist
 ##'   delays to randomly sample
 ##' @importFrom readr read_csv
+##' @importFrom dplyr bind_rows
 ##' @author Sebastian Funk <sebastian.funk@lshtm.ac.uk>
 ##'
 ##' @export
@@ -13,5 +14,5 @@ get_linelist <- function() {
            "1itaohdPiAeniCXNlntNztZ_oRvjh0HsGuJXUJWET008/pub",
            "?single=true&output=csv&gid=", gids)
   linelists <- lapply(urls, read_csv)
-  return(bind_rows(linelists))
+  return(dplyr::bind_rows(linelists))
 }
