@@ -1,8 +1,8 @@
 # Evaluating the transmissibility of the coronavirus in the 2019-20 Wuhan Outbreak: Exploring initial point-source exposure sizes and durations using scenario analysis
 
-[![badge](https://img.shields.io/badge/Launch-WuhanSeedingVsTransmission-lightblue.svg)](https://mybinder.org/v2/gh/epiforecasts/WuhanSeedingVsTransmission/master?urlpath=rstudio)
+[![badge](https://img.shields.io/badge/Launch-Analysis-lightblue.svg)](https://mybinder.org/v2/gh/epiforecasts/WuhanSeedingVsTransmission/master?urlpath=rstudio)
 [![Documentation](https://img.shields.io/badge/Documentation-click%20here!-lightgrey.svg?style=flat)](https://epiforecasts.io/WuhanSeedingVsTransmission)
-[![develVersion](https://img.shields.io/badge/devel%20version-0.1.0-blue.svg?style=flat)](https://github.com/epiforecasts/WuhanSeedingVsTransmission)
+[![develVersion](https://img.shields.io/badge/devel%20version-0.1.0-lightgreen.svg?style=flat)](https://github.com/epiforecasts/WuhanSeedingVsTransmission)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2641048.svg)](https://doi.org/10.5281/zenodo.2641048)
 
 ## Abstract
@@ -95,3 +95,5 @@ To access the command line run the following:
 ```{bash, eval = FALSE}
 docker exec -ti wuhansvst bash
 ```
+
+Alternatively the analysis environment can be accessed via [binder](https://mybinder.org/v2/gh/epiforecasts/WuhanSeedingVsTransmission/master?urlpath=rstudio).
