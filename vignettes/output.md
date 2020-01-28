@@ -1,7 +1,7 @@
 Authors
 -------
 
-S. Abbott (1), J. Munday (1), J. Hellewell (1), CMMID nCoV working group
+S. Abbott (1), J. Hellewell (1), J. Munday (1), CMMID nCoV working group
 (1), S. Funk (1)
 
 Correspondence to:
@@ -396,9 +396,8 @@ knowledge sharing across response teams.
 All authors conceived and designed the work. SA undertook the analysis
 with advice from all other authors. SF developed the branching process
 model. SA wrote the first draft of the paper and all authors contributed
-to subsequent drafts. *placeholder* reviewed the analysis code. All
-authors approve the work for publication and agree to be accountable for
-the work.
+to subsequent drafts. JH reviewed the analysis code. All authors approve
+the work for publication and agree to be accountable for the work.
 
 **Funding**
 
