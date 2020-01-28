@@ -133,9 +133,14 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'>## code</span>
+<span class='co'>## Code</span>
 <span class='no'>plot_R0_density</span></div><div class='output co'>#&gt; function (sims = NULL) 
 #&gt; {
+#&gt;     scenario &lt;- NULL
+#&gt;     time &lt;- NULL
+#&gt;     event_size &lt;- NULL
+#&gt;     x &lt;- NULL
+#&gt;     R0 &lt;- NULL
 #&gt;     plot &lt;- sims %&gt;% dplyr::group_by(scenario, sample) %&gt;% dplyr::filter(time == 
 #&gt;         max(time)) %&gt;% dplyr::ungroup() %&gt;% ggplot2::ggplot(ggplot2::aes(x = R0, 
 #&gt;         y = factor(event_size), fill = stat(x))) + ggridges::geom_density_ridges_gradient(quantile_lines = TRUE, 
@@ -146,7 +151,7 @@
 #&gt;         ggplot2::guides(fill = ggplot2::guide_colorbar(title = "R0"))
 #&gt;     return(suppressWarnings(suppressMessages(plot)))
 #&gt; }
-#&gt; &lt;bytecode: 0x555e25eaba80&gt;
+#&gt; &lt;bytecode: 0x55ed197a6518&gt;
 #&gt; &lt;environment: namespace:WuhanSeedingVsTransmission&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -148,16 +148,17 @@
 #&gt;     upper_R0 &lt;- NULL
 #&gt;     sample &lt;- NULL
 #&gt;     scenario &lt;- NULL
+#&gt;     date_confirmation_str &lt;- NULL
 #&gt;     restricted_scenarios &lt;- sims %&gt;% dplyr::group_by(sample, 
 #&gt;         scenario) %&gt;% dplyr::filter(time == max(time)) %&gt;% dplyr::group_by(.dots = group_var) %&gt;% 
 #&gt;         dplyr::summarise(median_R0 = stats::median(R0, na.rm = TRUE), 
-#&gt;             lower_R0 = quantile(R0, probs = 0.05, na.rm = TRUE), 
-#&gt;             upper_R0 = quantile(R0, probs = 0.95, na.rm = TRUE), 
+#&gt;             lower_R0 = stats::quantile(R0, probs = 0.05, na.rm = TRUE), 
+#&gt;             upper_R0 = stats::quantile(R0, probs = 0.95, na.rm = TRUE), 
 #&gt;             samples = dplyr::n()) %&gt;% dplyr::ungroup() %&gt;% dplyr::mutate_at(.vars = c("median_R0", 
 #&gt;         "lower_R0", "upper_R0"), ~round(., 1)) %&gt;% dplyr::mutate(R0 = paste0(lower_R0, 
 #&gt;         " - ", upper_R0))
 #&gt; }
-#&gt; &lt;bytecode: 0x555e28705058&gt;
+#&gt; &lt;bytecode: 0x55ed12400c58&gt;
 #&gt; &lt;environment: namespace:WuhanSeedingVsTransmission&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
