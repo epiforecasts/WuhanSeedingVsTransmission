@@ -7,9 +7,10 @@ message("Running scenario grid")
 
 grid_results <- WuhanSeedingVsTransmission::run_scenario_grid(
                                   end_date = "2020-01-25", 
-                                  samples = 10000, 
+                                  samples = 100, 
                                   upper_case_bound = round(1975*1.05, 0), 
-                                  show_progress = TRUE)
+                                  show_progress = TRUE,
+                                  kept_dates = c("2020-01-04", "2020-01-11", "2020-01-18", "2020-01-25"))
 
 
 ## Save raw grid
