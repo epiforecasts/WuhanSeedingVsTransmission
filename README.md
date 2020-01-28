@@ -1,14 +1,14 @@
-# Evaluating the transmissibility of the coronavirus in the 2019-20 Wuhan Outbreak: Exploring initial animal-to-human event sizes and durations using scenario analysis
+# Evaluating the transmissibility of the coronavirus in the 2019-20 Wuhan Outbreak: Exploring initial point-source exposure sizes and durations using scenario analysis
 
 ## Abstract
 
 ### Background
 
-The current coronavirus outbreak appears to have originated from an animal-to-human transmission event at Huanan seafood wholesale market in Wuhan, China. There is still uncertainty around the scale and duration of the initial transmission event. This has implications for the likely transmissibility of the coronavirus and as such, these potential scenarios should be explored. 
+The current coronavirus outbreak appears to have originated from a point-source exposure event at Huanan seafood wholesale market in Wuhan, China. There is still uncertainty around the scale and duration of this exposure event. This has implications for the likely transmissibility of the coronavirus and as such, these potential scenarios should be explored. 
 
 ### Methods
 
-We used a stochastic branching process model - parameterised with available data where possible and otherwise informed by the 2002-2003 SARS outbreak - to simulate the Wuhan outbreak. We evaluated scenarios for the following parameters: the size, and duration of the initial transmission event, the serial interval, and the upper bound of the reproduction number (R0). We restricted model simulations based on the number of observed cases from the 3rd, 18th, and 25th of January, with an upper limit 10 times the observed cases or the number of suspected cases on the 25th of January. Our analysis is available as an open-source tool in the form of an R package.
+We used a stochastic branching process model - parameterised with available data where possible and otherwise informed by the 2002-2003 SARS outbreak - to simulate the Wuhan outbreak. We evaluated scenarios for the following parameters: the size, and duration of the initial transmission event, the serial interval, and the reproduction number (R0). We restricted model simulations based on the number of observed cases on the 25th of January, accepting samples that were within a 5% interval on either side of this estimate. Our analysis is available as an open-source tool in the form of an R package.
 
 ### Results
 
