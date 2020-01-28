@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">WuhanSeedingVsTransmission</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -125,7 +125,8 @@
   <span class='kw'>scenarios</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>sampled_and_set_parameters</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>delay_sample_func</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>show_progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  <span class='kw'>show_progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='no'>kept_times</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -147,6 +148,11 @@
       <th>show_progress</th>
       <td><p>Logical, defaults to FALSE. Show progress be shown.</p></td>
     </tr>
+    <tr>
+      <th>kept_times</th>
+      <td><p>Numeric, a vector of timepoints to keep information on. Defaults to all
+time points</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -157,7 +163,7 @@
     <pre class="examples"><div class='input'>
 <span class='co'>## Code </span>
 <span class='no'>scenario_analysis</span></div><div class='output co'>#&gt; function (scenarios = NULL, sampled_and_set_parameters = NULL, 
-#&gt;     delay_sample_func = NULL, show_progress = FALSE) 
+#&gt;     delay_sample_func = NULL, show_progress = FALSE, kept_times) 
 #&gt; {
 #&gt;     scenario &lt;- NULL
 #&gt;     data &lt;- NULL
@@ -167,19 +173,27 @@
 #&gt;         function(data) {
 #&gt;             sampled_R0 &lt;- stats::runif(nrow(sampled_and_set_parameters), 
 #&gt;                 data$lower_R0, data$upper_R0)
-#&gt;             purrr::map_dfr(1:nrow(sampled_and_set_parameters), 
-#&gt;                 ~tibble::tibble(size = list(WuhanSeedingVsTransmission::run_sim(n = data$event_size, 
-#&gt;                   n_length = data$event_duration, mean_si = data$serial_mean, 
-#&gt;                   sd_si = sampled_and_set_parameters$serial_sd[.x], 
-#&gt;                   R0 = sampled_R0[.x], k = sampled_and_set_parameters$k[.x], 
-#&gt;                   tf = sampled_and_set_parameters$outbreak_length[.x] + 
-#&gt;                     data$event_duration, max_potential_cases = sampled_and_set_parameters$upper_case_bound + 
-#&gt;                     1, delay_sample = delay_sample_func)), sample = .x, 
-#&gt;                   R0 = sampled_R0[.x]) %&gt;% tidyr::unnest("size"))
-#&gt;         }, .progress = show_progress)) %&gt;% tidyr::unnest("data") %&gt;% 
-#&gt;         tidyr::unnest("sims")
+#&gt;             sims &lt;- purrr::map(1:nrow(sampled_and_set_parameters), 
+#&gt;                 function(.x) {
+#&gt;                   sim &lt;- tibble::tibble(size = list(WuhanSeedingVsTransmission::run_sim(n = data$event_size, 
+#&gt;                     n_length = data$event_duration, mean_si = data$serial_mean, 
+#&gt;                     sd_si = sampled_and_set_parameters$serial_sd[.x], 
+#&gt;                     R0 = sampled_R0[.x], k = sampled_and_set_parameters$k[.x], 
+#&gt;                     tf = sampled_and_set_parameters$outbreak_length[.x] + 
+#&gt;                       data$event_duration, kept_times = kept_times + 
+#&gt;                       data$event_duration, max_potential_cases = sampled_and_set_parameters$upper_case_bound + 
+#&gt;                       1, delay_sample = delay_sample_func)), 
+#&gt;                     sample = .x, R0 = sampled_R0[.x])
+#&gt;                   sim &lt;- tidyr::unnest(sim, "size")
+#&gt;                   return(sim)
+#&gt;                 })
+#&gt;             sims &lt;- dplyr::bind_rows(sims)
+#&gt;         }, .progress = show_progress))
+#&gt;     scenario_sims &lt;- tidyr::unnest(scenario_sims, "data")
+#&gt;     scenario_sims &lt;- tidyr::unnest(scenario_sims, "sims")
+#&gt;     return(scenario_sims)
 #&gt; }
-#&gt; &lt;bytecode: 0x55d89ef4ff78&gt;
+#&gt; &lt;bytecode: 0x55d79036a590&gt;
 #&gt; &lt;environment: namespace:WuhanSeedingVsTransmission&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

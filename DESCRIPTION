@@ -1,6 +1,6 @@
 Package: WuhanSeedingVsTransmission
 Title: Evaluate seeding event size vs duration compared to transmission in the Wuhan outbreak
-Version: 0.0.1.0
+Version: 0.1.0
 Authors@R: c(
     person(given = "Sam Abbott",
            role = c("aut", "cre"),

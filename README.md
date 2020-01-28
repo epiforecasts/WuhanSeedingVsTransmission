@@ -1,22 +1,22 @@
-# Evaluating the transmissibility of the coronavirus in the 2019-20 Wuhan Outbreak: Exploring initial animal-to-human event sizes and durations using scenario analysis
+# Evaluating the transmissibility of the coronavirus in the 2019-20 Wuhan Outbreak: Exploring initial point-source exposure sizes and durations using scenario analysis
 
 ## Abstract
 
 ### Background
 
-The current coronavirus outbreak appears to have originated from an animal-to-human transmission event at Huanan seafood wholesale market in Wuhan, China. There is still uncertainty around the scale and duration of the initial transmission event. This has implications for the likely transmissibility of the coronavirus and as such, these potential scenarios should be explored. 
+The current coronavirus outbreak appears to have originated from a point-source exposure event at Huanan seafood wholesale market in Wuhan, China. There is still uncertainty around the scale and duration of this exposure event. This has implications for the likely transmissibility of the coronavirus and as such, these potential scenarios should be explored. 
 
 ### Methods
 
-We used a stochastic branching process model - parameterised with available data where possible and otherwise informed by the 2002-2003 SARS outbreak - to simulate the Wuhan outbreak. We evaluated scenarios for the following parameters: the size, and duration of the initial transmission event, the serial interval, and the upper bound of the reproduction number (R0). We restricted model simulations based on the number of observed cases from the 3rd, 18th, and 25th of January, with an upper limit 10 times the observed cases or the number of suspected cases on the 25th of January. Our analysis is available as an open-source tool in the form of an R package.
+We used a stochastic branching process model - parameterised with available data where possible and otherwise informed by the 2002-2003 SARS outbreak - to simulate the Wuhan outbreak. We evaluated scenarios for the following parameters: the size, and duration of the initial transmission event, the serial interval, and the reproduction number (R0). We restricted model simulations based on the number of observed cases on the 25th of January, accepting samples that were within a 5% interval on either side of this estimate. Our analysis is available as an open-source tool in the form of an R package.
 
 ### Results
 
-The most likely scenarios were those with a large transmission event and a short duration. Using a longer serial interval than estimated for SARs suggested a longer initial transmission event and a higher R0 estimate. Using a SARs like serial interval we found that the most likely scenario produced an R0 estimate of 2.4 (1.6 - 3.9). There were other plausible scenarios with smaller events sizes of longer duration that increased, and decreased respectively, the R0 estimates. Using a longer serial interval we found that the R0 estimate increased by approximately 1 across all scenarios considered. There were very few simulations that were able to reproduce the observed data when R0 was less than 1. 
+The most likely scenarios were those with a large transmission event and a short duration. Using a longer serial interval than estimated for SARs suggested a larger initial transmission event and a higher R0 estimate. Using a SARs-like serial interval we found that the most likely scenario produced an R0 estimate of 2.2 - 3.2 (90% credible interval (CrI)). A longer serial interval resulted in an R0 estimate of 2.8 - 3.9 (90% CrI). There were other plausible scenarios with smaller events sizes of longer duration that had comparable R0 estimates. There were very few simulations that were able to reproduce the observed data when R0 was less than 1. 
 
 ### Conclusions
 
-Our results indicate that an R0 of less than 1 was highly unlikely unless the size of the animal-to-human transmission event was much greater than currently reported. We found that a large initial crossover event was likely with a relatively short duration. Scenarios with a longer serial interval resulted in a higher R0 and were equally plausible to scenarios with SARs like serial intervals. Our work to make this analysis available as an open-source tool may be helpful to public health officials and other researchers.
+Our results indicate that an R0 of less than 1 was highly unlikely unless the size of the initial exposure event was much greater than currently reported. We found that R0 estimates were comparable across scenarios with decreasing event size and increasing duration. Scenarios with a longer serial interval resulted in a higher R0 and were equally plausible to scenarios with SARs like serial intervals. Our work to make this analysis available as an open-source tool may be helpful to public health officials and other researchers.
 
 ## Usage
 
