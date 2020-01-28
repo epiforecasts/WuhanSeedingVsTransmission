@@ -12,3 +12,4 @@
 ^vignettes/resources$
 ^data-raw$
 ^vignettes/figures$
+^binder$
