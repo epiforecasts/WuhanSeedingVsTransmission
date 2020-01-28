@@ -109,27 +109,34 @@ Results
 **Percentage of outbreak simulations accepted**
 
 Overall, the highest acceptance rate was for scenarios with a large
-event size (200), short duration (7 days), an upper bound on the R0 of 3
-and a SARS-like mean serial interval (8.4 days) (Figure 1). Scenarios
-with a longer event duration (14 days), a higher R0 bound (4), and a
-longer mean serial interval (12 days) also had a high acceptance rate
-compared to other scenarios. In scenarios with a SARS-like mean serial
-interval (8.4 days), and a longer serial interval (12 days), the
-acceptance rate decreased as the event size decreased and the event
-duration increased.
+event size (200), short duration (7 days), and R0 between 3 and 4 and a
+12 day serial interval. (Figure 1). Scenarios with a SARS-like mean
+serial interval (8.4 days), an R0 bounded between 2 and 3, a short
+duration, and a relatively large event size (100) also had a high
+acceptance rate compared to other scenarios. Across all scenarios a
+higher acceptance rate was correlated with a larger event size, a
+shorter event duration, and a larger mean serial interval. This is
+likely to be related to the influence these parameters have on the
+degree of volatility in outbreak simulations. Based on this trends in
+Figure 1 should not be used to determine which scenario was more likely
+overall but instead should be used to compare scenarios based on prior
+knowledge. For example if the event size, serial interval and event
+duration is assumed the percentage of acceptance may be used to infer
+the most likely R0 scenario.
 
 There were very few scenarios in which an upper bound on the
 reproduction of 1 resulted in scenarios that were accepted after
 conditioning on observed data, regardless of the mean serial interval,
-event size, or event duration. There were few scenarios that were
-accepted after conditioning on data for scenarios with an upper bound of
-2 on the R0 with this scenario being most likely if the transmission
-event was large (200), 14 days in duration, and had a SARS-like serial
-interval (8.4 days). For a short serial interval (4 days) the percentage
-of accepted samples was low for all scenarios with the highest accepted
-proportion for scenarios with an upper bound on the R0 of 2. Across all
-R0 bounds this scenario was most likely if the transmission event was of
-a medium size (40 - 80 cases) and a short duration (7-14 days).
+event size, or event duration. There were also very few scenarios that
+were accepted after conditioning on data for scenarios with an upper
+bound of 2 on the R0 with this scenario being most likely if the
+transmission event was large (200+), a longer duration, and a long mean
+serial interval (12 days). For a short serial interval (4 days) the
+percentage of accepted samples was low for all scenarios with the
+highest accepted proportion for scenarios with an upper bound on the R0
+of 2. Across all R0 bounds this scenario was most likely if the
+transmission event was of a medium size (40 - 80 cases) and a short
+duration (7-14 days).
 
 ![Heatmaps of the percentage of samples accepted by scenario. The figure
 is stratified by the upper bound on the R0 (columns) and the mean of the
@@ -137,24 +144,24 @@ serial interval (rows).](figures/plot-probs-1.png)
 
 **Estimated reproduction numbers**
 
-The estimated R0 decreased as the event size and duration increased for
-both mean serial interval scenarios (Table 1 and Table 2). Assuming a
-longer serial interval (12 days) resulted in an approximate increase of
-1 to the R0 estimates across all scenarios when compared to the
-SARS-like (8.4 days) serial interval. For the SARS-like interval the
-most likely scenario - with an event size of 200 and a duration of a
-week) (Figure 1) - resulted in an estimated R0 of 1.7 - 2.3 (Table 1).
-Decreasing the event size increased the R0 to 2.2 - 3.2 for a
-transmission event with 100 cases. A longer transmission event resulted
-in a decrease in R0 to 1.8 - 2.7. The most likely scenario with a mean
-serial interval of 12 days - with an outbreak size of 200 and a duration
-of 14 days - resulted in an estimated R0 of 2.2 - 3.2 (Table 2). For the
-longer mean serial interval assumption (12 days) varying the
-transmission event size and duration had a similar impact on estimates
-of the R0.
+Uncertainty in the R0 estimate increased as the event size decreased,
+and decreased as the mean serial interval increased (Figure 2). Large
+event sizes resulted in the lowest R0 estimates across all scenarios
+evaluated. The estimated R0 decreased as the event size and duration
+increased for both mean serial interval scenarios (Table 1 and Table 2).
+Assuming a longer serial interval (12 days) resulted in an approximate
+increase of 1 to the R0 estimates across all scenarios when compared to
+the SARS-like (8.4 days) serial interval. For the SARS-like interval the
+most likely scenario - with an event size of 100 and a duration of a
+week) (Figure 1) - resulted in an estimated R0 of 2.2 - 3.2 (Table 1).
+The most likely scenario with a mean serial interval of 12 days - with
+an outbreak size of 200 and a duration of 7 days - resulted in an
+estimated R0 of 2.8 - 3.9 (Table 2). Across all mean serial interval
+scenarios R0 estimates were comparable when event size was decreased and
+event duration was increased.
 
 ![Density plot of reproduction number (R0) estimates from each accepted
-sample stratified by transmission evvent size, event duration (columns),
+sample stratified by transmission event size, event duration (columns),
 and the mean serial interval used (rows). The black lines on each
 density plot represent the 90% credible
 interval](figures/density-r0-plot-1.png)
@@ -291,21 +298,22 @@ Discussion
 ----------
 
 In this study, we explored a range of scenarios for the initial event
-size and duration of the animal-to-human crossover event which initiated
-the 2019-20 Wuhan coronavirus outbreak. We conditioned on observed cases
-to establish the probability of each scenario, given our model, and then
+size and duration of the exposure event which initiated the 2019-20
+Wuhan coronavirus outbreak. We conditioned on observed cases to
+establish the probability of each scenario, given our model, and then
 estimated the R0 of coronavirus. We found that there was a very low
 probability that the reproduction numbers was less than 1 for any
-scenario considered. For scenarios with a SARS-like serial interval,
-large transmission events over a short duration were most plausible. For
-scenarios with a longer serial interval (12 days), large transmission
-events with a slightly increased duration were most plausible. The most
-probable SARS-like serial interval scenarios resulted in an estimated R0
-of 1.7 - 2.3, whilst the most probable longer serial interval scenarios
-resulted in an estimated R0 of 2.2 - 3.2. Reducing the event size led to
-estimates of the R0 increasing but also reduced the proportion of
-samples accepted. Similarly, increasing the event duration reduced the
-estimated R0 whilst decreasing the proportion of accepted samples.
+scenario considered. Across all mean serial interval scenarios larger
+exposure events over a shorter time horizon were most plausible. The
+most probable SARS-like serial interval scenarios resulted in an
+estimated R0 of 2.2 - 3.2, whilst the most probable longer serial
+interval scenarios resulted in an estimated R0 of 2.8 - 3.9. Reducing
+the event size led to estimates of the R0 increasing but also reduced
+the proportion of samples accepted. Similarly, increasing the event
+duration reduced the estimated R0 whilst decreasing the proportion of
+accepted samples. Decreasing the event size whilst increasing the
+duration resulted in R0 estimates that were comparable to those from the
+most plausible scenarios.
 
 Our study used a stochastic model to capture the transmission dynamics
 of the outbreak with parameters informed from data were possible or
@@ -323,15 +331,20 @@ fully account for the numerous sources of bias and uncertainty present
 in the available data. This means that our model estimates may be both
 spuriously precise and potentially biased. There is some evidence of
 this in our results as the scenarios with the highest acceptance rate
-were on the edge of our scenario grid both for event size and R0.
-However, until more is known about the outbreak this cannot be easily
-assessed and our scenarios represent our understanding of the current
-state of knowledge. A previous study also looked at varying the event
-size and the impact that this had on R0 estimates using a branching
-process \[4\]. Our work builds on this by also looking at event
-duration, including reporting delays, and conditioning across multiple
-time points. For comparable scenarios our results were similar to those
-previously published but we found that R0 estimates were highly
+were on the edge of our scenario grid both for event size, event
+duration, and mean serial interval. This is likely the result of these
+scenarios reducing volatility and therefore having narrower
+distributions of estimated cases. Indeed, we found that R0 estimates
+were comparable as event size decreased and event duration increased.
+Expert knowledge relating to the size and duration of the intial event
+may help clarify this issue. Alternatively other estimates of R0 may be
+used to indicate which event size and event duration scenarios are most
+plausible. A previous study also looked at varying the event size and
+the impact that this had on R0 estimates using a branching process
+\[4\]. Our work builds on this by also looking at event duration,
+including reporting delays, and using a different approach to condition
+on observed cases. For comparable scenarios our results were similar to
+those previously published but we found that R0 estimates were highly
 sensitive to variation in the assumed serial interval, event size, and
 event duration. We made use of a highly reproducible framework (an R
 package) and have released all of our code as open-source. This means
@@ -349,9 +362,10 @@ cases - or at least provide an outbreak specific estimate of the
 dispersion. Our analysis did not include interventions, such as case
 isolation, doing so may improve our estimates. The R package we have
 developed alongside our analysis may be generalisable to other point
-source outbreaks. Additional work is needed to ensure the robustness of
-this tool but this may allow this analysis to be repeated during future
-outbreaks with little additional overhead.
+source outbreaks when time series data on cases is unavailable or
+difficult to verify. Additional work is needed to ensure the robustness
+of this tool but this may allow this analysis to be repeated during
+future outbreaks with little additional overhead.
 
 This analysis use a stochastic branching process to explore scenarios
 around the duration and size of the initial exposure event at the Huanan
@@ -419,9 +433,9 @@ is vital for preventing sustained transmission in new locations.
 5 Lipsitch M. Transmission Dynamics and Control of Severe Acute
 Respiratory Syndrome. *Science* 2003;**300**:1966–70.
 
-6 Kraemer M, Pigott D, Xu B *et al.* Epidemiological data from the
-nCoV-2019 outbreak: Early descriptions from publicly available data.
-<http://virological.org/t/epidemiological-data-from-the-ncov-2019-outbreak-early-descriptions-from-publicly-available-data/337/1>
+6 Xu B, Gutierrez B, Hill S *et al.* Epidemiological Data from the
+nCoV-2019 Outbreak: Early Descriptions from Publicly Available Data.
+2020.
 
 7 R Core Team. *R: A language and environment for statistical
 computing*. Vienna, Austria:: R Foundation for Statistical Computing

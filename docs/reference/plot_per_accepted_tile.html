@@ -154,13 +154,13 @@ by <code>condition_and_report_on_cases</code>.</p></td>
 #&gt;         dplyr::mutate_at(.vars = c("event_duration", "event_size"), 
 #&gt;             factor) %&gt;% ggplot2::ggplot(ggplot2::aes(x = event_duration, 
 #&gt;         y = event_size, fill = allowed_per)) + ggplot2::geom_tile(alpha = 0.95) + 
-#&gt;         ggplot2::scale_fill_continuous(label = scales::percent, 
+#&gt;         ggplot2::scale_fill_continuous(label = scales::percent_format(accuracy = 1L), 
 #&gt;             type = "viridis", direction = 1) + ggplot2::facet_grid(serial_mean ~ 
 #&gt;         joined_R0) + ggplot2::theme_minimal() + ggplot2::theme(legend.position = "bottom") + 
 #&gt;         ggplot2::guides(fill = ggplot2::guide_colorbar(title = "Percentage of samples accepted")) + 
 #&gt;         ggplot2::labs(x = "Transmission event duration", y = "Transmission event size")
 #&gt; }
-#&gt; &lt;bytecode: 0x55d794710eb0&gt;
+#&gt; &lt;bytecode: 0x560b4efe4578&gt;
 #&gt; &lt;environment: namespace:WuhanSeedingVsTransmission&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
