@@ -13,3 +13,4 @@
 ^data-raw$
 ^vignettes/figures$
 ^binder$
+^pkgdown\.yml$

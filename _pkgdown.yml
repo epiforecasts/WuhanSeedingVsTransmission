@@ -1,1 +1,20 @@
-destination: docs
+url: epiforecasts.io/WuhanSeedingVsTransmission
+  template:
+  params:
+  bootswatch: lumen
+
+development:
+  mode: release
+
+navbar:
+  type: inverse
+left:
+  - text: "Home"
+href: index.html
+- text: "Analysis"
+href: articles/output.html
+  - text: News
+href: news/index.html
+- icon: fa-file-code-o 
+text: "Functions"
+href: reference/index.html
