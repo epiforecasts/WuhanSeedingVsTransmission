@@ -35,7 +35,8 @@ Imports:
     fitdistrplus,
     readr,
     scales,
-    ggplot2
+    ggplot2,
+    ggridges
 Suggests:
     future,
     fst,

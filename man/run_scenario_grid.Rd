@@ -29,7 +29,7 @@ modelled}
 \item{delay_sample_func}{Function to generate sample reporting delays. If not supplied defaults to
 a delay function fitted to the linelist of Chinese cases.}
 
-\item{kept_times}{Character vector with dates in the format \code{"2020-01-01"}. Indicates which dates to return data on. Defaults to all
+\item{kept_dates}{Character vector with dates in the format \code{"2020-01-01"}. Indicates which dates to return data on. Defaults to all
 time points}
 }
 \value{

@@ -21,7 +21,7 @@ plot_per_accepted_tile <- function(proportion_allowed = NULL) {
   
   ## NULL out variables for CRAN
   event_duration <- NULL; event_size <- NULL; serial_mean <- NULL;
-  upper_R0 <- NULL; allowed_per <- NULL; 
+  upper_R0 <- NULL; allowed_per <- NULL;  lower_R0 <- NULL; joined_R0 <- NULL;
   
   
   proportion_allowed %>% 

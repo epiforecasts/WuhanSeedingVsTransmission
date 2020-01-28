@@ -18,6 +18,15 @@
 ##' ## Code
 ##' get_linelist
 get_linelist <- function() {
+  
+  ## CRAN check - dealing with global variables
+  date_onset_symptoms_str <- NULL; date_admission_hospital_str <- NULL;
+  ate_confirmation_str <- NULL; date_confirmation <- NULL;
+  date_onset_symptoms <- NULL; date_onset_symptoms <- NULL;
+  date_admission_hospital <- NULL; date_confirmation_str <- NULL;
+  
+  
+  
   gids <- c(outside_hubei = 0, hubei = 429276722)
   urls <- paste0("https://docs.google.com/spreadsheets/d/",
            "1itaohdPiAeniCXNlntNztZ_oRvjh0HsGuJXUJWET008/pub",

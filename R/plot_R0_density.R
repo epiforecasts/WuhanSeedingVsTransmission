@@ -12,6 +12,15 @@
 #' ## Code
 #' plot_R0_density
 plot_R0_density <- function(sims = NULL) {
+  
+  
+  ## CRAN check - dealing with global variables
+  scenario <- NULL; time <- NULL; event_size <- NULL;
+  x <- NULL; R0 <- NULL;
+  
+    
+  
+  
   plot <- sims %>% 
     dplyr::group_by(scenario, sample) %>% 
     dplyr::filter(time == max(time)) %>% 

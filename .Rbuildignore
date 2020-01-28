@@ -14,3 +14,4 @@
 ^vignettes/figures$
 ^binder$
 ^pkgdown\.yml$
+^vignettes/output\.Rmd$

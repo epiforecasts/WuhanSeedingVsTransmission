@@ -20,6 +20,11 @@
 ##' ## Code 
 ##' get_rep_sample_fun
 get_rep_sample_fun <- function() {
+  
+  ## CRAN check - dealing with global variables flag
+  delay_confirmation <- NULL; country <- NULL; . <- NULL;
+
+  
   message("Downloading linelist")
   confirmation_delays <- get_linelist() %>%
     dplyr::filter(!is.na(delay_confirmation), country == "China") %>%
@@ -29,7 +34,7 @@ get_rep_sample_fun <- function() {
   ## fit normal and exponential
   test_distributions <- c("geom", "pois", "nbinom")
 
-  fits <- lapply(setNames(test_distributions, test_distributions), function(x) {
+  fits <- lapply(stats::setNames(test_distributions, test_distributions), function(x) {
     fitdistrplus::fitdist(confirmation_delays, x)
   })
 
