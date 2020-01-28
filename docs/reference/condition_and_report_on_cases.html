@@ -92,7 +92,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/output.html">Evaluating the transmissibility of the coronavirus in the 2019-20 Wuhan Outbreak: Exploring initial animal-to-human event sizes and durations using scenario analysis</a>
+      <a href="../articles/output.html">Evaluating the transmissibility of the coronavirus in the 2019-20 Wuhan Outbreak: Exploring initial point-source exposure sizes and durations using scenario analysis</a>
     </li>
   </ul>
 </li>
@@ -127,7 +127,9 @@
   <span class='kw'>lower_bound</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>upper_bound</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>samples</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>end_of_seed_date</span> <span class='kw'>=</span> <span class='st'>"2019-12-31"</span>
+  <span class='kw'>end_of_seed_date</span> <span class='kw'>=</span> <span class='st'>"2019-12-31"</span>,
+  <span class='kw'>scenarios_list</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"scenario"</span>, <span class='st'>"event_duration"</span>, <span class='st'>"event_size"</span>, <span class='st'>"serial_mean"</span>,
+    <span class='st'>"upper_R0"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -135,7 +137,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>sims</th>
-      <td><p>A dataframe as produced by <code>scenario_analysis</code>.</p></td>
+      <td><p>A data.table from <code>scenario_analysis</code>.</p></td>
     </tr>
     <tr>
       <th>condition_date</th>
@@ -159,17 +161,140 @@ date on which to condition the data.</p></td>
       <td><p>A character string in the following format <code>"2020-01-01"</code>. The assumed
 end date of the seeding event.</p></td>
     </tr>
+    <tr>
+      <th>scenarios_list</th>
+      <td><p>A character vector listing scenarios evaluated.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    
-
-
+    <p>A list of 3 data.frames as produced by <code>condition_on_known</code>, <code>proportion_allowed_by_condition</code>, and
+<code>restrict_by_condition</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-</div></pre>
+<span class='no'>sims</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>time</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fl'>10</span>),
+                   <span class='kw'>size</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fl'>10</span>),
+                   <span class='kw'>sample</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='kw'>function</span>(<span class='no'>.</span>) {<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>.</span>, <span class='fl'>10</span>)})),
+                   <span class='kw'>scenario</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>), <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>)),
+                   <span class='kw'>tmp</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>), <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>)),
+                   <span class='kw'>event_duration</span> <span class='kw'>=</span> <span class='fl'>1</span>
+                  )
+
+
+<span class='fu'>condition_and_report_on_cases</span>(<span class='no'>sims</span>, <span class='kw'>condition_date</span> <span class='kw'>=</span> <span class='st'>"2020-01-03"</span>, <span class='kw'>lower_bound</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>upper_bound</span> <span class='kw'>=</span> <span class='fl'>5</span>,
+                              <span class='kw'>scenarios_list</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"scenario"</span>, <span class='st'>"tmp"</span>), <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='output co'>#&gt; $date_conditioned
+#&gt; [1] "2020-01-03"
+#&gt; 
+#&gt; $proportion_allowed_sims
+#&gt;    scenario tmp allowed_per
+#&gt; 1:        1   1           1
+#&gt; 
+#&gt; $conditioned_sims
+#&gt;      time size sample scenario tmp event_duration
+#&gt;   1:    1    1      1        1   1              1
+#&gt;   2:    2    2      1        1   1              1
+#&gt;   3:    3    3      1        1   1              1
+#&gt;   4:    4    4      1        1   1              1
+#&gt;   5:    5    5      1        1   1              1
+#&gt;   6:    6    6      1        1   1              1
+#&gt;   7:    7    7      1        1   1              1
+#&gt;   8:    8    8      1        1   1              1
+#&gt;   9:    9    9      1        1   1              1
+#&gt;  10:   10   10      1        1   1              1
+#&gt;  11:    1    1      2        1   1              1
+#&gt;  12:    2    2      2        1   1              1
+#&gt;  13:    3    3      2        1   1              1
+#&gt;  14:    4    4      2        1   1              1
+#&gt;  15:    5    5      2        1   1              1
+#&gt;  16:    6    6      2        1   1              1
+#&gt;  17:    7    7      2        1   1              1
+#&gt;  18:    8    8      2        1   1              1
+#&gt;  19:    9    9      2        1   1              1
+#&gt;  20:   10   10      2        1   1              1
+#&gt;  21:    1    1      3        1   1              1
+#&gt;  22:    2    2      3        1   1              1
+#&gt;  23:    3    3      3        1   1              1
+#&gt;  24:    4    4      3        1   1              1
+#&gt;  25:    5    5      3        1   1              1
+#&gt;  26:    6    6      3        1   1              1
+#&gt;  27:    7    7      3        1   1              1
+#&gt;  28:    8    8      3        1   1              1
+#&gt;  29:    9    9      3        1   1              1
+#&gt;  30:   10   10      3        1   1              1
+#&gt;  31:    1    1      4        1   1              1
+#&gt;  32:    2    2      4        1   1              1
+#&gt;  33:    3    3      4        1   1              1
+#&gt;  34:    4    4      4        1   1              1
+#&gt;  35:    5    5      4        1   1              1
+#&gt;  36:    6    6      4        1   1              1
+#&gt;  37:    7    7      4        1   1              1
+#&gt;  38:    8    8      4        1   1              1
+#&gt;  39:    9    9      4        1   1              1
+#&gt;  40:   10   10      4        1   1              1
+#&gt;  41:    1    1      5        1   1              1
+#&gt;  42:    2    2      5        1   1              1
+#&gt;  43:    3    3      5        1   1              1
+#&gt;  44:    4    4      5        1   1              1
+#&gt;  45:    5    5      5        1   1              1
+#&gt;  46:    6    6      5        1   1              1
+#&gt;  47:    7    7      5        1   1              1
+#&gt;  48:    8    8      5        1   1              1
+#&gt;  49:    9    9      5        1   1              1
+#&gt;  50:   10   10      5        1   1              1
+#&gt;  51:    1    1      6        1   1              1
+#&gt;  52:    2    2      6        1   1              1
+#&gt;  53:    3    3      6        1   1              1
+#&gt;  54:    4    4      6        1   1              1
+#&gt;  55:    5    5      6        1   1              1
+#&gt;  56:    6    6      6        1   1              1
+#&gt;  57:    7    7      6        1   1              1
+#&gt;  58:    8    8      6        1   1              1
+#&gt;  59:    9    9      6        1   1              1
+#&gt;  60:   10   10      6        1   1              1
+#&gt;  61:    1    1      7        1   1              1
+#&gt;  62:    2    2      7        1   1              1
+#&gt;  63:    3    3      7        1   1              1
+#&gt;  64:    4    4      7        1   1              1
+#&gt;  65:    5    5      7        1   1              1
+#&gt;  66:    6    6      7        1   1              1
+#&gt;  67:    7    7      7        1   1              1
+#&gt;  68:    8    8      7        1   1              1
+#&gt;  69:    9    9      7        1   1              1
+#&gt;  70:   10   10      7        1   1              1
+#&gt;  71:    1    1      8        1   1              1
+#&gt;  72:    2    2      8        1   1              1
+#&gt;  73:    3    3      8        1   1              1
+#&gt;  74:    4    4      8        1   1              1
+#&gt;  75:    5    5      8        1   1              1
+#&gt;  76:    6    6      8        1   1              1
+#&gt;  77:    7    7      8        1   1              1
+#&gt;  78:    8    8      8        1   1              1
+#&gt;  79:    9    9      8        1   1              1
+#&gt;  80:   10   10      8        1   1              1
+#&gt;  81:    1    1      9        1   1              1
+#&gt;  82:    2    2      9        1   1              1
+#&gt;  83:    3    3      9        1   1              1
+#&gt;  84:    4    4      9        1   1              1
+#&gt;  85:    5    5      9        1   1              1
+#&gt;  86:    6    6      9        1   1              1
+#&gt;  87:    7    7      9        1   1              1
+#&gt;  88:    8    8      9        1   1              1
+#&gt;  89:    9    9      9        1   1              1
+#&gt;  90:   10   10      9        1   1              1
+#&gt;  91:    1    1     10        1   1              1
+#&gt;  92:    2    2     10        1   1              1
+#&gt;  93:    3    3     10        1   1              1
+#&gt;  94:    4    4     10        1   1              1
+#&gt;  95:    5    5     10        1   1              1
+#&gt;  96:    6    6     10        1   1              1
+#&gt;  97:    7    7     10        1   1              1
+#&gt;  98:    8    8     10        1   1              1
+#&gt;  99:    9    9     10        1   1              1
+#&gt; 100:   10   10     10        1   1              1
+#&gt;      time size sample scenario tmp event_duration
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

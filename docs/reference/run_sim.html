@@ -92,7 +92,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/output.html">Evaluating the transmissibility of the coronavirus in the 2019-20 Wuhan Outbreak: Exploring initial animal-to-human event sizes and durations using scenario analysis</a>
+      <a href="../articles/output.html">Evaluating the transmissibility of the coronavirus in the 2019-20 Wuhan Outbreak: Exploring initial point-source exposure sizes and durations using scenario analysis</a>
     </li>
   </ul>
 </li>
@@ -176,14 +176,70 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    
-
-
+    <p>A dataframe containing the simulation time and outbreak size</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 
-</div></pre>
+<span class='fu'>run_sim</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>n_length</span> <span class='kw'>=</span> <span class='fl'>7</span>, <span class='kw'>mean_si</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>sd_si</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>R0</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+        <span class='kw'>k</span><span class='kw'>=</span><span class='fl'>0.16</span>, <span class='kw'>tf</span><span class='kw'>=</span><span class='fl'>37</span>, <span class='kw'>max_potential_cases</span><span class='kw'>=</span> <span class='fl'>100</span>,
+        <span class='kw'>delay_sample</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) {<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>x</span>, <span class='fl'>6</span>, <span class='fl'>1</span>)})</div><div class='output co'>#&gt;    time size
+#&gt; 1     0    0
+#&gt; 2     1    0
+#&gt; 3     2    0
+#&gt; 4     3    0
+#&gt; 5     4    0
+#&gt; 6     5    0
+#&gt; 7     6    0
+#&gt; 8     7    0
+#&gt; 9     8    0
+#&gt; 10    9    0
+#&gt; 11   10    0
+#&gt; 12   11    0
+#&gt; 13   12    1
+#&gt; 14   13    1
+#&gt; 15   14    1
+#&gt; 16   15    1
+#&gt; 17   16    1
+#&gt; 18   17    1
+#&gt; 19   18    1
+#&gt; 20   19    1
+#&gt; 21   20    1
+#&gt; 22   21    1
+#&gt; 23   22    1
+#&gt; 24   23    1
+#&gt; 25   24    1
+#&gt; 26   25    1
+#&gt; 27   26    1
+#&gt; 28   27    1
+#&gt; 29   28    1
+#&gt; 30   29    1
+#&gt; 31   30    1
+#&gt; 32   31    1
+#&gt; 33   32    1
+#&gt; 34   33    1
+#&gt; 35   34    1
+#&gt; 36   35    1
+#&gt; 37   36    1
+#&gt; 38   37    1</div><div class='input'><span class='co'>## Code</span>
+<span class='no'>run_sim</span></div><div class='output co'>#&gt; function (n, n_length, mean_si, sd_si, R0, k = 0.16, tf = 37, 
+#&gt;     max_potential_cases, delay_sample) 
+#&gt; {
+#&gt;     t0 &lt;- sample(seq(1, n_length), n, replace = TRUE)
+#&gt;     sim &lt;- bpmodels::chain_sim(n, "nbinom", serial = function(x) stats::rnorm(x, 
+#&gt;         mean_si, sd_si), mu = R0, size = k, t0 = t0, tf = tf, 
+#&gt;         infinite = max_potential_cases)
+#&gt;     sim$time &lt;- sim$time + delay_sample(length(sim$time))
+#&gt;     sim &lt;- sim[sim$time &lt; tf, ]
+#&gt;     size &lt;- data.frame(time = 0:tf, size = unlist(lapply(0:tf, 
+#&gt;         function(x) {
+#&gt;             tmp &lt;- sim[sim$time &lt; x, ]
+#&gt;             nrow(tmp)
+#&gt;         })))
+#&gt;     return(size)
+#&gt; }
+#&gt; &lt;bytecode: 0x55c73f8a3cc8&gt;
+#&gt; &lt;environment: namespace:WuhanSeedingVsTransmission&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

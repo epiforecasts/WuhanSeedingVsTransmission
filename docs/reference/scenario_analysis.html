@@ -92,7 +92,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/output.html">Evaluating the transmissibility of the coronavirus in the 2019-20 Wuhan Outbreak: Exploring initial animal-to-human event sizes and durations using scenario analysis</a>
+      <a href="../articles/output.html">Evaluating the transmissibility of the coronavirus in the 2019-20 Wuhan Outbreak: Exploring initial point-source exposure sizes and durations using scenario analysis</a>
     </li>
   </ul>
 </li>
@@ -151,14 +151,36 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    
-
-
+    <p>A nested dataframe of scenarios combined with model simulations</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-
-</div></pre>
+<span class='co'>## Code </span>
+<span class='no'>scenario_analysis</span></div><div class='output co'>#&gt; function (scenarios = NULL, sampled_and_set_parameters = NULL, 
+#&gt;     delay_sample_func = NULL, show_progress = FALSE) 
+#&gt; {
+#&gt;     scenario &lt;- NULL
+#&gt;     data &lt;- NULL
+#&gt;     scenario_sims &lt;- scenarios %&gt;% dplyr::group_by(scenario) %&gt;% 
+#&gt;         tidyr::nest() %&gt;% dplyr::ungroup() %&gt;% dplyr::sample_frac(size = 1, 
+#&gt;         replace = FALSE) %&gt;% dplyr::mutate(sims = furrr::future_map(data, 
+#&gt;         function(data) {
+#&gt;             sampled_R0 &lt;- stats::runif(nrow(sampled_and_set_parameters), 
+#&gt;                 data$lower_R0, data$upper_R0)
+#&gt;             purrr::map_dfr(1:nrow(sampled_and_set_parameters), 
+#&gt;                 ~tibble::tibble(size = list(WuhanSeedingVsTransmission::run_sim(n = data$event_size, 
+#&gt;                   n_length = data$event_duration, mean_si = data$serial_mean, 
+#&gt;                   sd_si = sampled_and_set_parameters$serial_sd[.x], 
+#&gt;                   R0 = sampled_R0[.x], k = sampled_and_set_parameters$k[.x], 
+#&gt;                   tf = sampled_and_set_parameters$outbreak_length[.x] + 
+#&gt;                     data$event_duration, max_potential_cases = sampled_and_set_parameters$upper_case_bound + 
+#&gt;                     1, delay_sample = delay_sample_func)), sample = .x, 
+#&gt;                   R0 = sampled_R0[.x]) %&gt;% tidyr::unnest("size"))
+#&gt;         }, .progress = show_progress)) %&gt;% tidyr::unnest("data") %&gt;% 
+#&gt;         tidyr::unnest("sims")
+#&gt; }
+#&gt; &lt;bytecode: 0x55c74151c378&gt;
+#&gt; &lt;environment: namespace:WuhanSeedingVsTransmission&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
