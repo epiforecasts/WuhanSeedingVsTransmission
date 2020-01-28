@@ -1,0 +1,20 @@
+citHeader("To cite WuhanSeedingVsTransmission in publications use:")
+
+citEntry(entry = "Article",
+  title        = "WuhanSeedingVsTransmission",
+  author       = personList(as.person("Sam Abbott"),
+                            as.person("Joel Hellewell"),
+                            as.person("James Munday"), 
+                            as.person("Sebastian Funk")),
+  journal      = "*",
+  year         = "2020",
+  volume       = "*",
+  number       = "*",
+  pages        = "*",
+  doi          = "",
+
+  textVersion  =
+  paste("Sam Abbott, Joel Hellewell, James Munday, Sebastian Funk (2020).",
+        "WuhanSeedingVsTransmission,",
+        "DOI: ")
+)
