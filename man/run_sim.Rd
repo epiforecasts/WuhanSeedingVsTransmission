@@ -9,6 +9,7 @@ run_sim(
   n_length,
   mean_si,
   sd_si,
+  serial_fn = NULL,
   R0,
   k = 0.16,
   tf = 37,
@@ -25,6 +26,10 @@ run_sim(
 \item{mean_si}{Numeric, the mean of the serial interval}
 
 \item{sd_si}{Numeric, the sd of the serial interval}
+
+\item{serial_fn}{Function from which to sample the serial interval must
+accepted a number of samples argument followed by a mean and standard deviation. If
+missing defaults to a normal distribution.}
 
 \item{R0}{Numeric, the estimated reproduction number}
 
