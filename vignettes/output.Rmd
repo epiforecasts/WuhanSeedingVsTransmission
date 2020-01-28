@@ -99,7 +99,7 @@ Overall, the highest acceptance rate was for scenarios with a large event size (
 There were very few scenarios in which an upper bound on the reproduction of 1 resulted in scenarios that were accepted after conditioning on observed data, regardless of the mean serial interval, event size, or event duration. There were few scenarios that were accepted after conditioning on data for scenarios with an upper bound of 2 on the R0 with this scenario being most likely if the transmission event was large (200), 14 days in duration, and had a SARS-like serial interval (8.4 days). For a short serial interval (4 days) the percentage of accepted samples was low for all scenarios with the highest accepted proportion for scenarios with an upper bound on the R0 of 2. Across all R0 bounds this scenario was most likely if the transmission event was of a medium size (40 - 80 cases) and a short duration (7-14 days). 
 
 ```{r plot-probs, fig.cap = "Heatmaps of the percentage of samples accepted by scenario. The figure is stratified by the upper bound on the R0 (columns) and the mean of the serial interval (rows)." }
-WuhanSeedingVsTransmission::plot_scenario_tile(prop_allowed_samples)
+WuhanSeedingVsTransmission::plot_per_accepted_tile(prop_allowed_samples)
 ```
 
 

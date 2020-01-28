@@ -15,8 +15,8 @@
 #' @examples
 #' 
 #' ## Code
-#' plot_scenario_tile
-plot_scenario_tile <- function(proportion_allowed = NULL) {
+#' plot_per_accepted_tile
+plot_per_accepted_tile <- function(proportion_allowed = NULL) {
   
   
   ## NULL out variables for CRAN
