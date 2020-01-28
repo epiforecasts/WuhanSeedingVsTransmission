@@ -57,7 +57,9 @@ run_scenario_grid <- function(end_date = NULL, samples = 1, upper_case_bound = N
       serial_type = c("MERS-like", "SARS-like", "initial SARS-like"),
       serial_mean = c(6.8, 8.4, 10),
       serial_sd = c(4.1, 3.8, 2.8),
-      serial_fn = c(rnorm, rnorm, rnorm)
+      serial_fn = c(WuhanSeedingVsTransmission::rgamma_with_mean_sd, 
+                    WuhanSeedingVsTransmission::rweibull_with_mean_sd,
+                    WuhanSeedingVsTransmission::rweibull_with_mean_sd)
     )),
     #From Lispsitch et al. (2003);  6, 4, 12 assumption driven
     ## Bounds on the reproduction number

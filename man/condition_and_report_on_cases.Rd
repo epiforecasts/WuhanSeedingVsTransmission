@@ -12,7 +12,7 @@ condition_and_report_on_cases(
   samples = NULL,
   end_of_seed_date = "2019-12-31",
   scenarios_list = c("scenario", "event_duration", "event_size", "serial_mean",
-    "upper_R0", "lower_R0")
+    "serial_type", "upper_R0", "lower_R0")
 )
 }
 \arguments{

@@ -25,7 +25,7 @@ scenario_analysis <- function(scenarios = NULL,
                               kept_times) { 
   
   ## NULL out for CRAN
-  scenario <- NULL; data <- NULL;
+  scenario <- NULL; data <- NULL; serial_fn  <- NULL;
 
   
   ## Run scenarios and samples against sims
@@ -72,12 +72,10 @@ scenario_analysis <- function(scenarios = NULL,
         )
           
           sims <- dplyr::bind_rows(sims)
-          
           }, 
         .progress = show_progress
       ))
-  
-  
+
   scenario_sims <- tidyr::unnest(scenario_sims, "data")
   scenario_sims <- tidyr::unnest(scenario_sims, "sims")
   

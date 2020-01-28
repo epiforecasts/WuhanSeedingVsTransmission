@@ -38,13 +38,13 @@ run_sim  = function(n, n_length, mean_si, sd_si, serial_fn = NULL, R0,
   }
   
   if (is.null(serial_fn)) {
-    serial_fn <- function(x) {stats::rnorm(x, mean_si, sd_si)}
+    serial_fn <- stats::rnorm
   }
   
   t0 <- sample(seq(1, n_length), n, replace = TRUE)  
 
   ## simulate chains
-  sim <- bpmodels::chain_sim(n, "nbinom", serial = serial_fn,
+  sim <- bpmodels::chain_sim(n, "nbinom", serial = function(x) {serial_fn(x, mean_si, sd_si)},
                    mu = R0, size = k, t0 = t0, tf = tf, infinite = max_potential_cases)
   
   ## add reporting delays
