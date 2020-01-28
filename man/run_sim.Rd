@@ -47,10 +47,14 @@ Negative binomial branching process model
 }
 \examples{
 
+## Example
 
 run_sim(n = 1, n_length = 7, mean_si = 5, sd_si = 2, R0 = 2, 
         k=0.16, tf=37, max_potential_cases= 100, 
         delay_sample = function(x) {rnorm(x, 6, 1)})
+        
+## Code
+run_sim
 }
 \author{
 Sebastian Funk, Sam Abbott, James Munday

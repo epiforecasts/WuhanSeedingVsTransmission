@@ -14,6 +14,16 @@ delays to randomly sample
 This connects to the Google Sheet containing the collated linelist; the
 first time this is run, it may require authentiction with Google
 }
+\examples{
+
+## Example
+\dontrun{
+get_rep_sample_fun()
+}
+
+## Code 
+get_rep_sample_fun
+}
 \author{
 Sebastian Funk \href{mailto:sebastian.funk@lshtm.ac.uk}{sebastian.funk@lshtm.ac.uk}
 }

@@ -1,20 +1,48 @@
-url: epiforecasts.io/WuhanSeedingVsTransmission
-  template:
+url: epiforecasts.io/WuhanSeedingVsTransmission/
+template:
   params:
-  bootswatch: lumen
+    bootswatch: lumen
 
 development:
   mode: release
 
 navbar:
   type: inverse
-left:
-  - text: "Home"
-href: index.html
-- text: "Analysis"
-href: articles/output.html
-  - text: News
-href: news/index.html
-- icon: fa-file-code-o 
-text: "Functions"
-href: reference/index.html
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Analysis"
+      href: articles/output.html
+    - text: News
+      href: news/index.html
+    - icon: fa-file-code-o 
+      text: "Functions"
+      href: reference/index.html
+
+
+
+reference:
+  - title: Fit the reporting delay function
+    desc: Functions that allow the use of a fitted reporting delay function
+    contents:
+      - get_linelist
+      - get_rep_sample_fun
+      - fitted_delay_sample_func
+  - title: Run the branching process
+    desc: Functions used to run the branching process
+    contents:
+      - run_sim
+  - title: Run scenario analysis
+    desc: Functions that facilitate running the scenario analysis
+    contents:
+      - contains("scenario")
+  - title: Condition on data
+    desc: Functions that allow model simulations to be conditioned on observed data.
+    contents:
+      - contains("condition")
+  - title: Evaluate output
+    desc: Functions that facilitate evaluating the output of the analysis.
+    contents:
+      - summarise_end_r0
+      - make_duration_size_table
+      - contains("plot")

@@ -9,6 +9,16 @@
 ##' @author Sebastian Funk <sebastian.funk@lshtm.ac.uk>
 ##' 
 ##' @export
+##' 
+##' @examples 
+##' 
+##' ## Example
+##' \dontrun{
+##' get_rep_sample_fun()
+##' }
+##' 
+##' ## Code 
+##' get_rep_sample_fun
 get_rep_sample_fun <- function() {
   message("Downloading linelist")
   confirmation_delays <- get_linelist() %>%

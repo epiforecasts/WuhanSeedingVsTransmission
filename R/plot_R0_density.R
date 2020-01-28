@@ -9,7 +9,7 @@
 #' @importFrom ggridges geom_density_ridges_gradient
 #' @examples
 #' 
-#' ## code
+#' ## Code
 #' plot_R0_density
 plot_R0_density <- function(sims = NULL) {
   plot <- sims %>% 

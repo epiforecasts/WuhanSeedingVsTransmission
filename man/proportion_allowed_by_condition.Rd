@@ -26,11 +26,15 @@ Proportion of samples per scenario allowed by condition
 }
 \examples{
 
+## Example
 
 sims <- data.table::data.table(sample = 1:10, event_duration = 1,
                                event_size = 1:10)
 proportion_allowed_by_condition(sims, samples = 100, 
                                 group_var = c("event_duration"))
+                                
+## Code
+proportion_allowed_by_condition
 }
 \author{
 Sam Abbott

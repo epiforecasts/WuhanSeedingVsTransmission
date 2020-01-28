@@ -34,7 +34,7 @@ Make seeding event duration vs event size table
 }
 \examples{
 
-
+## Example
 results <- data.frame(R0 = runif(10, 0, 1), 
                       event_duration = 1:10, 
                       event_size = rep(c(1,2), 5),
@@ -42,6 +42,9 @@ results <- data.frame(R0 = runif(10, 0, 1),
                       
 make_duration_size_table(results)
 
+
+## Code
+make_duration_size_table
 }
 \author{
 Sam Abbott

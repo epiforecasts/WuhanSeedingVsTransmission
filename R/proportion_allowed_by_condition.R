@@ -9,12 +9,16 @@
 #' @author Sam Abbott
 #' @examples
 #' 
+#' ## Example
 #' 
 #' sims <- data.table::data.table(sample = 1:10, event_duration = 1,
 #'                                event_size = 1:10)
 
 #' proportion_allowed_by_condition(sims, samples = 100, 
 #'                                 group_var = c("event_duration"))
+#'                                 
+#'## Code
+#'proportion_allowed_by_condition
 proportion_allowed_by_condition <- function(sims, samples = NULL, 
                                             group_var = c("scenario", "event_duration", 
                                                           "event_size", "serial_mean", 

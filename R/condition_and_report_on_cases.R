@@ -16,6 +16,7 @@
 #' @import data.table
 #' @examples
 #' 
+#' ## Example
 #' sims <- data.frame(time = rep(1:10, 10),
 #'                    size = rep(1:10, 10),
 #'                    sample = unlist(lapply(1:10, function(.) {rep(., 10)})),
@@ -27,6 +28,9 @@
 #' 
 #' condition_and_report_on_cases(sims, condition_date = "2020-01-03", lower_bound = 3, upper_bound = 5,
 #'                               scenarios_list = c("scenario", "tmp"), samples = 10)
+#'
+#'## Code
+#'condition_and_report_on_cases
 condition_and_report_on_cases <- function(sims, condition_date = NULL, lower_bound = NULL,
                                           upper_bound = NULL, samples = NULL,
                                           end_of_seed_date = "2019-12-31",

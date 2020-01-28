@@ -28,6 +28,7 @@ Condition on known cases
 }
 \examples{
 
+## Example
 sims <- data.table::data.table(
                    time = rep(1:10, 10),
                    size = rep(1:10, 10),
@@ -41,6 +42,10 @@ sims <- data.table::data.table(
                                 event_duration = rep(c(1, 2), 5), time = 1:10)
                                 
 condition_on_known(sims, upper_bound = 5, lower_bound = 3, days_since_end_seed = 0)
+
+
+## Code 
+condition_on_known
 }
 \author{
 Sam Abbott

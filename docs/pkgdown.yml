@@ -3,4 +3,7 @@ pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
   output: output.html
+urls:
+  reference: epiforecasts.io/WuhanSeedingVsTransmission//reference
+  article: epiforecasts.io/WuhanSeedingVsTransmission//articles
 

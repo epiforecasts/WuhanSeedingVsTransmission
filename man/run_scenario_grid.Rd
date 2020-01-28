@@ -40,6 +40,7 @@ Run the scenario analysis grid.
 }
 \examples{
 
+## Example
 \dontrun{
 grid_results <- run_scenario_grid(end_date = "2020-01-25", samples = 1, 
                   upper_case_bound = 100, show_progress = TRUE, 
@@ -47,6 +48,9 @@ grid_results <- run_scenario_grid(end_date = "2020-01-25", samples = 1,
                   
 grid_results
 }
+
+## Code
+run_scenario_grid
 }
 \author{
 Sam Abbott

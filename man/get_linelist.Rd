@@ -13,6 +13,16 @@ delays to randomly sample
 \description{
 Get the latest compiled linelist
 }
+\examples{
+
+## Example
+\dontrun{
+get_linelist()
+}
+
+## Code
+get_linelist
+}
 \author{
 Sebastian Funk \href{mailto:sebastian.funk@lshtm.ac.uk}{sebastian.funk@lshtm.ac.uk}
 }

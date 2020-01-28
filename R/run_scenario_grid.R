@@ -19,6 +19,7 @@
 #'
 #' @examples
 #' 
+#' ## Example
 #' \dontrun{
 #' grid_results <- run_scenario_grid(end_date = "2020-01-25", samples = 1, 
 #'                   upper_case_bound = 100, show_progress = TRUE, 
@@ -26,6 +27,9 @@
 #'                   
 #'grid_results
 #' }
+#' 
+#' ## Code
+#' run_scenario_grid
 
 run_scenario_grid <- function(end_date = NULL, samples = 1, upper_case_bound = NULL,
                               start_date = "2019-12-31", show_progress = FALSE, 

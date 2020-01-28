@@ -17,6 +17,6 @@ Plot density plots of the basic reproduction number
 }
 \examples{
 
-## code
+## Code
 plot_R0_density
 }

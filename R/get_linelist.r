@@ -7,6 +7,16 @@
 ##' @author Sebastian Funk <sebastian.funk@lshtm.ac.uk>
 ##'
 ##' @export
+##' 
+##' @examples 
+##' 
+##' ## Example
+##' \dontrun{
+##' get_linelist()
+##' }
+##' 
+##' ## Code
+##' get_linelist
 get_linelist <- function() {
   gids <- c(outside_hubei = 0, hubei = 429276722)
   urls <- paste0("https://docs.google.com/spreadsheets/d/",
