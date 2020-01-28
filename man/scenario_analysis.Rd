@@ -8,7 +8,8 @@ scenario_analysis(
   scenarios = NULL,
   sampled_and_set_parameters = NULL,
   delay_sample_func = NULL,
-  show_progress = FALSE
+  show_progress = FALSE,
+  kept_times
 )
 }
 \arguments{
@@ -19,6 +20,9 @@ scenario_analysis(
 \item{delay_sample_func}{Function to generate sample reporting delays}
 
 \item{show_progress}{Logical, defaults to FALSE. Show progress be shown.}
+
+\item{kept_times}{Numeric, a vector of timepoints to keep information on. Defaults to all
+time points}
 }
 \value{
 A nested dataframe of scenarios combined with model simulations

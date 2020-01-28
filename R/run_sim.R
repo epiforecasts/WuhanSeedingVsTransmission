@@ -9,6 +9,8 @@
 #' @param tf Numeric, the end time of the branching process
 #' @param max_potential_cases Numeric, the maximum number of cases
 #' @param delay_sample A function to sample from reporting delays
+#' @param kept_times Numeric, a vector of timepoints to keep information on. Defaults to all
+#' time points
 #'
 #' @return A dataframe containing the simulation time and outbreak size
 #' @export
@@ -20,12 +22,13 @@
 #' run_sim(n = 1, n_length = 7, mean_si = 5, sd_si = 2, R0 = 2, 
 #'         k=0.16, tf=37, max_potential_cases= 100, 
 #'         delay_sample = function(x) {rnorm(x, 6, 1)})
-#' ## Code
-#' run_sim
 run_sim  = function(n, n_length, mean_si, sd_si, R0, 
-                    k=0.16, tf=37, max_potential_cases,
+                    k=0.16, tf=37, kept_times = NULL, max_potential_cases,
                     delay_sample) {
   
+  if (is.null(kept_times)) {
+    kept_times <- 0:tf
+  }
   
   t0 <- sample(seq(1, n_length), n, replace = TRUE)  
 
@@ -39,8 +42,8 @@ run_sim  = function(n, n_length, mean_si, sd_si, R0,
   
   ## summarise outbreak size
     size <- data.frame(
-      time = 0:tf,
-      size = unlist(lapply(0:tf, function(x) { 
+      time = kept_times,
+      size = unlist(lapply(kept_times, function(x) { 
     tmp <- sim[sim$time < x,] 
     nrow(tmp)}))
     )

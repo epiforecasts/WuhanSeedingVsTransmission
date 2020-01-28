@@ -164,30 +164,6 @@ longer mean serial interval assumption (12 days) varying the
 transmission event size and duration had a similar impact on estimates
 of the R0.
 
-    ## Picking joint bandwidth of 0.049
-
-    ## Picking joint bandwidth of 0.0488
-
-    ## Picking joint bandwidth of 0.0468
-
-    ## Picking joint bandwidth of 0.0441
-
-    ## Picking joint bandwidth of 0.069
-
-    ## Picking joint bandwidth of 0.0699
-
-    ## Picking joint bandwidth of 0.0706
-
-    ## Picking joint bandwidth of 0.0692
-
-    ## Picking joint bandwidth of 0.0729
-
-    ## Picking joint bandwidth of 0.0543
-
-    ## Picking joint bandwidth of 0.0745
-
-    ## Picking joint bandwidth of 0.0795
-
 ![Density plot of reproduction number (R0) estimates from each accepted
 sample stratified by transmission evvent size, event duration (columns),
 and the mean serial interval used (rows). The black lines on each

@@ -6,11 +6,12 @@
 #' @param delay_sample_func Function to generate sample reporting delays
 #' @param show_progress Logical, defaults to FALSE. Show progress be shown.
 #'
+#' @inheritParams run_sim
 #' @return A nested dataframe of scenarios combined with model simulations
 #' @export
-#' @importFrom dplyr rowwise mutate ungroup sample_frac
+#' @importFrom dplyr rowwise mutate ungroup sample_frac bind_rows
 #' @importFrom tidyr unnest 
-#' @importFrom purrr map_dfr
+#' @importFrom purrr map
 #' @importFrom furrr future_map
 #' @author Sam Abbott
 #' @examples
@@ -20,7 +21,8 @@
 scenario_analysis <- function(scenarios = NULL, 
                               sampled_and_set_parameters = NULL,
                               delay_sample_func = NULL,
-                              show_progress = FALSE) { 
+                              show_progress = FALSE,
+                              kept_times) { 
   
   ## NULL out for CRAN
   scenario <- NULL; data <- NULL;
@@ -44,9 +46,10 @@ scenario_analysis <- function(scenarios = NULL,
                                      data$upper_R0)
           
           ## Run model for specified number of samples
-          purrr::map_dfr(
+          sims <- purrr::map(
           1:nrow(sampled_and_set_parameters), 
-          ~ tibble::tibble( 
+          function(.x) {
+            sim <- tibble::tibble( 
             size = list(WuhanSeedingVsTransmission::run_sim(
               n = data$event_size,
               n_length = data$event_duration,
@@ -55,15 +58,27 @@ scenario_analysis <- function(scenarios = NULL,
               R0 = sampled_R0[.x], 
               k = sampled_and_set_parameters$k[.x], 
               tf = sampled_and_set_parameters$outbreak_length[.x] + data$event_duration,
+              kept_times = kept_times + data$event_duration,
               max_potential_cases = sampled_and_set_parameters$upper_case_bound + 1,
               delay_sample = delay_sample_func)),
             sample = .x,
             R0 = sampled_R0[.x]
-          ) %>% 
-            tidyr::unnest("size")
-        )}, 
+          )
+          sim <-  tidyr::unnest(sim, "size")
+           
+          return(sim)
+          }
+        )
+          
+          sims <- dplyr::bind_rows(sims)
+          
+          }, 
         .progress = show_progress
-      )) %>% 
-    tidyr::unnest("data") %>% 
-    tidyr::unnest("sims") 
+      ))
+  
+  
+  scenario_sims <- tidyr::unnest(scenario_sims, "data")
+  scenario_sims <- tidyr::unnest(scenario_sims, "sims")
+  
+  return(scenario_sims)
   }

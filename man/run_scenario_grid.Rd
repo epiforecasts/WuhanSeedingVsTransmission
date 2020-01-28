@@ -8,8 +8,10 @@ run_scenario_grid(
   end_date = NULL,
   samples = 1,
   upper_case_bound = NULL,
+  start_date = "2019-12-31",
   show_progress = FALSE,
-  delay_sample_func = NULL
+  delay_sample_func = NULL,
+  kept_dates = NULL
 )
 }
 \arguments{
@@ -20,10 +22,15 @@ run_scenario_grid(
 \item{upper_case_bound}{Numeric, defaults to \code{NULL}. The upper bound on the number of cases that will be
 modelled}
 
+\item{start_date}{Character string in the format \code{"2020-01-01"}. The date to start the outbreak from + the event duration.}
+
 \item{show_progress}{Logical, defaults to FALSE. Show progress be shown.}
 
 \item{delay_sample_func}{Function to generate sample reporting delays. If not supplied defaults to
 a delay function fitted to the linelist of Chinese cases.}
+
+\item{kept_times}{Character vector with dates in the format \code{"2020-01-01"}. Indicates which dates to return data on. Defaults to all
+time points}
 }
 \value{
 A data.frame of scenarios as returned by \code{scenario_analysis}
@@ -34,8 +41,9 @@ Run the scenario analysis grid.
 \examples{
 
 \dontrun{
-grid_results <- run_scenario_grid("2020-01-25", samples = 1, 
-                  upper_case_bound = 100, show_progress = TRUE)
+grid_results <- run_scenario_grid(end_date = "2020-01-25", samples = 1, 
+                  upper_case_bound = 100, show_progress = TRUE, 
+                  kept_dates = c("2020-01-01", "2020-01-08", "2020-01-15", "2020-01-25"))
                   
 grid_results
 }
