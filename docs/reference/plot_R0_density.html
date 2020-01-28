@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Proportion of samples per scenario allowed by condition — proportion_allowed_by_condition • WuhanSeedingVsTransmission</title>
+<title>Plot density plots of the basic reproduction number — plot_R0_density • WuhanSeedingVsTransmission</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Proportion of samples per scenario allowed by condition — proportion_allowed_by_condition" />
-<meta property="og:description" content="Proportion of samples per scenario allowed by condition" />
+<meta property="og:title" content="Plot density plots of the basic reproduction number — plot_R0_density" />
+<meta property="og:description" content="Plot density plots of the basic reproduction number" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,21 +112,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Proportion of samples per scenario allowed by condition</h1>
+    <h1>Plot density plots of the basic reproduction number</h1>
     
-    <div class="hidden name"><code>proportion_allowed_by_condition.Rd</code></div>
+    <div class="hidden name"><code>plot_R0_density.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Proportion of samples per scenario allowed by condition</p>
+    <p>Plot density plots of the basic reproduction number</p>
     </div>
 
-    <pre class="usage"><span class='fu'>proportion_allowed_by_condition</span>(
-  <span class='no'>sims</span>,
-  <span class='kw'>samples</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>group_var</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"scenario"</span>, <span class='st'>"event_duration"</span>, <span class='st'>"event_size"</span>, <span class='st'>"serial_mean"</span>, <span class='st'>"upper_R0"</span>,
-    <span class='st'>"lower_R0"</span>)
-)</pre>
+    <pre class="usage"><span class='fu'>plot_R0_density</span>(<span class='kw'>sims</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -135,28 +130,29 @@
       <th>sims</th>
       <td><p>A data.table from <code>scenario_analysis</code>.</p></td>
     </tr>
-    <tr>
-      <th>samples</th>
-      <td><p>Numeric, the number of samples that were used.</p></td>
-    </tr>
-    <tr>
-      <th>group_var</th>
-      <td><p>Character vector, the grouping variables to use to split scenarios.</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data.table listing the proportion allowed by scenario</p>
+    <p>A ggplot2 plot of R0 density over the scenarios explored</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-
-<span class='no'>sims</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>data.table</span><span class='kw ns'>::</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span>(<span class='kw'>sample</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>10</span>, <span class='kw'>event_duration</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-                               <span class='kw'>event_size</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>10</span>)
-<span class='fu'>proportion_allowed_by_condition</span>(<span class='no'>sims</span>, <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-                                <span class='kw'>group_var</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"event_duration"</span>))</div><div class='output co'>#&gt;    event_duration allowed_per
-#&gt; 1:              1         0.1</div></pre>
+<span class='co'>## code</span>
+<span class='no'>plot_R0_density</span></div><div class='output co'>#&gt; function (sims = NULL) 
+#&gt; {
+#&gt;     plot &lt;- sims %&gt;% dplyr::group_by(scenario, sample) %&gt;% dplyr::filter(time == 
+#&gt;         max(time)) %&gt;% dplyr::ungroup() %&gt;% ggplot2::ggplot(ggplot2::aes(x = R0, 
+#&gt;         y = factor(event_size), fill = stat(x))) + ggridges::geom_density_ridges_gradient(quantile_lines = TRUE, 
+#&gt;         quantiles = c(0.05, 0.95)) + ggplot2::facet_grid(serial_mean ~ 
+#&gt;         event_duration) + ggplot2::scale_fill_continuous(type = "viridis", 
+#&gt;         direction = 1) + ggplot2::theme_minimal() + ggplot2::labs(x = "Reproduction number (R0)", 
+#&gt;         y = "Transmission event size") + ggplot2::theme(legend.position = "bottom") + 
+#&gt;         ggplot2::guides(fill = ggplot2::guide_colorbar(title = "R0"))
+#&gt;     return(suppressWarnings(suppressMessages(plot)))
+#&gt; }
+#&gt; &lt;bytecode: 0x564b7d8fe598&gt;
+#&gt; &lt;environment: namespace:WuhanSeedingVsTransmission&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -166,8 +162,6 @@
       <li><a href="#examples">Examples</a></li>
     </ul>
 
-    <h2>Author</h2>
-    <p>Sam Abbott</p>
   </div>
 </div>
 

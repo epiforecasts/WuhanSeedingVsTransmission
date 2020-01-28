@@ -122,12 +122,29 @@
 <p>Overall, the highest acceptance rate was for scenarios with a large event size (200), short duration (7 days), an upper bound on the R0 of 3 and a SARS-like mean serial interval (8.4 days) (Figure 1). Scenarios with a longer event duration (14 days), a higher R0 bound (4), and a longer mean serial interval (12 days) also had a high acceptance rate compared to other scenarios. In scenarios with a SARS-like mean serial interval (8.4 days), and a longer serial interval (12 days), the acceptance rate decreased as the event size decreased and the event duration increased.</p>
 <p>There were very few scenarios in which an upper bound on the reproduction of 1 resulted in scenarios that were accepted after conditioning on observed data, regardless of the mean serial interval, event size, or event duration. There were few scenarios that were accepted after conditioning on data for scenarios with an upper bound of 2 on the R0 with this scenario being most likely if the transmission event was large (200), 14 days in duration, and had a SARS-like serial interval (8.4 days). For a short serial interval (4 days) the percentage of accepted samples was low for all scenarios with the highest accepted proportion for scenarios with an upper bound on the R0 of 2. Across all R0 bounds this scenario was most likely if the transmission event was of a medium size (40 - 80 cases) and a short duration (7-14 days).</p>
 <div class="figure">
-<img src="figures/plot-probs-1.png" alt="Heatmaps of the percentage of samples accepted by scenario. The figure is stratified by the upper bound on the R0 (columns) and the mean of the serial interval (rows)." width="2560"><p class="caption">
+<img src="figures/plot-probs-1.png" alt="Heatmaps of the percentage of samples accepted by scenario. The figure is stratified by the upper bound on the R0 (columns) and the mean of the serial interval (rows)." width="2880"><p class="caption">
 Heatmaps of the percentage of samples accepted by scenario. The figure is stratified by the upper bound on the R0 (columns) and the mean of the serial interval (rows).
 </p>
 </div>
 <p><strong>Estimated reproduction numbers</strong></p>
 <p>The estimated R0 decreased as the event size and duration increased for both mean serial interval scenarios (Table 1 and Table 2). Assuming a longer serial interval (12 days) resulted in an approximate increase of 1 to the R0 estimates across all scenarios when compared to the SARS-like (8.4 days) serial interval. For the SARS-like interval the most likely scenario - with an event size of 200 and a duration of a week) (Figure 1) - resulted in an estimated R0 of 1.7 - 2.3 (Table 1). Decreasing the event size increased the R0 to 2.2 - 3.2 for a transmission event with 100 cases. A longer transmission event resulted in a decrease in R0 to 1.8 - 2.7. The most likely scenario with a mean serial interval of 12 days - with an outbreak size of 200 and a duration of 14 days - resulted in an estimated R0 of 2.2 - 3.2 (Table 2). For the longer mean serial interval assumption (12 days) varying the transmission event size and duration had a similar impact on estimates of the R0.</p>
+<pre><code>## Picking joint bandwidth of 0.049</code></pre>
+<pre><code>## Picking joint bandwidth of 0.0488</code></pre>
+<pre><code>## Picking joint bandwidth of 0.0468</code></pre>
+<pre><code>## Picking joint bandwidth of 0.0441</code></pre>
+<pre><code>## Picking joint bandwidth of 0.069</code></pre>
+<pre><code>## Picking joint bandwidth of 0.0699</code></pre>
+<pre><code>## Picking joint bandwidth of 0.0706</code></pre>
+<pre><code>## Picking joint bandwidth of 0.0692</code></pre>
+<pre><code>## Picking joint bandwidth of 0.0729</code></pre>
+<pre><code>## Picking joint bandwidth of 0.0543</code></pre>
+<pre><code>## Picking joint bandwidth of 0.0745</code></pre>
+<pre><code>## Picking joint bandwidth of 0.0795</code></pre>
+<div class="figure">
+<img src="figures/density-r0-plot-1.png" alt="Density plot of reproduction number (R0) estimates from each accepted sample stratified by transmission evvent size, event duration (columns), and the mean serial interval used (rows). The black lines on each density plot represent the 90% credible interval" width="2880"><p class="caption">
+Density plot of reproduction number (R0) estimates from each accepted sample stratified by transmission evvent size, event duration (columns), and the mean serial interval used (rows). The black lines on each density plot represent the 90% credible interval
+</p>
+</div>
 <table class="table">
 <caption>Median, minimum, and maximum reproduction numbers of the Wuhan outbreak conditioned on case data from the 3rd, 18th and 25th of January - for scenarios with a mean serial interval of 8.4 (SARS-like). Stratified by initial transmission event size and duration.</caption>
 <thead><tr class="header">
