@@ -4,10 +4,13 @@
 \alias{summarise_end_r0}
 \title{Summarise R0 estimates across samples}
 \usage{
-summarise_end_r0(sims)
+summarise_end_r0(sims, group_var = c("event_size", "event_duration"))
 }
 \arguments{
-\item{sims}{A dataframe as produced by \code{scenario_analysis}.}
+\item{sims}{A data.table from \code{scenario_analysis}.}
+
+\item{group_var}{Character vector indicating the groups to show. Defaults to
+\code{event_duration} and \code{event_size}}
 }
 \value{
 A dataframe of R0 estimates for each scenario

@@ -8,7 +8,7 @@ message("Running scenario grid")
 grid_results <- WuhanSeedingVsTransmission::run_scenario_grid(
                                   end_date = "2020-01-25", 
                                   samples = 10000, 
-                                  upper_case_bound = 5000, 
+                                  upper_case_bound = round(1975*1.05, 0), 
                                   show_progress = TRUE)
 
 
@@ -18,37 +18,14 @@ message("Saving complete grid")
 fst::write.fst(grid_results, "inst/results/grid.fst")
 
 
-## Filter by known cases on the 3rd of January - 10* uncertainty on cases
-
-message("Conditioning on data from the 3rd of January")
-jan3_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
-  grid_results, 
-  condition_date = "2020-01-03",
-  samples = max(grid_results$sample),
-  lower_bound = 41, 
-  upper_bound = 400)
-
-
-## Filter by known cases on the 18th of January (saturday with reporting spike due to changing reporting)
-## 10* uncertainty on cases
-message("Conditioning on data from the 18th of January")
-jan18_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
-  jan3_conditioned$conditioned_sims, 
-  condition_date = "2020-01-18",
-  samples =  max(grid_results$sample),
-  lower_bound = 200, 
-  upper_bound = 2000)
-
-
-
 ## Filter by known cases on the 25th of January - bounded by potential cases
 message("Conditioning on data from the 25th of January")
 jan25_conditioned <- WuhanSeedingVsTransmission::condition_and_report_on_cases(
-  jan18_conditioned$conditioned_sims, 
+  grid_results, 
   condition_date = "2020-01-25",
   samples =  max(grid_results$sample),
-  lower_bound = 1975, 
-  upper_bound = 5000)
+  lower_bound = 1975*0.95, 
+  upper_bound = 1975*1.05)
 
 
 ## Save results

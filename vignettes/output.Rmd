@@ -72,7 +72,6 @@ We compared the percentage of samples that were accepted stratified by the trans
 ```{r summarise_r0s}
 ## Make current r0 summary based on current time
 summarised_r0s <- conditioned_grid %>% 
-  dplyr::filter(upper_R0 == 4) %>% 
   dplyr::arrange(serial_mean) %>% 
   dplyr::group_split(serial_mean) %>% 
   purrr::map(  ~ WuhanSeedingVsTransmission::summarise_end_r0(.) %>% 

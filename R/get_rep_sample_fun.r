@@ -10,6 +10,7 @@
 ##' 
 ##' @export
 get_rep_sample_fun <- function() {
+  message("Downloading linelist")
   confirmation_delays <- get_linelist() %>%
     dplyr::filter(!is.na(delay_confirmation), country == "China") %>%
     .$delay_confirmation %>%
@@ -25,9 +26,13 @@ get_rep_sample_fun <- function() {
   gof <- fitdistrplus::gofstat(fits, fitnames = names(fits))
 
   best_fit <- names(which.min(gof$aic))
+  
+  message("Best fitting distribution: ", best_fit)
+  
   good_fit <- (gof$chisqpvalue[best_fit] > 0.05) ## arbitrary threshold at 0.05
 
   if (!good_fit) { ## no good fit obtained
+    message("Fit below threshold. Sampling from data.")
     sample_function <- function(n) {
       sample(confirmation_delays, n, replace = TRUE)
     }

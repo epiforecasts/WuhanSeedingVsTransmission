@@ -10,11 +10,13 @@ condition_and_report_on_cases(
   lower_bound = NULL,
   upper_bound = NULL,
   samples = NULL,
-  end_of_seed_date = "2019-12-31"
+  end_of_seed_date = "2019-12-31",
+  scenarios_list = c("scenario", "event_duration", "event_size", "serial_mean",
+    "upper_R0")
 )
 }
 \arguments{
-\item{sims}{A dataframe as produced by \code{scenario_analysis}.}
+\item{sims}{A data.table from \code{scenario_analysis}.}
 
 \item{condition_date}{A character string in the following format \code{"2020-01-01"}. Sets the
 date on which to condition the data.}
@@ -27,6 +29,8 @@ date on which to condition the data.}
 
 \item{end_of_seed_date}{A character string in the following format \code{"2020-01-01"}. The assumed
 end date of the seeding event.}
+
+\item{scenarios_list}{A character vector listing scenarios evaluated.}
 }
 \value{
 A list of 3 data.frames as produced by \code{condition_on_known}, \code{proportion_allowed_by_condition}, and
@@ -37,9 +41,17 @@ Condition on cases and return accepted sample size by scenario
 }
 \examples{
 
+sims <- data.frame(time = rep(1:10, 10),
+                   size = rep(1:10, 10),
+                   sample = unlist(lapply(1:10, function(.) {rep(., 10)})),
+                   scenario = c(rep(1, 5), rep(1, 5)),
+                   tmp = c(rep(1, 5), rep(1, 5)),
+                   event_duration = 1
+                  )
 
-## Code
-condition_and_report_on_cases
+
+condition_and_report_on_cases(sims, condition_date = "2020-01-03", lower_bound = 3, upper_bound = 5,
+                              scenarios_list = c("scenario", "tmp"), samples = 10)
 }
 \author{
 Sam Abbott

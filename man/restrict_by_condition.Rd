@@ -4,13 +4,20 @@
 \alias{restrict_by_condition}
 \title{Restrict scenarios based on allowed scenarios}
 \usage{
-restrict_by_condition(sims, allowed_scenarios)
+restrict_by_condition(
+  sims,
+  allowed_scenarios,
+  restriction_var = c("scenario", "sample")
+)
 }
 \arguments{
-\item{sims}{A dataframe as produced by \code{scenario_analysis}.}
+\item{sims}{A data.table from \code{scenario_analysis}.}
 
-\item{allowed_scenarios}{A dataframe of allowed scenarios. Must include a scenario and sample
+\item{allowed_scenarios}{A data.table of allowed scenarios. Must include a scenario and sample
 variable.}
+
+\item{restriction_var}{Character vector of variables to use to restrict scenarios. Defaults to "scenario" and
+"sample".}
 }
 \value{
 A data frame of scenarios restricted by the allowed scenarios
@@ -20,8 +27,12 @@ Restrict scenarios based on allowed scenarios
 }
 \examples{
 
-## Code 
-restrict_by_condition
+sims <- data.table::data.table(scenario = 1:10, sample = 1:10, value = 1:10)
+
+allowed_scenarios <- data.table::data.table(scenario = c(1,4,6), sample = c(1, 4, 6))
+
+restrict_by_condition(sims, allowed_scenarios)
+
 }
 \author{
 Sam Abbott
