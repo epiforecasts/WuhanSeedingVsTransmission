@@ -17,10 +17,11 @@ summarise_end_r0 <- function(sims, group_var = c("event_size", "event_duration")
   
   ## NULL out for CRAN
   time <- NULL; R0 <- NULL; median_R0 <- NULL; 
-  lower_R0 <- NULL; upper_R0 <- NULL;
+  lower_R0 <- NULL; upper_R0 <- NULL; sample <- NULL;
+  scenario <- NULL;
   
   restricted_scenarios <- sims  %>% 
-    dplyr::group_by(.dots = group_var) %>% 
+    dplyr::group_by(sample, scenario) %>% 
     dplyr::filter(time == max(time)) %>% 
     dplyr::group_by(.dots = group_var) %>% 
     dplyr::summarise(median_R0 = stats::median(R0, na.rm = TRUE), 
