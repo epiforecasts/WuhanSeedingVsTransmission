@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">WuhanSeedingVsTransmission</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -125,8 +125,10 @@
   <span class='kw'>end_date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>upper_case_bound</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>start_date</span> <span class='kw'>=</span> <span class='st'>"2019-12-31"</span>,
   <span class='kw'>show_progress</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>delay_sample_func</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>delay_sample_func</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>kept_dates</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -146,6 +148,10 @@
 modelled</p></td>
     </tr>
     <tr>
+      <th>start_date</th>
+      <td><p>Character string in the format <code>"2020-01-01"</code>. The date to start the outbreak from + the event duration.</p></td>
+    </tr>
+    <tr>
       <th>show_progress</th>
       <td><p>Logical, defaults to FALSE. Show progress be shown.</p></td>
     </tr>
@@ -153,6 +159,11 @@ modelled</p></td>
       <th>delay_sample_func</th>
       <td><p>Function to generate sample reporting delays. If not supplied defaults to
 a delay function fitted to the linelist of Chinese cases.</p></td>
+    </tr>
+    <tr>
+      <th>kept_times</th>
+      <td><p>Character vector with dates in the format <code>"2020-01-01"</code>. Indicates which dates to return data on. Defaults to all
+time points</p></td>
     </tr>
     </table>
 
@@ -163,8 +174,9 @@ a delay function fitted to the linelist of Chinese cases.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>grid_results</span> <span class='kw'>&lt;-</span> <span class='fu'>run_scenario_grid</span>(<span class='st'>"2020-01-25"</span>, <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-                  <span class='kw'>upper_case_bound</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>show_progress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='no'>grid_results</span> <span class='kw'>&lt;-</span> <span class='fu'>run_scenario_grid</span>(<span class='kw'>end_date</span> <span class='kw'>=</span> <span class='st'>"2020-01-25"</span>, <span class='kw'>samples</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+                  <span class='kw'>upper_case_bound</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>show_progress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+                  <span class='kw'>kept_dates</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2020-01-01"</span>, <span class='st'>"2020-01-08"</span>, <span class='st'>"2020-01-15"</span>, <span class='st'>"2020-01-25"</span>))
 
 <span class='no'>grid_results</span>
 }</div></pre>
