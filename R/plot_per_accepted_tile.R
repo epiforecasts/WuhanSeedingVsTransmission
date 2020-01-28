@@ -10,7 +10,7 @@
 #' @importFrom tidyr complete
 #' @importFrom dplyr mutate_at mutate
 #' @importFrom ggplot2 ggplot aes geom_tile scale_fill_continuous facet_grid theme_minimal theme guides guide_colorbar labs
-#' @importFrom scales percent
+#' @importFrom scales percent_format
 #' @author Sam Abbott
 #' @examples
 #' 
@@ -32,7 +32,7 @@ plot_per_accepted_tile <- function(proportion_allowed = NULL) {
     ggplot2::ggplot(ggplot2::aes(x = event_duration, 
                                  y = event_size, fill = allowed_per)) + 
     ggplot2::geom_tile(alpha = 0.95) +
-    ggplot2::scale_fill_continuous(label = scales::percent,
+    ggplot2::scale_fill_continuous(label = scales::percent_format(accuracy = 1L),
                                    type = "viridis", direction = 1) + 
     ggplot2::facet_grid(serial_mean ~ joined_R0) +
     ggplot2::theme_minimal() +
