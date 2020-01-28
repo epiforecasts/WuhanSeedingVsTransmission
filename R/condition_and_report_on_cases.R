@@ -31,7 +31,7 @@ condition_and_report_on_cases <- function(sims, condition_date = NULL, lower_bou
                                           upper_bound = NULL, samples = NULL,
                                           end_of_seed_date = "2019-12-31",
                                           scenarios_list = c("scenario", "event_duration", "event_size",
-                                                             "serial_mean", "upper_R0")) {
+                                                             "serial_mean", "upper_R0", "lower_R0")) {
   
   ## Convert simulations to data.table for speed
   sims <- data.table::setDT(sims)

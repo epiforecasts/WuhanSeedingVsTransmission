@@ -7,7 +7,8 @@
 proportion_allowed_by_condition(
   sims,
   samples = NULL,
-  group_var = c("scenario", "event_duration", "event_size", "serial_mean", "upper_R0")
+  group_var = c("scenario", "event_duration", "event_size", "serial_mean", "upper_R0",
+    "lower_R0")
 )
 }
 \arguments{

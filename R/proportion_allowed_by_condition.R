@@ -18,7 +18,7 @@
 proportion_allowed_by_condition <- function(sims, samples = NULL, 
                                             group_var = c("scenario", "event_duration", 
                                                           "event_size", "serial_mean", 
-                                                          "upper_R0")) {
+                                                          "upper_R0", "lower_R0")) {
   
   ## NULL out for CRAN check
   . <- NULL; allowed_per <- NULL; 
