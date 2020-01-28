@@ -74,6 +74,7 @@
 <div id="evaluating-the-transmissibility-of-the-coronavirus-in-the-2019-20-wuhan-outbreak-exploring-initial-point-source-exposure-sizes-and-durations-using-scenario-analysis" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#evaluating-the-transmissibility-of-the-coronavirus-in-the-2019-20-wuhan-outbreak-exploring-initial-point-source-exposure-sizes-and-durations-using-scenario-analysis" class="anchor"></a>Evaluating the transmissibility of the coronavirus in the 2019-20 Wuhan Outbreak: Exploring initial point-source exposure sizes and durations using scenario analysis</h1></div>
+
 <div id="abstract" class="section level2">
 <h2 class="hasAnchor">
 <a href="#abstract" class="anchor"></a>Abstract</h2>
@@ -104,8 +105,7 @@
 <div id="set-up" class="section level3">
 <h3 class="hasAnchor">
 <a href="#set-up" class="anchor"></a>Set up</h3>
-<p>Set your working directory to the home directory of this project (or use the provided Rstudio project).</p>
-<p>Install the analysis and all dependencies with:</p>
+<p>Set your working directory to the home directory of this project (or use the provided Rstudio project). Install the analysis and all dependencies with:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"epiforecasts/WuhanSeedingVsTransmission"</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 </div>
 <div id="run-analysis" class="section level3">
@@ -113,11 +113,12 @@
 <a href="#run-analysis" class="anchor"></a>Run analysis</h3>
 <p>Run the analysis with the following:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="ex">Rscript</span> inst/scripts/run_grid.R</a></code></pre></div>
+<p>See <code>run_scenario_grid</code> for additional scenario analysis details.</p>
 </div>
 <div id="inspect-results" class="section level3">
 <h3 class="hasAnchor">
 <a href="#inspect-results" class="anchor"></a>Inspect results</h3>
-<p>Use <code>vignettes/output.Rmd.orig</code> to inspect the results of the analysis interactively.</p>
+<p>Use <code>vignettes/output.Rmd</code> to inspect the results of the analysis interactively. See <code>vignettes/output.md</code> for a markdown version of the analysis containing all results. See <code>vignettes/rendered_output</code> for version of the analysis rendered in other formats.</p>
 </div>
 <div id="render-output" class="section level3">
 <h3 class="hasAnchor">
@@ -146,6 +147,7 @@
 <p><code>{bash, eval = FALSE} --mount type=bind,source=$(pwd)/tmp,target=/home/wuhansvst</code></p>
 <p>To access the command line run the following:</p>
 <p><code>{bash, eval = FALSE} docker exec -ti wuhansvst bash</code></p>
+<p>Alternatively the analysis environment can be accessed via <a href="https://mybinder.org/v2/gh/epiforecasts/WuhanSeedingVsTransmission/master?urlpath=rstudio">binder</a>.</p>
 </div>
 </div>
   </div>
@@ -168,7 +170,16 @@
 </ul>
 </div>
 
-  </div>
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://mybinder.org/v2/gh/epiforecasts/WuhanSeedingVsTransmission/master?urlpath=rstudio"><img src="https://img.shields.io/badge/Launch-analysis-lightblue.svg" alt="badge"></a></li>
+<li><a href="https://github.com/epiforecasts/WuhanSeedingVsTransmission"><img src="https://img.shields.io/badge/devel%20version-0.1.0-green.svg?style=flat" alt="develVersion"></a></li>
+<li><a href="https://epiforecasts.io/WuhanSeedingVsTransmission"><img src="https://img.shields.io/badge/Package-documentation-lightgrey.svg?style=flat" alt="Documentation"></a></li>
+<li><a href="https://doi.org/10.5281/zenodo.2641048"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.2641048.svg" alt="DOI"></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
