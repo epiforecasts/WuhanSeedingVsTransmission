@@ -4,3 +4,5 @@
 * Added the first draft of the analysis
 * Added the first draft of the package documentation
 * Added README
+* Passing CRAN checks
+* Added Dockerfile and binder for reproducibility
