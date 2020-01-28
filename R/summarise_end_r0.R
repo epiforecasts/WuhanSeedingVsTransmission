@@ -7,6 +7,7 @@
 #' @return A dataframe of R0 estimates for each scenario
 #' @export
 #' @importFrom dplyr group_by filter summarise ungroup mutate_at mutate n
+#' @importFrom tidyr replace_na
 #' @author Sam Abbott
 #' @examples
 #' 
@@ -15,8 +16,8 @@
 summarise_end_r0 <- function(sims, group_var = c("event_size", "event_duration")) {
   
   ## NULL out for CRAN
-  event_size <- NULL; event_duration <- NULL; time <- NULL;
-  R0 <- NULL; median_R0 <- NULL; min_R0 <- NULL; max_R0 <- NULL;
+  time <- NULL; R0 <- NULL; median_R0 <- NULL; 
+  lower_R0 <- NULL; upper_R0 <- NULL;
   
   restricted_scenarios <- sims  %>% 
     dplyr::group_by(.dots = group_var) %>% 

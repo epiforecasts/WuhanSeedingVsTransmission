@@ -4,12 +4,18 @@
 \alias{proportion_allowed_by_condition}
 \title{Proportion of samples per scenario allowed by condition}
 \usage{
-proportion_allowed_by_condition(sims, samples = NULL)
+proportion_allowed_by_condition(
+  sims,
+  samples = NULL,
+  group_var = c("scenario", "event_duration", "event_size", "serial_mean", "upper_R0")
+)
 }
 \arguments{
-\item{sims}{A dataframe as produced by \code{scenario_analysis}.}
+\item{sims}{A data.table from \code{scenario_analysis}.}
 
 \item{samples}{Numeric, the number of samples that were used.}
+
+\item{group_var}{Character vector, the grouping variables to use to split scenarios.}
 }
 \value{
 A data.table listing the proportion allowed by scenario
@@ -19,8 +25,11 @@ Proportion of samples per scenario allowed by condition
 }
 \examples{
 
-## Code 
-proportion_allowed_by_condition
+
+sims <- data.table::data.table(sample = 1:10, event_duration = 1,
+                               event_size = 1:10)
+proportion_allowed_by_condition(sims, samples = 100, 
+                                group_var = c("event_duration"))
 }
 \author{
 Sam Abbott

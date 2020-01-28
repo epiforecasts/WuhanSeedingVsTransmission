@@ -12,7 +12,7 @@ condition_on_known(
 )
 }
 \arguments{
-\item{sims}{A dataframe as produced by \code{scenario_analysis}.}
+\item{sims}{A data.table from \code{scenario_analysis}.}
 
 \item{days_since_end_seed}{Numeric, the number of days since the end of the seeding event.}
 
@@ -28,8 +28,19 @@ Condition on known cases
 }
 \examples{
 
-## Code
-condition_on_known
+sims <- data.table::data.table(
+                   time = rep(1:10, 10),
+                   size = rep(1:10, 10),
+                   sample = unlist(lapply(1:10, function(.) {rep(., 10)})),
+                   scenario = c(rep(1, 5), rep(1, 5)),
+                   tmp = c(rep(1, 5), rep(1, 5)),
+                   event_duration = 1
+                  )
+
+ sims <- data.table::data.table(scenario = 1:10, sample = 1:10, size = 1:10,
+                                event_duration = rep(c(1, 2), 5), time = 1:10)
+                                
+condition_on_known(sims, upper_bound = 5, lower_bound = 3, days_since_end_seed = 0)
 }
 \author{
 Sam Abbott

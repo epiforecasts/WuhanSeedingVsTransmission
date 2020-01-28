@@ -4,6 +4,7 @@
 #' date on which to condition the data.
 #' @param end_of_seed_date  A character string in the following format `"2020-01-01"`. The assumed
 #' end date of the seeding event.
+#' @param scenarios_list A character vector listing scenarios evaluated. 
 #' @inheritParams condition_on_known 
 #' @inheritParams proportion_allowed_by_condition
 #' @inheritParams restrict_by_condition
@@ -15,12 +16,22 @@
 #' @import data.table
 #' @examples
 #' 
+#' sims <- data.frame(time = rep(1:10, 10),
+#'                    size = rep(1:10, 10),
+#'                    sample = unlist(lapply(1:10, function(.) {rep(., 10)})),
+#'                    scenario = c(rep(1, 5), rep(1, 5)),
+#'                    tmp = c(rep(1, 5), rep(1, 5)),
+#'                    event_duration = 1
+#'                   )
 #' 
-#' ## Code
-#' condition_and_report_on_cases
+#' 
+#' condition_and_report_on_cases(sims, condition_date = "2020-01-03", lower_bound = 3, upper_bound = 5,
+#'                               scenarios_list = c("scenario", "tmp"), samples = 10)
 condition_and_report_on_cases <- function(sims, condition_date = NULL, lower_bound = NULL,
                                           upper_bound = NULL, samples = NULL,
-                                          end_of_seed_date = "2019-12-31") {
+                                          end_of_seed_date = "2019-12-31",
+                                          scenarios_list = c("scenario", "event_duration", "event_size",
+                                                             "serial_mean", "upper_R0")) {
   
   ## Convert simulations to data.table for speed
   sims <- data.table::setDT(sims)
@@ -40,7 +51,8 @@ condition_and_report_on_cases <- function(sims, condition_date = NULL, lower_bou
   
   ##Summarise allowed cases
   prop_allowed <- WuhanSeedingVsTransmission::proportion_allowed_by_condition(allowed_scenarios, 
-                                                                              samples = samples)
+                                                                              samples = samples,
+                                                                              group_var = scenarios_list)
   
   
   ## Restrict sims to allowed scenarios

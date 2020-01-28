@@ -4,10 +4,27 @@
 \alias{make_duration_size_table}
 \title{Make seeding event duration vs event size table}
 \usage{
-make_duration_size_table(results = NULL)
+make_duration_size_table(
+  results = NULL,
+  required_var = c("event_duration", "event_size", "R0"),
+  spread_var = "event_duration",
+  spread_value = "R0",
+  rename_var = "event_size",
+  renamed_var = "Transmission event size vs. Transmission event duration"
+)
 }
 \arguments{
 \item{results}{The output from \code{summarised_end_r0}}
+
+\item{required_var}{A character string of variables to select for the table.}
+
+\item{spread_var}{A character variable indicating the variable to spread.}
+
+\item{spread_value}{A character variable to use as the spreading value.}
+
+\item{rename_var}{A character variable to rename.}
+
+\item{renamed_var}{A character variable indicating the name of the renamed variable}
 }
 \value{
 A data.frame comparing transmission event size with duration
@@ -17,8 +34,14 @@ Make seeding event duration vs event size table
 }
 \examples{
 
-## Code
-make_duration_size_table
+
+results <- data.frame(R0 = runif(10, 0, 1), 
+                      event_duration = 1:10, 
+                      event_size = rep(c(1,2), 5),
+                      tmp = 1:10)
+                      
+make_duration_size_table(results)
+
 }
 \author{
 Sam Abbott
