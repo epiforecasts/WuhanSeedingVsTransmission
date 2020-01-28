@@ -22,9 +22,7 @@ Our results indicate that an R0 of less than 1 was highly unlikely unless the si
 
 ### Set up
 
-Set your working directory to the home directory of this project (or use the provided Rstudio project).
-
-Install the analysis and all dependencies with: 
+Set your working directory to the home directory of this project (or use the provided Rstudio project). Install the analysis and all dependencies with: 
 
 ```r
 remotes::install_github("epiforecasts/WuhanSeedingVsTransmission", dependencies = TRUE)
@@ -38,10 +36,11 @@ Run the analysis with the following:
 Rscript inst/scripts/run_grid.R
 ```
 
+See `run_scenario_grid` for additional scenario analysis details.
 
 ### Inspect results
 
-Use `vignettes/output.Rmd.orig` to inspect the results of the analysis interactively.
+Use `vignettes/output.Rmd` to inspect the results of the analysis interactively. See `vignettes/output.md` for a markdown version of the analysis containing all results. See `vignettes/rendered_output` for version of the analysis rendered in other formats.
 
 ### Render output
 

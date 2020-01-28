@@ -13,6 +13,7 @@ Evaluate seeding event size vs duration compared to transmission in the Wuhan ou
 
 Authors:
 \itemize{
+  \item Joel Hellewell \email{joel.hellewell@lshtm.ac.uk} (\href{https://orcid.org/0000-0003-2683-0849}{ORCID})
   \item James Munday \email{james.munday@lshtm.ac.uk}
   \item Sebastian Funk \email{sebastian.funk@lshtm.ac.uk}
 }
