@@ -1,4 +1,4 @@
-# Evaluating the transmissibility of the coronavirus in the 2019-20 Wuhan Outbreak: Exploring initial point-source exposure sizes and durations using scenario analysis
+# The transmissibility of noval Coronavirus in the early stages of the 2019-20 outbreak in Wuhan: Exploring initial point-source exposure sizes and durations using scenario analysis
 
 [![badge](https://img.shields.io/badge/Launch-analysis-lightblue.svg)](https://mybinder.org/v2/gh/epiforecasts/WuhanSeedingVsTransmission/master?urlpath=rstudio)
 [![develVersion](https://img.shields.io/badge/devel%20version-0.1.0-green.svg?style=flat)](https://github.com/epiforecasts/WuhanSeedingVsTransmission)
@@ -9,15 +9,15 @@
 
 ### Background
 
-The current coronavirus outbreak appears to have originated from a point-source exposure event at Huanan seafood wholesale market in Wuhan, China. There is still uncertainty around the scale and duration of this exposure event. This has implications for the likely transmissibility of the coronavirus and as such, these potential scenarios should be explored. 
+The current novel coronavirus outbreak appears to have originated from a point-source exposure event at Huanan seafood wholesale market in Wuhan, China. There is still uncertainty around the scale and duration of this exposure event. This has implications for the estimated transmissibility of the coronavirus and as such, these potential scenarios should be explored. 
 
 ### Methods
 
-We used a stochastic branching process model - parameterised with available data where possible and otherwise informed by the 2002-2003 SARS outbreak - to simulate the Wuhan outbreak. We evaluated scenarios for the following parameters: the size, and duration of the initial transmission event, the serial interval, and the reproduction number (R0). We restricted model simulations based on the number of observed cases on the 25th of January, accepting samples that were within a 5% interval on either side of this estimate. Our analysis is available as an open-source tool in the form of an R package.
+We used a stochastic branching process model, parameterised with available data where possible and otherwise informed by the 2002-2003 SARS outbreak, to simulate the Wuhan outbreak. We evaluated scenarios for the following parameters: the size, and duration of the initial transmission event, the serial interval, and the reproduction number (R0). We restricted model simulations based on the number of observed cases on the 25th of January, accepting samples that were within a 5% interval on either side of this estimate. Our analysis is available as an open-source tool in the form of an R package.
 
 ### Results
 
-The most likely scenarios were those with a large transmission event and a short duration. Using a longer serial interval than estimated for SARs suggested a larger initial transmission event and a higher R0 estimate. Using a SARs-like serial interval we found that the most likely scenario produced an R0 estimate of 2.2 - 3.2 (90% credible interval (CrI)). A longer serial interval resulted in an R0 estimate of 2.8 - 3.9 (90% CrI). There were other plausible scenarios with smaller events sizes of longer duration that had comparable R0 estimates. There were very few simulations that were able to reproduce the observed data when R0 was less than 1. 
+The most likely scenarios were those with both a large transmission event and a short duration. Using a longer serial interval than estimated for SARs suggested a larger initial transmission event and a higher R0 estimate. Using a SARs-like serial interval we found that the most likely scenario produced an R0 estimate between 2.2 - 3.2 (90% credible interval (CrI)). A longer serial interval resulted in an R0 estimate between 2.8 - 3.9 (90% CrI). There were other plausible scenarios with smaller events sizes of longer duration that had comparable R0 estimates. There were very few simulations that were able to reproduce the observed data when R0 was less than 1. 
 
 ### Conclusions
 

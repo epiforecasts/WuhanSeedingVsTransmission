@@ -162,6 +162,7 @@ time points</p></td>
 #&gt; {
 #&gt;     scenario &lt;- NULL
 #&gt;     data &lt;- NULL
+#&gt;     serial_fn &lt;- NULL
 #&gt;     scenario_sims &lt;- scenarios %&gt;% dplyr::group_by(scenario) %&gt;% 
 #&gt;         tidyr::nest() %&gt;% dplyr::ungroup() %&gt;% dplyr::sample_frac(size = 1, 
 #&gt;         replace = FALSE) %&gt;% dplyr::mutate(sims = furrr::future_map(data, 
@@ -172,7 +173,7 @@ time points</p></td>
 #&gt;                 function(.x) {
 #&gt;                   sim &lt;- tibble::tibble(size = list(WuhanSeedingVsTransmission::run_sim(n = data$event_size, 
 #&gt;                     n_length = data$event_duration, mean_si = data$serial_mean, 
-#&gt;                     sd_si = sampled_and_set_parameters$serial_sd[.x], 
+#&gt;                     sd_si = data$serial_sd, serial_fn = data$serial_fn[[1]], 
 #&gt;                     R0 = sampled_R0[.x], k = sampled_and_set_parameters$k[.x], 
 #&gt;                     tf = sampled_and_set_parameters$outbreak_length[.x] + 
 #&gt;                       data$event_duration, kept_times = kept_times + 
@@ -188,7 +189,7 @@ time points</p></td>
 #&gt;     scenario_sims &lt;- tidyr::unnest(scenario_sims, "sims")
 #&gt;     return(scenario_sims)
 #&gt; }
-#&gt; &lt;bytecode: 0x55f0d7400a60&gt;
+#&gt; &lt;bytecode: 0x55e5ce49fbf0&gt;
 #&gt; &lt;environment: namespace:WuhanSeedingVsTransmission&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

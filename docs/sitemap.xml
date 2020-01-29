@@ -40,10 +40,16 @@
     <loc>epiforecasts.io/WuhanSeedingVsTransmission//reference/restrict_by_condition.html</loc>
   </url>
   <url>
+    <loc>epiforecasts.io/WuhanSeedingVsTransmission//reference/rgamma_with_mean_sd.html</loc>
+  </url>
+  <url>
     <loc>epiforecasts.io/WuhanSeedingVsTransmission//reference/run_scenario_grid.html</loc>
   </url>
   <url>
     <loc>epiforecasts.io/WuhanSeedingVsTransmission//reference/run_sim.html</loc>
+  </url>
+  <url>
+    <loc>epiforecasts.io/WuhanSeedingVsTransmission//reference/rweibull_with_mean_sd.html</loc>
   </url>
   <url>
     <loc>epiforecasts.io/WuhanSeedingVsTransmission//reference/scenario_analysis.html</loc>
