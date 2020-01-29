@@ -180,7 +180,7 @@ event duration was increased in tandem.
 sample stratified by transmission event size, event duration (columns),
 and the serial interval distribution used (rows). The black lines on
 each density plot represent the 90% credible
-interval](figures/density-r0-plot-1.png)
+interval](figures/density-r-plot-1.png)
 
 <table>
 <caption>Estimated reproduction numbers (90% credible intervals) for the Wuhan outbreak conditioned on case data from the 25th of January, for scenarios with a MERS-like serial interval. Stratified by initial transmission event size and duration.</caption>
