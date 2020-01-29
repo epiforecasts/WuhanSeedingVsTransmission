@@ -563,7 +563,7 @@ models*. 2020. <https://github.com/sbfnk/bpmodels>
 noval coronavirus in the early stages of the 2019-20 outbreak in wuhan:
 Exploring initial point-source exposure sizes and durations using
 scenario analysis*. 2020.
-<https://github.com/epiforecasts/WuhanSeedingVsTransmission>
+doi:[10.5281/zenodo.3630425](https://doi.org/10.5281/zenodo.3630425)
 
 11 Boettiger C. An introduction to Docker for reproducible research.
 *ACM SIGOPS Operating Systems Review* 2015;**49**:71–9.
