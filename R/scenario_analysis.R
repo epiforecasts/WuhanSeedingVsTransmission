@@ -75,8 +75,9 @@ scenario_analysis <- function(scenarios = NULL,
           }, 
         .progress = show_progress
       ))
-
+  
   scenario_sims <- tidyr::unnest(scenario_sims, "data")
+  scenario_sims <- dplyr::select(scenario_sims, -serial_fn)
   scenario_sims <- tidyr::unnest(scenario_sims, "sims")
   
   return(scenario_sims)
