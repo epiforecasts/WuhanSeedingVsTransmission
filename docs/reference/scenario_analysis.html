@@ -186,10 +186,11 @@ time points</p></td>
 #&gt;             sims &lt;- dplyr::bind_rows(sims)
 #&gt;         }, .progress = show_progress))
 #&gt;     scenario_sims &lt;- tidyr::unnest(scenario_sims, "data")
+#&gt;     scenario_sims &lt;- dplyr::select(scenario_sims, -serial_fn)
 #&gt;     scenario_sims &lt;- tidyr::unnest(scenario_sims, "sims")
 #&gt;     return(scenario_sims)
 #&gt; }
-#&gt; &lt;bytecode: 0x55e5ce49fbf0&gt;
+#&gt; &lt;bytecode: 0x55d029d97da0&gt;
 #&gt; &lt;environment: namespace:WuhanSeedingVsTransmission&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

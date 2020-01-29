@@ -141,17 +141,21 @@
 #&gt;     event_size &lt;- NULL
 #&gt;     x &lt;- NULL
 #&gt;     R0 &lt;- NULL
+#&gt;     serial_type &lt;- NULL
 #&gt;     plot &lt;- sims %&gt;% dplyr::group_by(scenario, sample) %&gt;% dplyr::filter(time == 
-#&gt;         max(time)) %&gt;% dplyr::ungroup() %&gt;% ggplot2::ggplot(ggplot2::aes(x = R0, 
-#&gt;         y = factor(event_size), fill = stat(x))) + ggridges::geom_density_ridges_gradient(quantile_lines = TRUE, 
-#&gt;         quantiles = c(0.05, 0.95)) + ggplot2::facet_grid(serial_mean ~ 
+#&gt;         max(time)) %&gt;% dplyr::ungroup() %&gt;% dplyr::mutate(serial_type = serial_type %&gt;% 
+#&gt;         stringr::str_replace_all("initial SARS-like", "pre-intervention SARS-like") %&gt;% 
+#&gt;         factor(levels = c("MERS-like", "SARS-like", "pre-intervention SARS-like"))) %&gt;% 
+#&gt;         ggplot2::ggplot(ggplot2::aes(x = R0, y = factor(event_size), 
+#&gt;             fill = stat(x))) + ggridges::geom_density_ridges_gradient(quantile_lines = TRUE, 
+#&gt;         quantiles = c(0.05, 0.95)) + ggplot2::facet_grid(serial_type ~ 
 #&gt;         event_duration) + ggplot2::scale_fill_continuous(type = "viridis", 
 #&gt;         direction = 1) + ggplot2::theme_minimal() + ggplot2::labs(x = "Reproduction number (R0)", 
 #&gt;         y = "Transmission event size") + ggplot2::theme(legend.position = "bottom") + 
 #&gt;         ggplot2::guides(fill = ggplot2::guide_colorbar(title = "R0"))
 #&gt;     return(suppressWarnings(suppressMessages(plot)))
 #&gt; }
-#&gt; &lt;bytecode: 0x55e5d2bff698&gt;
+#&gt; &lt;bytecode: 0x55d02e533ba8&gt;
 #&gt; &lt;environment: namespace:WuhanSeedingVsTransmission&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

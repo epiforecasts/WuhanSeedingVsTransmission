@@ -119,32 +119,31 @@ Results
 **Percentage of outbreak simulations accepted**
 
 Overall, the highest acceptance rate was for scenarios with a large
-event size (200), short duration (7 days), an R0 between 3 and 4, and a
-12 day serial interval. (Figure 1). Scenarios with a SARS-like mean
-serial interval (8.4 days), an R0 bounded between 2 and 3, a short
+event size (200), short duration (1 day), an R0 between 3 and 4, and a
+pre-intervention SARS-like serial interval. (Figure 1). Scenarios with a
+SARS-like serial interval, an R0 bounded between 2 and 3, a short
 duration, and a relatively large event size (100) also had a high
-acceptance rate compared to other scenarios. Across all scenarios a
-higher acceptance rate was correlated with a larger event size, a
-shorter event duration, and a larger mean serial interval. This may be
-related to the influence these parameters have on the degree of
-volatility in outbreak simulations. Based on this, trends in Figure 1
-should be interpreted with care using prior knowledge. For example, if
-the event size, serial interval, and event duration is assumed, then the
-percentage of acceptance may be used to infer the most likely R0
-scenario.
+acceptance rate. Across all scenarios a higher acceptance rate was
+correlated with a larger event size, a shorter event duration, and a
+larger mean serial interval. This may be related to the influence these
+parameters have on the degree of volatility in outbreak simulations.
+Based on this, trends in Figure 1 should be interpreted with care using
+prior knowledge. For example, if the event size, serial interval, and
+event duration is assumed, then the percentage of acceptance may be used
+to infer the most likely R0 scenario.
 
 There were very few scenarios where an R0 smaller than 1 resulted in
 scenarios that were accepted after conditioning on observed data, this
 was true regardless of the corresponding serial interval distribution,
-event size, or event duration. There were also very few accepted
-scenarios where the R0 had an upper bound of 2, acceptance of these
-scenarios was most likely if the transmission event was large (200+),
-had a longer duration, as well as there being a long mean serial
-interval. For a short serial interval, the percentage of accepted
-samples was low for all scenarios, with the highest accepted proportion
-for scenarios with an upper bound on the R0 of 2. Across all R0
-scenarios, this scenario was most likely if the transmission event was
-of a medium size (40 - 80 cases) and a short duration (7-14 days).
+event size, or event duration. A very large event size (400) was
+required for scenarios with an R0 upper bound of 2 to have a moderate
+percentage of samples accepted if they had a short duration. Acceptance
+rates increased as the duration of the initial transmission event
+increased, and as the mean serial interval increased. For a MERS-like
+serial interval, the percentage of accepted samples was low for all
+scenarios, with the highest accepted proportion for scenarios with an
+upper bound on the R0 of 3 and a moderate event size, or an R0 upper
+bound of 2 and a larger event size.
 
 ![Heatmaps of the percentage of samples accepted for each combination of
 parameters. Within each heatmap, the x-axis represents the duration of
@@ -158,19 +157,24 @@ initial seeding event. The figure is stratified by the R0 scenario
 Uncertainty in the R0 estimate increased both as the event size
 decreased, and decreased as the mean serial interval increased (Figure
 2). Large event sizes resulted in the lowest R0 estimates across all
-scenarios evaluated. The estimated R0 decreased as the event size and
-duration increased for all serial interval scenarios (Table 1, Table 2,
-and Table 3). Assuming a longer serial interval resulted in an
-approximate increase of 1 in the R0 estimates across all scenarios when
-compared to the SARS-like serial interval. For the SARS-like interval
-the most likely scenario had an event size of 100 and a duration of a
-week) (Figure 1), this resulted in an estimated R0 between 2.2 - 3.2
-(90% CrI, Table 1). In addition, the most likely scenario with a
-SARS-like before intervention serial interval had an outbreak size of
-200 and a duration of 7 days, resulting in an estimated R0 between 2.8 -
-3.9 (90% CrI, Table 2). Across all mean serial interval scenarios R0
-estimates were comparable when event size was decreased and event
-duration was increased.
+scenarios evaluated. The estimated R0 decreased as the event size
+decreased and duration increased for all serial interval scenarios
+(Table 1, Table 2, and Table 3). The most likely scenario with a
+MERS-like serial interval had an event size of 80 and a duration of a
+day, resulting in an estimated R0 between 2 - 3 (90% CrI, Table 1). For
+the SARS-like interval the most likely scenario had an event size of 200
+and a duration of a day (Figure 1), this resulted in an estimated R0
+between 2 - 2.7 (90% CrI, Table 2). The most likely scenario with a
+pre-intervention SARS-like serial interval also had an outbreak size of
+200 and a duration of a day, resulting in an estimated R0 between 2.8 -
+3.8 (90% CrI, Table 3). Assuming a MERS-like serial interval resulted in
+an approximate decrease of 0 - 0.5 in the R0 estimates across all
+scenarios when compared to the SARS-like serial interval. Assuming a
+pre-intervention SARS-like serial interval resulted in an approximate
+increase of 0.5 - 1 in the R0 estimates across all scenarios when
+compared to the SARS-like serial interval. Across all serial interval
+scenarios R0 estimates were comparable when event size was decreased and
+event duration was increased in tandem.
 
 ![Density plot of reproduction number (R0) estimates from each accepted
 sample stratified by transmission event size, event duration (columns),
@@ -179,10 +183,11 @@ each density plot represent the 90% credible
 interval](figures/density-r0-plot-1.png)
 
 <table>
-<caption>Median, minimum, and maximum reproduction numbers of the Wuhan outbreak conditioned on case data from the 25th of January - for scenarios with a mean serial interval of 8.4 (SARS-like). Stratified by initial transmission event size and duration.</caption>
+<caption>Estimated reproduction numbers (90% credible intervals) for the Wuhan outbreak conditioned on case data from the 25th of January, for scenarios with a MERS-like serial interval. Stratified by initial transmission event size and duration.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Transmission event size vs. Transmission event duration</th>
+<th style="text-align: left;">1</th>
 <th style="text-align: left;">7</th>
 <th style="text-align: left;">14</th>
 <th style="text-align: left;">21</th>
@@ -192,34 +197,111 @@ interval](figures/density-r0-plot-1.png)
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">20</td>
-<td style="text-align: left;">3 - 4</td>
+<td style="text-align: left;">2.8 - 4</td>
+<td style="text-align: left;">2.4 - 3.9</td>
+<td style="text-align: left;">2.1 - 3.8</td>
+<td style="text-align: left;">1.8 - 3.7</td>
+<td style="text-align: left;">1.7 - 3.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">2.4 - 3.8</td>
+<td style="text-align: left;">2.1 - 3.5</td>
+<td style="text-align: left;">1.8 - 3.2</td>
+<td style="text-align: left;">1.7 - 2.7</td>
+<td style="text-align: left;">1.5 - 2.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">60</td>
+<td style="text-align: left;">2.2 - 3.4</td>
+<td style="text-align: left;">1.9 - 3</td>
+<td style="text-align: left;">1.7 - 2.6</td>
+<td style="text-align: left;">1.5 - 2.4</td>
+<td style="text-align: left;">1.4 - 2.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">80</td>
+<td style="text-align: left;">2 - 3</td>
+<td style="text-align: left;">1.8 - 2.6</td>
+<td style="text-align: left;">1.6 - 2.3</td>
+<td style="text-align: left;">1.4 - 2.1</td>
+<td style="text-align: left;">1.3 - 1.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">100</td>
+<td style="text-align: left;">1.9 - 2.7</td>
+<td style="text-align: left;">1.7 - 2.4</td>
+<td style="text-align: left;">1.5 - 2.1</td>
+<td style="text-align: left;">1.3 - 1.9</td>
+<td style="text-align: left;">1.3 - 1.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">200</td>
+<td style="text-align: left;">1.5 - 2</td>
+<td style="text-align: left;">1.4 - 1.8</td>
+<td style="text-align: left;">1.2 - 1.6</td>
+<td style="text-align: left;">1.1 - 1.5</td>
+<td style="text-align: left;">1.1 - 1.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">400</td>
+<td style="text-align: left;">1.1 - 1.4</td>
+<td style="text-align: left;">1 - 1.3</td>
+<td style="text-align: left;">0.9 - 1.2</td>
+<td style="text-align: left;">0.9 - 1.1</td>
+<td style="text-align: left;">0.9 - 1.1</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<caption>Estimated reproduction numbers (90% credible intervals) for the Wuhan outbreak conditioned on case data from the 25th of January, for scenarios with a SARS-like serial interval. Stratified by initial transmission event size and duration.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Transmission event size vs. Transmission event duration</th>
+<th style="text-align: left;">1</th>
+<th style="text-align: left;">7</th>
+<th style="text-align: left;">14</th>
+<th style="text-align: left;">21</th>
+<th style="text-align: left;">28</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">3.6 - 4</td>
+<td style="text-align: left;">3.1 - 4</td>
 <td style="text-align: left;">2.7 - 3.9</td>
 <td style="text-align: left;">2.3 - 3.9</td>
 <td style="text-align: left;">2.1 - 3.8</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">40</td>
+<td style="text-align: left;">3.2 - 4</td>
 <td style="text-align: left;">2.8 - 3.9</td>
-<td style="text-align: left;">2.3 - 3.8</td>
-<td style="text-align: left;">2 - 3.4</td>
+<td style="text-align: left;">2.4 - 3.8</td>
+<td style="text-align: left;">2 - 3.6</td>
 <td style="text-align: left;">1.8 - 3.2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">60</td>
+<td style="text-align: left;">3 - 4</td>
 <td style="text-align: left;">2.5 - 3.8</td>
-<td style="text-align: left;">2.1 - 3.4</td>
+<td style="text-align: left;">2.1 - 3.5</td>
 <td style="text-align: left;">1.8 - 3</td>
-<td style="text-align: left;">1.7 - 2.7</td>
+<td style="text-align: left;">1.7 - 2.6</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">80</td>
-<td style="text-align: left;">2.3 - 3.5</td>
-<td style="text-align: left;">1.9 - 3</td>
-<td style="text-align: left;">1.7 - 2.6</td>
-<td style="text-align: left;">1.5 - 2.3</td>
+<td style="text-align: left;">2.8 - 3.9</td>
+<td style="text-align: left;">2.3 - 3.6</td>
+<td style="text-align: left;">1.9 - 3.1</td>
+<td style="text-align: left;">1.7 - 2.7</td>
+<td style="text-align: left;">1.5 - 2.4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">100</td>
+<td style="text-align: left;">2.6 - 3.7</td>
 <td style="text-align: left;">2.2 - 3.2</td>
 <td style="text-align: left;">1.8 - 2.7</td>
 <td style="text-align: left;">1.6 - 2.4</td>
@@ -227,13 +309,15 @@ interval](figures/density-r0-plot-1.png)
 </tr>
 <tr class="even">
 <td style="text-align: left;">200</td>
+<td style="text-align: left;">2 - 2.7</td>
 <td style="text-align: left;">1.7 - 2.3</td>
 <td style="text-align: left;">1.5 - 2</td>
 <td style="text-align: left;">1.3 - 1.8</td>
-<td style="text-align: left;">1.2 - 1.6</td>
+<td style="text-align: left;">1.2 - 1.7</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">400</td>
+<td style="text-align: left;">1.4 - 1.8</td>
 <td style="text-align: left;">1.2 - 1.6</td>
 <td style="text-align: left;">1.1 - 1.4</td>
 <td style="text-align: left;">1 - 1.3</td>
@@ -243,10 +327,11 @@ interval](figures/density-r0-plot-1.png)
 </table>
 
 <table>
-<caption>Median, minimum, and maximum reproduction numbers of the Wuhan outbreak conditioned on case data from the 25th of January - for scenarios with a mean serial interval of 12. Stratified by initial transmission event size and duration.</caption>
+<caption>Estimated reproduction numbers (90% credible intervals) for the Wuhan outbreak conditioned on case data from the 25th of January, for scenarios with a pre-intervention SARS-like serial interval. Stratified by initial exposure event size and duration.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Transmission event size vs. Transmission event duration</th>
+<th style="text-align: left;">1</th>
 <th style="text-align: left;">7</th>
 <th style="text-align: left;">14</th>
 <th style="text-align: left;">21</th>
@@ -257,51 +342,58 @@ interval](figures/density-r0-plot-1.png)
 <tr class="odd">
 <td style="text-align: left;">20</td>
 <td style="text-align: left;">-</td>
-<td style="text-align: left;">3.6 - 3.6</td>
+<td style="text-align: left;">3.8 - 4</td>
 <td style="text-align: left;">3.2 - 4</td>
 <td style="text-align: left;">2.8 - 4</td>
+<td style="text-align: left;">2.5 - 3.9</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">40</td>
 <td style="text-align: left;">-</td>
 <td style="text-align: left;">3.5 - 4</td>
-<td style="text-align: left;">3 - 4</td>
-<td style="text-align: left;">2.7 - 3.9</td>
+<td style="text-align: left;">3.1 - 4</td>
+<td style="text-align: left;">2.6 - 3.9</td>
+<td style="text-align: left;">2.2 - 3.8</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">60</td>
-<td style="text-align: left;">3.5 - 4</td>
+<td style="text-align: left;">4 - 4</td>
 <td style="text-align: left;">3.2 - 4</td>
 <td style="text-align: left;">2.8 - 3.9</td>
-<td style="text-align: left;">2.4 - 3.9</td>
+<td style="text-align: left;">2.4 - 3.7</td>
+<td style="text-align: left;">2 - 3.4</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">80</td>
-<td style="text-align: left;">3.4 - 4</td>
+<td style="text-align: left;">3.6 - 4</td>
 <td style="text-align: left;">3.1 - 4</td>
-<td style="text-align: left;">2.7 - 3.9</td>
-<td style="text-align: left;">2.2 - 3.7</td>
+<td style="text-align: left;">2.6 - 3.9</td>
+<td style="text-align: left;">2.2 - 3.5</td>
+<td style="text-align: left;">1.9 - 3.1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">100</td>
 <td style="text-align: left;">3.5 - 4</td>
-<td style="text-align: left;">3 - 3.9</td>
-<td style="text-align: left;">2.5 - 3.8</td>
-<td style="text-align: left;">2.1 - 3.4</td>
+<td style="text-align: left;">3 - 4</td>
+<td style="text-align: left;">2.4 - 3.7</td>
+<td style="text-align: left;">2.1 - 3.2</td>
+<td style="text-align: left;">1.8 - 2.7</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">200</td>
-<td style="text-align: left;">2.8 - 3.9</td>
+<td style="text-align: left;">2.8 - 3.8</td>
 <td style="text-align: left;">2.2 - 3.2</td>
-<td style="text-align: left;">1.9 - 2.7</td>
-<td style="text-align: left;">1.7 - 2.4</td>
+<td style="text-align: left;">1.8 - 2.6</td>
+<td style="text-align: left;">1.6 - 2.2</td>
+<td style="text-align: left;">1.4 - 2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">400</td>
-<td style="text-align: left;">1.8 - 2.5</td>
+<td style="text-align: left;">1.8 - 2.4</td>
 <td style="text-align: left;">1.5 - 2</td>
 <td style="text-align: left;">1.3 - 1.7</td>
-<td style="text-align: left;">1.2 - 1.6</td>
+<td style="text-align: left;">1.1 - 1.5</td>
+<td style="text-align: left;">1 - 1.4</td>
 </tr>
 </tbody>
 </table>
@@ -318,14 +410,17 @@ probability that the reproduction numbers was less than 1 for any
 scenario considered. Across all serial interval scenarios larger
 exposure events over a shorter time horizon were most plausible. The
 most probable SARS-like serial interval scenarios resulted in an
-estimated R0 of 2.2 - 3.2 (90% CrI), whilst the most probable longer
-serial interval scenarios resulted in an estimated R0 of 2.8 - 3.9 (90%
-CrI). Reducing the event size led to estimates of the R0 increasing but
-also reduced the proportion of samples accepted. Similarly, increasing
-the event duration reduced the estimated R0 whilst decreasing the
-proportion of accepted samples. Decreasing the event size whilst
-increasing the duration resulted in R0 estimates that were comparable to
-those from the most plausible scenarios.
+estimated R0 of 2 - 2.7 (90% CrI), whilst the most probable
+pre-intervention SARS-like serial interval scenarios resulted in an
+estimated R0 of 2.8 - 3.8 (90% CrI). MERS-like serial interval scenarios
+were less plausible but the most plausible resulted in an estimate R0 of
+2 - 3 (90% CrI). Reducing the event size led to estimates of the R0
+increasing but also reduced the proportion of samples accepted.
+Similarly, increasing the event duration reduced the estimated R0 whilst
+decreasing the proportion of accepted samples. Decreasing the event size
+whilst increasing the duration resulted in R0 estimates that were
+comparable to those from the most plausible scenarios and reduced the
+acceptance rate the least.
 
 Our study used a stochastic model to capture the transmission dynamics
 of the outbreak with parameters informed from data were possible, if
@@ -390,12 +485,12 @@ and to assess the likelihood of others. Our results indicate that it is
 very unlikely that the infectious agent responsible for the Wuhan
 outbreak has a R0 of less than 1, unless the size of the transmission
 event was much greater than currently reported. We also found that a
-large initial exposure event was likely, combined with a relatively
-short duration. This corresponds with the evidence of rapid detection by
-Public Health Officials in Wuhan. These scenarios resulted in R0
-estimates that are comparable to those estimated during the 2002-2003
-SARS outbreak. However, with the available data we could not identify
-whether scenarios with a SARS-like or longer serial interval were more
+large initial exposure event was likely, combined with a short duration.
+This corresponds with the evidence of rapid detection by Public Health
+Officials in Wuhan. These scenarios resulted in R0 estimates that are
+comparable to those estimated during the 2002-2003 SARS outbreak.
+However, with the available data we could not identify whether scenarios
+with a SARS-like or pre-intervention SARS-like serial interval were more
 likely. As more information becomes available it may be possible to
 further refine our results and establish the value of R0. Providing
 clear quantitative information for decision makers on the
