@@ -121,6 +121,7 @@
   <span class='no'>n_length</span>,
   <span class='no'>mean_si</span>,
   <span class='no'>sd_si</span>,
+  <span class='kw'>serial_fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='no'>R0</span>,
   <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>0.16</span>,
   <span class='kw'>tf</span> <span class='kw'>=</span> <span class='fl'>37</span>,
@@ -147,6 +148,12 @@
     <tr>
       <th>sd_si</th>
       <td><p>Numeric, the sd of the serial interval</p></td>
+    </tr>
+    <tr>
+      <th>serial_fn</th>
+      <td><p>Function from which to sample the serial interval must
+accepted a number of samples argument followed by a mean and standard deviation. If
+missing defaults to a normal distribution.</p></td>
     </tr>
     <tr>
       <th>R0</th>
@@ -195,46 +202,50 @@ time points</p></td>
 #&gt; 7     6    0
 #&gt; 8     7    0
 #&gt; 9     8    0
-#&gt; 10    9    0
-#&gt; 11   10    0
-#&gt; 12   11    0
+#&gt; 10    9    1
+#&gt; 11   10    1
+#&gt; 12   11    1
 #&gt; 13   12    1
 #&gt; 14   13    1
-#&gt; 15   14    1
-#&gt; 16   15    1
-#&gt; 17   16    1
-#&gt; 18   17    1
-#&gt; 19   18    1
-#&gt; 20   19    1
-#&gt; 21   20    1
-#&gt; 22   21    1
-#&gt; 23   22    1
-#&gt; 24   23    1
-#&gt; 25   24    1
-#&gt; 26   25    1
-#&gt; 27   26    1
-#&gt; 28   27    1
-#&gt; 29   28    1
-#&gt; 30   29    1
-#&gt; 31   30    1
-#&gt; 32   31    1
-#&gt; 33   32    1
-#&gt; 34   33    1
-#&gt; 35   34    1
-#&gt; 36   35    1
-#&gt; 37   36    1
-#&gt; 38   37    1</div><div class='input'>
+#&gt; 15   14    2
+#&gt; 16   15    3
+#&gt; 17   16    9
+#&gt; 18   17   13
+#&gt; 19   18   14
+#&gt; 20   19   22
+#&gt; 21   20   28
+#&gt; 22   21   41
+#&gt; 23   22   46
+#&gt; 24   23   57
+#&gt; 25   24   62
+#&gt; 26   25   66
+#&gt; 27   26   71
+#&gt; 28   27   76
+#&gt; 29   28   83
+#&gt; 30   29   88
+#&gt; 31   30   96
+#&gt; 32   31  102
+#&gt; 33   32  106
+#&gt; 34   33  108
+#&gt; 35   34  113
+#&gt; 36   35  118
+#&gt; 37   36  120
+#&gt; 38   37  123</div><div class='input'>
 <span class='co'>## Code</span>
-<span class='no'>run_sim</span></div><div class='output co'>#&gt; function (n, n_length, mean_si, sd_si, R0, k = 0.16, tf = 37, 
-#&gt;     kept_times = NULL, max_potential_cases, delay_sample) 
+<span class='no'>run_sim</span></div><div class='output co'>#&gt; function (n, n_length, mean_si, sd_si, serial_fn = NULL, R0, 
+#&gt;     k = 0.16, tf = 37, kept_times = NULL, max_potential_cases, 
+#&gt;     delay_sample) 
 #&gt; {
 #&gt;     if (is.null(kept_times)) {
 #&gt;         kept_times &lt;- 0:tf
 #&gt;     }
+#&gt;     if (is.null(serial_fn)) {
+#&gt;         serial_fn &lt;- stats::rnorm
+#&gt;     }
 #&gt;     t0 &lt;- sample(seq(1, n_length), n, replace = TRUE)
-#&gt;     sim &lt;- bpmodels::chain_sim(n, "nbinom", serial = function(x) stats::rnorm(x, 
-#&gt;         mean_si, sd_si), mu = R0, size = k, t0 = t0, tf = tf, 
-#&gt;         infinite = max_potential_cases)
+#&gt;     sim &lt;- bpmodels::chain_sim(n, "nbinom", serial = function(x) {
+#&gt;         serial_fn(x, mean_si, sd_si)
+#&gt;     }, mu = R0, size = k, t0 = t0, tf = tf, infinite = max_potential_cases)
 #&gt;     sim$time &lt;- sim$time + delay_sample(length(sim$time))
 #&gt;     sim &lt;- sim[sim$time &lt; tf, ]
 #&gt;     size &lt;- data.frame(time = kept_times, size = unlist(lapply(kept_times, 
@@ -244,7 +255,7 @@ time points</p></td>
 #&gt;         })))
 #&gt;     return(size)
 #&gt; }
-#&gt; &lt;bytecode: 0x55f0d58f5390&gt;
+#&gt; &lt;bytecode: 0x55e5d4845af8&gt;
 #&gt; &lt;environment: namespace:WuhanSeedingVsTransmission&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

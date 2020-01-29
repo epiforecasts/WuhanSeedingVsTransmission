@@ -28,6 +28,12 @@ reference:
       - get_linelist
       - get_rep_sample_fun
       - fitted_delay_sample_func
+      
+  - title: Sample from the serial interval distribution
+    desc: Functions that parameterise distributions based on a mean and standard deviation
+    contents: 
+       - rgamma_with_mean_sd
+       - rweibull_with_mean_sd
   - title: Run the branching process
     desc: Functions used to run the branching process
     contents:
