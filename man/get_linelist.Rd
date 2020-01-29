@@ -7,7 +7,7 @@
 get_linelist()
 }
 \value{
-a tibble with the lineist
+a tibble with the linelist
 delays to randomly sample
 }
 \description{

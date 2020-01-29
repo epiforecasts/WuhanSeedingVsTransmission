@@ -4,9 +4,10 @@
 #' @inheritParams summarise_end_r0
 #' @return A ggplot2 plot of R0 density over the scenarios explored
 #' @export
-#' @importFrom dplyr group_by filter ungroup
+#' @importFrom dplyr group_by filter ungroup mutate
 #' @importFrom ggplot2 ggplot aes stat scale_fill_continuous facet_grid theme_minimal labs theme guides guide_colorbar
 #' @importFrom ggridges geom_density_ridges_gradient
+#' @importFrom stringr str_replace_all
 #' @examples
 #' 
 #' ## Code
@@ -16,18 +17,21 @@ plot_R0_density <- function(sims = NULL) {
   
   ## CRAN check - dealing with global variables
   scenario <- NULL; time <- NULL; event_size <- NULL;
-  x <- NULL; R0 <- NULL;
-  
-    
+  x <- NULL; R0 <- NULL; serial_type <- NULL;
   
   
   plot <- sims %>% 
     dplyr::group_by(scenario, sample) %>% 
     dplyr::filter(time == max(time)) %>% 
-    dplyr::ungroup() %>% 
+    dplyr::ungroup() %>%
+    dplyr::mutate(
+    serial_type = serial_type %>% 
+      stringr::str_replace_all("initial SARS-like", "pre-intervention SARS-like") %>% 
+      factor(levels = c("MERS-like", "SARS-like", "pre-intervention SARS-like"))
+    ) %>% 
     ggplot2::ggplot(ggplot2::aes(x = R0, y = factor(event_size), fill = stat(x))) +
     ggridges::geom_density_ridges_gradient(quantile_lines = TRUE, quantiles = c(0.05, 0.95)) +
-    ggplot2::facet_grid(serial_mean ~ event_duration) +
+    ggplot2::facet_grid(serial_type ~ event_duration) +
     ggplot2::scale_fill_continuous(type = "viridis", direction = 1) + 
     ggplot2::theme_minimal() +
     ggplot2::labs(x = "Reproduction number (R0)", 

@@ -101,18 +101,23 @@ WuhanSeedingVsTransmission::plot_per_accepted_tile(prop_allowed_samples)
 
 **Estimated reproduction numbers**
 
-Uncertainty in the R0 estimate increased both as the event size decreased, and decreased as the mean serial interval increased (Figure 2). Large event sizes resulted in the lowest R0 estimates across all scenarios evaluated. The estimated R0 decreased as the event size and duration increased for all serial interval scenarios (Table 1, Table 2, and Table 3). Assuming a longer serial interval resulted in an approximate increase of 1 in the R0 estimates across all scenarios when compared to the SARS-like serial interval. For the SARS-like interval the most likely scenario had an event size of 100 and a duration of a week) (Figure 1), this resulted in an estimated R0 between `r summarised_r0s[[2]][5, "7"]` (90% CrI, Table 1). In addition, the most likely scenario with a SARS-like before intervention serial interval had an outbreak size of 200 and a duration of 7 days, resulting in an estimated R0 between `r summarised_r0s[[3]][6, "7"]` (90% CrI, Table 2). Across all mean serial interval scenarios R0 estimates were comparable when event size was decreased and event duration was increased. 
+Uncertainty in the R0 estimate increased both as the event size decreased, and decreased as the mean serial interval increased (Figure 2). Large event sizes resulted in the lowest R0 estimates across all scenarios evaluated. The estimated R0 decreased as the event size and duration increased for all serial interval scenarios (Table 1, Table 2, and Table 3). Assuming a longer serial interval resulted in an approximate increase of 1 in the R0 estimates across all scenarios when compared to the SARS-like serial interval. For the SARS-like interval the most likely scenario had an event size of 100 and a duration of a week) (Figure 1), this resulted in an estimated R0 between `r summarised_r0s[[2]][5, "7"]` (90% CrI, Table 2). In addition, the most likely scenario with a SARS-like before intervention serial interval had an outbreak size of 200 and a duration of 7 days, resulting in an estimated R0 between `r summarised_r0s[[3]][6, "7"]` (90% CrI, Table 3). Across all mean serial interval scenarios R0 estimates were comparable when event size was decreased and event duration was increased. 
 
 ```{r density-r0-plot, fig.cap = "Density plot of reproduction number (R0) estimates from each accepted sample stratified by transmission event size, event duration (columns), and the serial interval distribution used (rows). The black lines on each density plot represent the 90% credible interval"}
 suppressMessages(print(plot_R0_density(conditioned_grid)))
 ```
 
-```{r sars_serial_r0}
-knitr::kable(summarised_r0s[[2]], caption = "Median, minimum, and maximum reproduction numbers of the Wuhan outbreak conditioned on case data from the 25th of January - for scenarios with a mean serial interval of 8.4 (SARS-like). Stratified by initial transmission event size and duration.")
+
+```{r mers_serial_r0}
+knitr::kable(summarised_r0s[[1]], caption = "Estimated reproduction numbers (90% credible intervals) for the Wuhan outbreak conditioned on case data from the 25th of January, for scenarios with a MERS-like serial interval. Stratified by initial transmission event size and duration.")
 ```
 
-```{r high_serial_r0}
-knitr::kable(summarised_r0s[[3]], caption = "Median, minimum, and maximum reproduction numbers of the Wuhan outbreak conditioned on case data from the 25th of January - for scenarios with a mean serial interval of 12. Stratified by initial transmission event size and duration.")
+```{r sars_serial_r0}
+knitr::kable(summarised_r0s[[2]], caption = "Estimated reproduction numbers (90% credible intervals) for the Wuhan outbreak conditioned on case data from the 25th of January, for scenarios with a SARS-like serial interval. Stratified by initial transmission event size and duration.")
+```
+
+```{r preint_SARS_serial_r0}
+knitr::kable(summarised_r0s[[3]], caption = "Estimated reproduction numbers (90% credible intervals) for the Wuhan outbreak conditioned on case data from the 25th of January, for scenarios with a pre-intervention SARS-like serial interval. Stratified by initial exposure event size and duration.")
 ```
 
 

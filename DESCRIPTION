@@ -36,7 +36,8 @@ Imports:
     readr,
     scales,
     ggplot2,
-    ggridges
+    ggridges,
+    stringr
 Suggests:
     future,
     fst,
