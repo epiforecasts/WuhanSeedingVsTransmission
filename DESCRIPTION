@@ -1,5 +1,5 @@
 Package: WuhanSeedingVsTransmission
-Title: Evaluate seeding event size vs duration compared to transmission in the Wuhan outbreak
+Title: The transmissibility of novel Coronavirus in the early stages of the 2019-20 outbreak in Wuhan
 Version: 0.1.0
 Authors@R: c(
     person(given = "Sam Abbott",
@@ -16,7 +16,8 @@ Authors@R: c(
     person("Sebastian", "Funk", 
             email = "sebastian.funk@lshtm.ac.uk", 
             role = c("aut")))
-Description: Evaluate seeding event size vs duration compared to transmission in the Wuhan outbreak.
+Description: The transmissibility of novel Coronavirus in the early stages of the 2019-20 outbreak 
+      in Wuhan: Exploring initial point-source exposure sizes and durations using scenario analysis.
 License: MIT + file LICENSE
 Depends: 
     R (>= 2.10)

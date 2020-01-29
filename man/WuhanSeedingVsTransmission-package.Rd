@@ -4,9 +4,10 @@
 \name{WuhanSeedingVsTransmission-package}
 \alias{WuhanSeedingVsTransmission}
 \alias{WuhanSeedingVsTransmission-package}
-\title{WuhanSeedingVsTransmission: Evaluate seeding event size vs duration compared to transmission in the Wuhan outbreak}
+\title{WuhanSeedingVsTransmission: The transmissibility of novel Coronavirus in the early stages of the 2019-20 outbreak in Wuhan}
 \description{
-Evaluate seeding event size vs duration compared to transmission in the Wuhan outbreak.
+The transmissibility of novel Coronavirus in the early stages of the 2019-20 outbreak 
+      in Wuhan: Exploring initial point-source exposure sizes and durations using scenario analysis
 }
 \author{
 \strong{Maintainer}: Sam Abbott \email{contact@samabbott.co.uk} (\href{https://orcid.org/0000-0001-8057-8037}{ORCID})

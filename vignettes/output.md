@@ -561,7 +561,7 @@ computing*. Vienna, Austria:: R Foundation for Statistical Computing
 models*. 2020. <https://github.com/sbfnk/bpmodels>
 
 10 Sam Abbott JM Joel Hellewell. *Code for: The transmissibility of
-noval coronavirus in the early stages of the 2019-20 outbreak in wuhan:
+novel coronavirus in the early stages of the 2019-20 outbreak in wuhan:
 Exploring initial point-source exposure sizes and durations using
 scenario analysis*. 2020.
 doi:[10.5281/zenodo.3630425](https://doi.org/10.5281/zenodo.3630425)
