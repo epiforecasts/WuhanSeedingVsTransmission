@@ -7,6 +7,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 bibliography: resources/library.bib
 csl: resources/bmj.csl
+resource_files:
+    - figures/density-r-plot-1.png
+    - figures/plot-probs-1.png
 ---
 
 ```{r setup, include=FALSE}
