@@ -124,7 +124,7 @@
   <span class='kw'>samples</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>end_of_seed_date</span> <span class='kw'>=</span> <span class='st'>"2019-12-31"</span>,
   <span class='kw'>scenarios_list</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"scenario"</span>, <span class='st'>"event_duration"</span>, <span class='st'>"event_size"</span>, <span class='st'>"serial_mean"</span>,
-    <span class='st'>"upper_R0"</span>, <span class='st'>"lower_R0"</span>)
+    <span class='st'>"serial_type"</span>, <span class='st'>"upper_R0"</span>, <span class='st'>"lower_R0"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -294,8 +294,8 @@ end date of the seeding event.</p></td>
 <span class='co'>## Code</span>
 <span class='no'>condition_and_report_on_cases</span></div><div class='output co'>#&gt; function (sims, condition_date = NULL, lower_bound = NULL, upper_bound = NULL, 
 #&gt;     samples = NULL, end_of_seed_date = "2019-12-31", scenarios_list = c("scenario", 
-#&gt;         "event_duration", "event_size", "serial_mean", "upper_R0", 
-#&gt;         "lower_R0")) 
+#&gt;         "event_duration", "event_size", "serial_mean", "serial_type", 
+#&gt;         "upper_R0", "lower_R0")) 
 #&gt; {
 #&gt;     sims &lt;- data.table::setDT(sims)
 #&gt;     days_since_end_seed &lt;- (lubridate::as_date(condition_date) - 
@@ -313,7 +313,7 @@ end date of the seeding event.</p></td>
 #&gt;         "conditioned_sims")
 #&gt;     return(out)
 #&gt; }
-#&gt; &lt;bytecode: 0x55f0d2b6a718&gt;
+#&gt; &lt;bytecode: 0x55e5cfc169a8&gt;
 #&gt; &lt;environment: namespace:WuhanSeedingVsTransmission&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

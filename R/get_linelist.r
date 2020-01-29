@@ -1,6 +1,6 @@
 ##' Get the latest compiled linelist
 ##'
-##' @return a tibble with the lineist
+##' @return a tibble with the linelist
 ##'   delays to randomly sample
 ##' @importFrom readr read_csv
 ##' @importFrom dplyr bind_rows rename mutate

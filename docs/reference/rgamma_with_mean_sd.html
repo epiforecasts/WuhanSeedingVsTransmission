@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get a sampling function for reporting delays — get_rep_sample_fun • WuhanSeedingVsTransmission</title>
+<title>Mean and standard deviation parameterised gamma sampling function — rgamma_with_mean_sd • WuhanSeedingVsTransmission</title>
 
 
 <!-- jquery -->
@@ -35,9 +35,8 @@
 
 
 
-<meta property="og:title" content="Get a sampling function for reporting delays — get_rep_sample_fun" />
-<meta property="og:description" content="This connects to the Google Sheet containing the collated linelist; the
-first time this is run, it may require authentiction with Google" />
+<meta property="og:title" content="Mean and standard deviation parameterised gamma sampling function — rgamma_with_mean_sd" />
+<meta property="og:description" content="Mean and standard deviation parameterised gamma sampling function" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,75 +107,65 @@ first time this is run, it may require authentiction with Google" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get a sampling function for reporting delays</h1>
+    <h1>Mean and standard deviation parameterised gamma sampling function</h1>
     
-    <div class="hidden name"><code>get_rep_sample_fun.Rd</code></div>
+    <div class="hidden name"><code>rgamma_with_mean_sd.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This connects to the Google Sheet containing the collated linelist; the
-first time this is run, it may require authentiction with Google</p>
+    <p>Mean and standard deviation parameterised gamma sampling function</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_rep_sample_fun</span>()</pre>
+    <pre class="usage"><span class='fu'>rgamma_with_mean_sd</span>(<span class='no'>n</span>, <span class='no'>mean</span>, <span class='no'>sd</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>n</th>
+      <td><p>Numeric, the number of samples to take.</p></td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td><p>Numeric, the mean of the distribution.</p></td>
+    </tr>
+    <tr>
+      <th>sd</th>
+      <td><p>Numeric the standard deviation of the distribution.</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a function that takes one parameter, <code>n</code>, the number of reporting
-delays to randomly sample</p>
+    <p>A vector of samples from the gamma distribution</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'>## Example</span>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>get_rep_sample_fun</span>()
-}
+<span class='co'>## Example </span>
+<span class='no'>sample</span> <span class='kw'>&lt;-</span> <span class='fu'>rgamma_with_mean_sd</span>(<span class='fl'>1000</span>, <span class='fl'>2</span>, <span class='fl'>3</span>)
 
+
+<span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='no'>sample</span>)</div><div class='output co'>#&gt; [1] 1.921294</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span>(<span class='no'>sample</span>)</div><div class='output co'>#&gt; [1] 2.818776</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span>(<span class='no'>sample</span>)</div><div class='img'><img src='rgamma_with_mean_sd-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Code </span>
-<span class='no'>get_rep_sample_fun</span></div><div class='output co'>#&gt; function () 
+<span class='no'>rgamma_with_mean_sd</span></div><div class='output co'>#&gt; function (n, mean, sd) 
 #&gt; {
-#&gt;     delay_confirmation &lt;- NULL
-#&gt;     country &lt;- NULL
-#&gt;     . &lt;- NULL
-#&gt;     message("Downloading linelist")
-#&gt;     confirmation_delays &lt;- get_linelist() %&gt;% dplyr::filter(!is.na(delay_confirmation), 
-#&gt;         country == "China") %&gt;% .$delay_confirmation %&gt;% as.integer()
-#&gt;     test_distributions &lt;- c("geom", "pois", "nbinom")
-#&gt;     fits &lt;- lapply(stats::setNames(test_distributions, test_distributions), 
-#&gt;         function(x) {
-#&gt;             fitdistrplus::fitdist(confirmation_delays, x)
-#&gt;         })
-#&gt;     gof &lt;- fitdistrplus::gofstat(fits, fitnames = names(fits))
-#&gt;     best_fit &lt;- names(which.min(gof$aic))
-#&gt;     message("Best fitting distribution: ", best_fit)
-#&gt;     good_fit &lt;- (gof$chisqpvalue[best_fit] &gt; 0.05)
-#&gt;     if (!good_fit) {
-#&gt;         message("Fit below threshold. Sampling from data.")
-#&gt;         sample_function &lt;- function(n) {
-#&gt;             sample(confirmation_delays, n, replace = TRUE)
-#&gt;         }
-#&gt;     }
-#&gt;     else {
-#&gt;         pars &lt;- fits[[best_fit]]$estimate
-#&gt;         sample_function &lt;- function(n) {
-#&gt;             do.call(paste0("r", best_fit), c(list(n = n), as.list(pars)))
-#&gt;         }
-#&gt;     }
-#&gt;     return(sample_function)
+#&gt;     theta &lt;- sd^2/mean
+#&gt;     k &lt;- mean/theta
+#&gt;     stats::rgamma(n, shape = k, scale = theta)
 #&gt; }
-#&gt; &lt;bytecode: 0x55e5d5f4bc10&gt;
+#&gt; &lt;bytecode: 0x55e5caf15ff8&gt;
 #&gt; &lt;environment: namespace:WuhanSeedingVsTransmission&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
-    <h2>Author</h2>
-    <p>Sebastian Funk <a href='mailto:sebastian.funk@lshtm.ac.uk'>sebastian.funk@lshtm.ac.uk</a></p>
   </div>
 </div>
 
