@@ -7,7 +7,7 @@
 \title{WuhanSeedingVsTransmission: The transmissibility of novel Coronavirus in the early stages of the 2019-20 outbreak in Wuhan}
 \description{
 The transmissibility of novel Coronavirus in the early stages of the 2019-20 outbreak 
-      in Wuhan: Exploring initial point-source exposure sizes and durations using scenario analysis
+      in Wuhan: Exploring initial point-source exposure sizes and durations using scenario analysis.
 }
 \author{
 \strong{Maintainer}: Sam Abbott \email{contact@samabbott.co.uk} (\href{https://orcid.org/0000-0001-8057-8037}{ORCID})

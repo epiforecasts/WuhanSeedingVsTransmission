@@ -99,29 +99,38 @@ Overall, the highest acceptance rate was for scenarios with a large event size (
 
 There were very few scenarios where an R0 smaller than 1 resulted in scenarios that were accepted after conditioning on observed data, this was true regardless of the corresponding serial interval distribution, event size, or event duration. A very large event size (400) was required for scenarios with an R0 upper bound of 2 to have a moderate percentage of samples accepted if they had a short duration. Acceptance rates increased as the duration of the initial transmission event increased, and as the mean serial interval increased. For a MERS-like serial interval, the percentage of accepted samples was low for all scenarios, with the highest accepted proportion for scenarios with an upper bound on the R0 of 3 and a moderate event size, or an R0 upper bound of 2 and a larger event size. 
 
-```{r plot-probs, fig.cap = "Heatmaps of the percentage of samples accepted for each combination of parameters. Within each heatmap, the x-axis represents the duration of the initial seeding event and the y-axis represents the size of the initial seeding event.  The figure is stratified by the R0 scenario (columns) and the serial interval distribution (rows)." }
+```{r plot-probs}
 WuhanSeedingVsTransmission::plot_per_accepted_tile(prop_allowed_samples)
 ```
+
+*Figure 1: Heatmaps of the percentage of samples accepted for each combination of parameters. Within each heatmap, the x-axis represents the duration of the initial seeding event and the y-axis represents the size of the initial seeding event.  The figure is stratified by the R0 scenario (columns) and the serial interval distribution (rows).*
 
 **Estimated reproduction numbers**
 
 Uncertainty in the R0 estimate increased both as the event size decreased, and decreased as the mean serial interval increased (Figure 2). Large event sizes resulted in the lowest R0 estimates across all scenarios evaluated. The estimated R0 decreased as the event size decreased and duration increased for all serial interval scenarios (Table 1, Table 2, and Table 3). The most likely scenario with a MERS-like serial interval had an event size of 80 and a duration of a day, resulting in an estimated R0 between  `r summarised_r0s[[1]][4, "1"]` (90% CrI, Table 1). For the SARS-like interval the most likely scenario had an event size of 200 and a duration of a day (Figure 1), this resulted in an estimated R0 between `r summarised_r0s[[2]][6, "1"]` (90% CrI, Table 2). The most likely scenario with a pre-intervention SARS-like serial interval also had an outbreak size of 200 and a duration of a day, resulting in an estimated R0 between `r summarised_r0s[[3]][6, "1"]` (90% CrI, Table 3). Assuming a MERS-like serial interval resulted in an approximate decrease of 0 - 0.5 in the R0 estimates across all scenarios when compared to the SARS-like serial interval. Assuming a pre-intervention SARS-like serial interval resulted in an approximate increase of 0.5 - 1 in the R0 estimates across all scenarios when compared to the SARS-like serial interval. Across all serial interval scenarios R0 estimates were comparable when event size was decreased and event duration was increased in tandem. 
 
-```{r density-r-plot, fig.cap = "Density plot of reproduction number (R0) estimates from each accepted sample stratified by transmission event size, event duration (columns), and the serial interval distribution used (rows). The black lines on each density plot represent the 90% credible interval"}
+```{r density-r-plot}
 suppressMessages(print(plot_R0_density(conditioned_grid)))
 ```
 
+*Figure 2: Density plot of reproduction number (R0) estimates from each accepted sample stratified by transmission event size, event duration (columns), and the serial interval distribution used (rows). The black lines on each density plot represent the 90% credible interval*
+
+*Table 1: Estimated reproduction numbers (90% credible intervals) for the Wuhan outbreak conditioned on case data from the 25th of January, for scenarios with a MERS-like serial interval. Stratified by initial transmission event size and duration.*
 
 ```{r mers_serial_r0}
-knitr::kable(summarised_r0s[[1]], caption = "Estimated reproduction numbers (90% credible intervals) for the Wuhan outbreak conditioned on case data from the 25th of January, for scenarios with a MERS-like serial interval. Stratified by initial transmission event size and duration.")
+knitr::kable(summarised_r0s[[1]])
 ```
+
+*Table 2: Estimated reproduction numbers (90% credible intervals) for the Wuhan outbreak conditioned on case data from the 25th of January, for scenarios with a SARS-like serial interval. Stratified by initial transmission event size and duration.*
 
 ```{r sars_serial_r0}
-knitr::kable(summarised_r0s[[2]], caption = "Estimated reproduction numbers (90% credible intervals) for the Wuhan outbreak conditioned on case data from the 25th of January, for scenarios with a SARS-like serial interval. Stratified by initial transmission event size and duration.")
+knitr::kable(summarised_r0s[[2]])
 ```
 
+*Table 3: Estimated reproduction numbers (90% credible intervals) for the Wuhan outbreak conditioned on case data from the 25th of January, for scenarios with a pre-intervention SARS-like serial interval. Stratified by initial exposure event size and duration.*
+
 ```{r preint_SARS_serial_r0}
-knitr::kable(summarised_r0s[[3]], caption = "Estimated reproduction numbers (90% credible intervals) for the Wuhan outbreak conditioned on case data from the 25th of January, for scenarios with a pre-intervention SARS-like serial interval. Stratified by initial exposure event size and duration.")
+knitr::kable(summarised_r0s[[3]])
 ```
 
 
@@ -153,7 +162,7 @@ There are no competing interests.
 
 **Accessibility of data and programming code**
 
-The code for this analysis, interim results, and final results can be found at: doi.org/10.5281/zenodo.3630425
+The code and data for this analysis, interim results, and final results can be found at: doi.org/10.5281/zenodo.3630424
 
 
 ## References

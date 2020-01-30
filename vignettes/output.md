@@ -146,12 +146,13 @@ scenarios, with the highest accepted proportion for scenarios with an
 upper bound on the R0 of 3 and a moderate event size, or an R0 upper
 bound of 2 and a larger event size.
 
-![Heatmaps of the percentage of samples accepted for each combination of
-parameters. Within each heatmap, the x-axis represents the duration of
-the initial seeding event and the y-axis represents the size of the
-initial seeding event. The figure is stratified by the R0 scenario
-(columns) and the serial interval distribution
-(rows).](figures/plot-probs-1.png)
+![](figures/plot-probs-1.png)
+
+*Figure 1: Heatmaps of the percentage of samples accepted for each
+combination of parameters. Within each heatmap, the x-axis represents
+the duration of the initial seeding event and the y-axis represents the
+size of the initial seeding event. The figure is stratified by the R0
+scenario (columns) and the serial interval distribution (rows).*
 
 **Estimated reproduction numbers**
 
@@ -177,14 +178,19 @@ compared to the SARS-like serial interval. Across all serial interval
 scenarios R0 estimates were comparable when event size was decreased and
 event duration was increased in tandem.
 
-![Density plot of reproduction number (R0) estimates from each accepted
-sample stratified by transmission event size, event duration (columns),
-and the serial interval distribution used (rows). The black lines on
-each density plot represent the 90% credible
-interval](figures/density-r-plot-1.png)
+![](figures/density-r-plot-1.png)
+
+*Figure 2: Density plot of reproduction number (R0) estimates from each
+accepted sample stratified by transmission event size, event duration
+(columns), and the serial interval distribution used (rows). The black
+lines on each density plot represent the 90% credible interval*
+
+*Table 1: Estimated reproduction numbers (90% credible intervals) for
+the Wuhan outbreak conditioned on case data from the 25th of January,
+for scenarios with a MERS-like serial interval. Stratified by initial
+transmission event size and duration.*
 
 <table>
-<caption>Estimated reproduction numbers (90% credible intervals) for the Wuhan outbreak conditioned on case data from the 25th of January, for scenarios with a MERS-like serial interval. Stratified by initial transmission event size and duration.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Transmission event size vs. Transmission event duration</th>
@@ -255,8 +261,12 @@ interval](figures/density-r-plot-1.png)
 </tbody>
 </table>
 
+*Table 2: Estimated reproduction numbers (90% credible intervals) for
+the Wuhan outbreak conditioned on case data from the 25th of January,
+for scenarios with a SARS-like serial interval. Stratified by initial
+transmission event size and duration.*
+
 <table>
-<caption>Estimated reproduction numbers (90% credible intervals) for the Wuhan outbreak conditioned on case data from the 25th of January, for scenarios with a SARS-like serial interval. Stratified by initial transmission event size and duration.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Transmission event size vs. Transmission event duration</th>
@@ -327,8 +337,12 @@ interval](figures/density-r-plot-1.png)
 </tbody>
 </table>
 
+*Table 3: Estimated reproduction numbers (90% credible intervals) for
+the Wuhan outbreak conditioned on case data from the 25th of January,
+for scenarios with a pre-intervention SARS-like serial interval.
+Stratified by initial exposure event size and duration.*
+
 <table>
-<caption>Estimated reproduction numbers (90% credible intervals) for the Wuhan outbreak conditioned on case data from the 25th of January, for scenarios with a pre-intervention SARS-like serial interval. Stratified by initial exposure event size and duration.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Transmission event size vs. Transmission event duration</th>
@@ -519,8 +533,8 @@ There are no competing interests.
 
 **Accessibility of data and programming code**
 
-The code for this analysis, interim results, and final results can be
-found at: doi.org/10.5281/zenodo.3630425
+The code and data for this analysis, interim results, and final results
+can be found at: doi.org/10.5281/zenodo.3630424
 
 References
 ----------
