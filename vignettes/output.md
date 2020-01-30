@@ -192,8 +192,6 @@ the duration of the initial seeding event and the y-axis represents the
 size of the initial seeding event. The figure is stratified by the R0
 scenario (columns) and the serial interval distribution (rows).*
 
-    ## Saving 9 x 9 in image
-
 **Estimated reproduction numbers**
 
 Uncertainty in the R0 estimate increased both as the event size
@@ -224,37 +222,6 @@ event duration was increased in tandem.
 accepted sample stratified by transmission event size, event duration
 (columns), and the serial interval distribution used (rows). The black
 lines on each density plot represent the 90% credible interval*
-
-    ## Saving 9 x 9 in image
-
-    ## Picking joint bandwidth of 0.0653
-
-    ## Picking joint bandwidth of 0.0646
-
-    ## Picking joint bandwidth of 0.0632
-
-    ## Picking joint bandwidth of 0.061
-
-    ## Picking joint bandwidth of 0.0601
-    ## Picking joint bandwidth of 0.0601
-
-    ## Picking joint bandwidth of 0.068
-
-    ## Picking joint bandwidth of 0.0702
-
-    ## Picking joint bandwidth of 0.0708
-
-    ## Picking joint bandwidth of 0.0677
-
-    ## Picking joint bandwidth of 0.0514
-
-    ## Picking joint bandwidth of 0.0594
-
-    ## Picking joint bandwidth of 0.0722
-
-    ## Picking joint bandwidth of 0.0752
-
-    ## Picking joint bandwidth of 0.0768
 
 *Table 1: Estimated reproduction numbers (90% credible intervals) for
 the Wuhan outbreak conditioned on case data from the 25th of January,
@@ -665,11 +632,9 @@ computing*. Vienna, Austria:: R Foundation for Statistical Computing
 9 Funk S. *Bpmodels: Analysing chain statistics using branching process
 models*. 2020. <https://github.com/sbfnk/bpmodels>
 
-10 Sam Abbott JM Joel Hellewell. *Code for: The transmissibility of
-novel coronavirus in the early stages of the 2019-20 outbreak in wuhan:
-Exploring initial point-source exposure sizes and durations using
-scenario analysis*. 2020.
-doi:[10.5281/zenodo.3630425](https://doi.org/10.5281/zenodo.3630425)
+10 Abbott S, Hellewell J, Munday J *et al.*
+*epiforecasts/WuhanSeedingVsTransmission: Release*. Zenodo 2020.
+doi:[10.5281/zenodo.3630424](https://doi.org/10.5281/zenodo.3630424)
 
 11 Boettiger C. An introduction to Docker for reproducible research.
 *ACM SIGOPS Operating Systems Review* 2015;**49**:71–9.
