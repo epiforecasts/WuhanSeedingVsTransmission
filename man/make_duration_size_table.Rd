@@ -10,7 +10,7 @@ make_duration_size_table(
   spread_var = "event_duration",
   spread_value = "R0",
   rename_var = "event_size",
-  renamed_var = "Transmission event size vs. Transmission event duration"
+  renamed_var = "Transmission event size vs. Transmission event duration (days)"
 )
 }
 \arguments{

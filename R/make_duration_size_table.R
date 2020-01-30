@@ -26,7 +26,7 @@
 #' make_duration_size_table
 make_duration_size_table <- function(results = NULL, required_var = c("event_duration", "event_size", "R0"),
                                      spread_var = "event_duration", spread_value = "R0", rename_var = "event_size", 
-                                     renamed_var = "Transmission event size vs. Transmission event duration") {
+                                     renamed_var = "Transmission event size vs. Transmission event duration (days)") {
   
   out <- results %>% 
     dplyr::select(required_var) %>% 

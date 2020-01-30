@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">WuhanSeedingVsTransmission</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -127,7 +127,7 @@
   <span class='kw'>spread_var</span> <span class='kw'>=</span> <span class='st'>"event_duration"</span>,
   <span class='kw'>spread_value</span> <span class='kw'>=</span> <span class='st'>"R0"</span>,
   <span class='kw'>rename_var</span> <span class='kw'>=</span> <span class='st'>"event_size"</span>,
-  <span class='kw'>renamed_var</span> <span class='kw'>=</span> <span class='st'>"Transmission event size vs. Transmission event duration"</span>
+  <span class='kw'>renamed_var</span> <span class='kw'>=</span> <span class='st'>"Transmission event size vs. Transmission event duration (days)"</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -171,23 +171,23 @@
                       <span class='kw'>event_size</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>), <span class='fl'>5</span>),
                       <span class='kw'>tmp</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>10</span>)
 
-<span class='fu'>make_duration_size_table</span>(<span class='no'>results</span>)</div><div class='output co'>#&gt;   Transmission event size vs. Transmission event duration                  1
-#&gt; 1                                                       1 0.0807501375675201
-#&gt; 2                                                       2                 - 
-#&gt;                   2                 3                 4                  5
-#&gt; 1                -  0.600760886212811                -  0.0073994412086904
-#&gt; 2 0.834333037259057                -  0.157208441523835                 - 
-#&gt;                   6                 7                 8                 9
-#&gt; 1                -  0.497777388663962                -  0.732881987001747
-#&gt; 2 0.466393497306854                -  0.289767244597897                - 
-#&gt;                  10
-#&gt; 1                - 
-#&gt; 2 0.772521511185914</div><div class='input'>
+<span class='fu'>make_duration_size_table</span>(<span class='no'>results</span>)</div><div class='output co'>#&gt;   Transmission event size vs. Transmission event duration (days)
+#&gt; 1                                                              1
+#&gt; 2                                                              2
+#&gt;                    1                 2                 3                 4
+#&gt; 1 0.0807501375675201                -  0.600760886212811                - 
+#&gt; 2                 -  0.834333037259057                -  0.157208441523835
+#&gt;                    5                 6                 7                 8
+#&gt; 1 0.0073994412086904                -  0.497777388663962                - 
+#&gt; 2                 -  0.466393497306854                -  0.289767244597897
+#&gt;                   9                10
+#&gt; 1 0.732881987001747                - 
+#&gt; 2                -  0.772521511185914</div><div class='input'>
 
 <span class='co'>## Code</span>
 <span class='no'>make_duration_size_table</span></div><div class='output co'>#&gt; function (results = NULL, required_var = c("event_duration", 
 #&gt;     "event_size", "R0"), spread_var = "event_duration", spread_value = "R0", 
-#&gt;     rename_var = "event_size", renamed_var = "Transmission event size vs. Transmission event duration") 
+#&gt;     rename_var = "event_size", renamed_var = "Transmission event size vs. Transmission event duration (days)") 
 #&gt; {
 #&gt;     out &lt;- results %&gt;% dplyr::select(required_var) %&gt;% tidyr::spread(key = spread_var, 
 #&gt;         value = spread_value) %&gt;% dplyr::rename_at(.vars = rename_var, 
@@ -195,7 +195,7 @@
 #&gt;         " - "))
 #&gt;     return(out)
 #&gt; }
-#&gt; &lt;bytecode: 0x557bb4872c08&gt;
+#&gt; &lt;bytecode: 0x55874ed78198&gt;
 #&gt; &lt;environment: namespace:WuhanSeedingVsTransmission&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

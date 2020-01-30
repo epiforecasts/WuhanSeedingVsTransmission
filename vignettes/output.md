@@ -14,6 +14,43 @@ Affiliations
     School of Hygiene & Tropical Medicine, London WC1E 7HT, United
     Kingdom
 
+Abstract
+--------
+
+**Background:** The current novel coronavirus outbreak appears to have
+originated from a point-source exposure event at Huanan seafood
+wholesale market in Wuhan, China. There is still uncertainty around the
+scale and duration of this exposure event. This has implications for the
+estimated transmissibility of the coronavirus and as such, these
+potential scenarios should be explored.
+
+**Methods:** We used a stochastic branching process model, parameterised
+with available data where possible and otherwise informed by the
+2002-2003 SARS outbreak, to simulate the Wuhan outbreak. We evaluated
+scenarios for the following parameters: the size, and duration of the
+initial transmission event, the serial interval, and the reproduction
+number (R0). We restricted model simulations based on the number of
+observed cases on the 25th of January, accepting samples that were
+within a 5% interval on either side of this estimate.
+
+**Results:** Using a pre-intervention SARS-like serial interval
+suggested a larger initial transmission event and a higher R0 estimate.
+Using a SARs-like serial interval we found that the most likely scenario
+produced an R0 estimate between 2-2.7 (90% credible interval (CrI)). A
+pre-intervention SARS-like serial interval resulted in an R0 estimate
+between 2-3 (90% CrI). There were other plausible scenarios with smaller
+events sizes and longer duration that had comparable R0 estimates. There
+were very few simulations that were able to reproduce the observed data
+when R0 was less than 1.
+
+**Conclusions:** Our results indicate that an R0 of less than 1 was
+highly unlikely unless the size of the initial exposure event was much
+greater than currently reported. We found that R0 estimates were
+comparable across scenarios with decreasing event size and increasing
+duration. Scenarios with a pre-intervention SARS-like serial interval
+resulted in a higher R0 and were equally plausible to scenarios with
+SARs-like serial intervals.
+
 Introduction
 ------------
 
@@ -69,13 +106,13 @@ interventions, with a mean of 10 days and standard deviation of 2.8
 days; and MERS-like, with a mean of 6.8 days and standard deviation of
 4.1 days \[6\]. Both SARS-like serial interval scenarios used a Weibull
 distribution, whilst the MERS-like serial interval scenario used a Gamma
-distribution \[\[5\]; \[6\]\]. After the simulation of the branching
-process, reporting delays were added as reported in a line-list of cases
-compiled from media and other reports \[7\]. We fitted a geometric,
-Poisson, and a negative binomial distribution to these observed delays
-and selected the best fit using the Chi-squared statistic. If no good
-fit was determined using a p-value threshold of 0.05, then the reporting
-delay was instead sampled from the empirical delays in the line-list.
+distribution \[5,6\]. After the simulation of the branching process,
+reporting delays were added as reported in a line-list of cases compiled
+from media and other reports \[7\]. We fitted a geometric, Poisson, and
+a negative binomial distribution to these observed delays and selected
+the best fit using the Chi-squared statistic. If no good fit was
+determined using a p-value threshold of 0.05, then the reporting delay
+was instead sampled from the empirical delays in the line-list.
 
 **Scenario analysis**
 
@@ -91,7 +128,7 @@ determined by combining the duration of the transmission event with the
 date the fish market in Wuhan, the source of the outbreak, closed (31st
 of December 2019). We evaluated the samples from each scenario based on
 how closely their trajectories matched the 1,975 confirmed cases
-observed on the 25th of January. Samples were rejected if their
+observed on the 25th of January \[7\]. Samples were rejected if their
 simulated cumulative case estimates were outside a 5% interval on either
 side of this (1,876 - 2,074) . Outbreak simulation was stopped if a
 sample exceeded the upper bound on the number of observed cases.
@@ -110,9 +147,10 @@ mean serial interval.
 **Implementation**
 
 All analysis was carried out using R version 3.6.2 \[8\]. The branching
-process model was implemented using the `bpmodels` package \[9\]. The
-analysis is available as an open-source R package \[10\]. A dockerfile
-has been made available with the code to ensure reproducibility \[11\].
+process model was implemented using the `bpmodels 0.1.0` package \[9\].
+The analysis is available as an open-source R package \[10\]. A
+dockerfile has been made available with the code to ensure
+reproducibility \[11\].
 
 Results
 -------
@@ -121,7 +159,7 @@ Results
 
 Overall, the highest acceptance rate was for scenarios with a large
 event size (200), short duration (1 day), an R0 between 3 and 4, and a
-pre-intervention SARS-like serial interval. (Figure 1). Scenarios with a
+pre-intervention SARS-like serial interval (Figure 1). Scenarios with a
 SARS-like serial interval, an R0 bounded between 2 and 3, a short
 duration, and a relatively large event size (100) also had a high
 acceptance rate. Across all scenarios a higher acceptance rate was
@@ -154,6 +192,8 @@ the duration of the initial seeding event and the y-axis represents the
 size of the initial seeding event. The figure is stratified by the R0
 scenario (columns) and the serial interval distribution (rows).*
 
+    ## Saving 9 x 9 in image
+
 **Estimated reproduction numbers**
 
 Uncertainty in the R0 estimate increased both as the event size
@@ -185,6 +225,37 @@ accepted sample stratified by transmission event size, event duration
 (columns), and the serial interval distribution used (rows). The black
 lines on each density plot represent the 90% credible interval*
 
+    ## Saving 9 x 9 in image
+
+    ## Picking joint bandwidth of 0.0653
+
+    ## Picking joint bandwidth of 0.0646
+
+    ## Picking joint bandwidth of 0.0632
+
+    ## Picking joint bandwidth of 0.061
+
+    ## Picking joint bandwidth of 0.0601
+    ## Picking joint bandwidth of 0.0601
+
+    ## Picking joint bandwidth of 0.068
+
+    ## Picking joint bandwidth of 0.0702
+
+    ## Picking joint bandwidth of 0.0708
+
+    ## Picking joint bandwidth of 0.0677
+
+    ## Picking joint bandwidth of 0.0514
+
+    ## Picking joint bandwidth of 0.0594
+
+    ## Picking joint bandwidth of 0.0722
+
+    ## Picking joint bandwidth of 0.0752
+
+    ## Picking joint bandwidth of 0.0768
+
 *Table 1: Estimated reproduction numbers (90% credible intervals) for
 the Wuhan outbreak conditioned on case data from the 25th of January,
 for scenarios with a MERS-like serial interval. Stratified by initial
@@ -193,7 +264,7 @@ transmission event size and duration.*
 <table>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Transmission event size vs. Transmission event duration</th>
+<th style="text-align: left;">Transmission event size vs. Transmission event duration (days)</th>
 <th style="text-align: left;">1</th>
 <th style="text-align: left;">7</th>
 <th style="text-align: left;">14</th>
@@ -269,7 +340,7 @@ transmission event size and duration.*
 <table>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Transmission event size vs. Transmission event duration</th>
+<th style="text-align: left;">Transmission event size vs. Transmission event duration (days)</th>
 <th style="text-align: left;">1</th>
 <th style="text-align: left;">7</th>
 <th style="text-align: left;">14</th>
@@ -345,7 +416,7 @@ Stratified by initial exposure event size and duration.*
 <table>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Transmission event size vs. Transmission event duration</th>
+<th style="text-align: left;">Transmission event size vs. Transmission event duration (days)</th>
 <th style="text-align: left;">1</th>
 <th style="text-align: left;">7</th>
 <th style="text-align: left;">14</th>
@@ -428,7 +499,7 @@ plausible. The most probable SARS-like serial interval scenarios
 resulted in an estimated R0 of 2 - 2.7 (90% CrI), whilst the most
 probable pre-intervention SARS-like serial interval scenarios resulted
 in an estimated R0 of 2.8 - 3.8 (90% CrI). MERS-like serial interval
-scenarios were less plausible but the most plausible resulted in an
+scenarios were less plausible, but the most plausible resulted in an
 estimate R0 of 2 - 3 (90% CrI). Reducing the event size led to estimates
 of the R0 increasing but also reduced the proportion of samples
 accepted. Similarly, increasing the event duration reduced the estimated
@@ -501,18 +572,43 @@ very unlikely that the infectious agent responsible for the Wuhan
 outbreak has a R0 of less than 1, unless the size of the transmission
 event was much greater than currently reported. We also found that a
 large initial exposure event was likely, combined with a short duration.
-This corresponds with the evidence of rapid detection by Public Health
-Officials in Wuhan. These scenarios resulted in R0 estimates that are
-comparable to those estimated during the 2002-2003 SARS outbreak.
-However, with the available data we could not identify whether scenarios
-with a SARS-like or pre-intervention SARS-like serial interval were more
-likely. As more information becomes available it may be possible to
-further refine our results and establish the value of R0. Providing
-clear quantitative information for decision makers on the
-transmissibility of coronavirus is of clear public health importance.
-Our work to make this process reproducible may reduce the time these
-estimates take to be made available in future outbreaks and increase
-knowledge sharing across response teams.
+These scenarios resulted in R0 estimates that are comparable to those
+estimated during the 2002-2003 SARS outbreak. However, with the
+available data we could not identify whether scenarios with a SARS-like
+or pre-intervention SARS-like serial interval were more likely. As more
+information becomes available it may be possible to further refine our
+results and establish the value of R0. Providing clear quantitative
+information for decision makers on the transmissibility of coronavirus
+is of clear public health importance. Our work to make this process
+reproducible may reduce the time these estimates take to be made
+available in future outbreaks and increase knowledge sharing across
+response teams.
+
+**Data availability**
+
+*Underlying data*
+
+Zenodo: epiforecasts/WuhanSeedingVsTransmission: Resubmission to
+Wellcome Open.
+<a href="https://doi.org/10.5281/zenodo.3630424" class="uri">https://doi.org/10.5281/zenodo.3630424</a>
+
+This project contains the following underlying data:
+
+-   inst/results/grid.fst (The complete results of our scenario
+    analysis)
+-   inst/results/conditioned\_grid.fst (The results of our scenario
+    analysis conditioned on observed cases)
+-   inst/results/proportion\_sims\_allowed.fst (The proportion of
+    samples allowed per scenario evaluated)
+-   data/fitted\_delay\_sample\_func.rda: (This is a reporting delay
+    function as discussed in the text)
+
+License: MIT
+
+**Software availability**
+
+Source code is available from:
+<a href="https://github.com/epiforecasts/WuhanSeedingVsTransmission/tree/v0.3.0" class="uri">https://github.com/epiforecasts/WuhanSeedingVsTransmission/tree/v0.3.0</a>
 
 **Contributors**
 
@@ -522,19 +618,14 @@ model. SA wrote the first draft of the paper and all authors contributed
 to subsequent drafts. JH reviewed the analysis code. All authors approve
 the work for publication and agree to be accountable for the work.
 
-**Funding**
+**Grant information**
 
-This work was supported by a Wellcome Senior Research Fellowship (to SF,
-210758/Z/18/Z).
+This work was supported by the Wellcome Trust through a Wellcome Senior
+Research Fellowship to SF \[210758\].
 
 **Competing interests**
 
 There are no competing interests.
-
-**Accessibility of data and programming code**
-
-The code and data for this analysis, interim results, and final results
-can be found at: doi.org/10.5281/zenodo.3630424
 
 References
 ----------

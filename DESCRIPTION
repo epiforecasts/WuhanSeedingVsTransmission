@@ -1,6 +1,6 @@
 Package: WuhanSeedingVsTransmission
 Title: The transmissibility of novel Coronavirus in the early stages of the 2019-20 outbreak in Wuhan
-Version: 0.1.0
+Version: 0.3.0
 Authors@R: c(
     person(given = "Sam Abbott",
            role = c("aut", "cre"),
