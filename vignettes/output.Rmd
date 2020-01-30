@@ -179,7 +179,7 @@ This analysis used a stochastic branching process to explore scenarios around th
 *Underlying data*
 
 Zenodo: epiforecasts/WuhanSeedingVsTransmission: Resubmission to Wellcome Open.
-https://doi.org/10.5281/zenodo.3630424 
+https://doi.org/10.5281/zenodo.3631830	 
 
 This project contains the following underlying data:
 
@@ -193,6 +193,11 @@ License: MIT
 **Software availability**
 
 Source code is available from: https://github.com/epiforecasts/WuhanSeedingVsTransmission/tree/v0.3.0 
+
+Archived source code at time of publication: http://doi.org/10.5281/zenodo.3631830
+
+License: MIT
+
 
 **Contributors**
 

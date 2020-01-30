@@ -557,7 +557,7 @@ response teams.
 
 Zenodo: epiforecasts/WuhanSeedingVsTransmission: Resubmission to
 Wellcome Open.
-<a href="https://doi.org/10.5281/zenodo.3630424" class="uri">https://doi.org/10.5281/zenodo.3630424</a>
+<a href="https://doi.org/10.5281/zenodo.3631830" class="uri">https://doi.org/10.5281/zenodo.3631830</a>
 
 This project contains the following underlying data:
 
@@ -576,6 +576,11 @@ License: MIT
 
 Source code is available from:
 <a href="https://github.com/epiforecasts/WuhanSeedingVsTransmission/tree/v0.3.0" class="uri">https://github.com/epiforecasts/WuhanSeedingVsTransmission/tree/v0.3.0</a>
+
+Archived source code at time of publication:
+<a href="http://doi.org/10.5281/zenodo.3631830" class="uri">http://doi.org/10.5281/zenodo.3631830</a>
+
+License: MIT
 
 **Contributors**
 
