@@ -54,14 +54,18 @@ run_scenario_grid <- function(end_date = NULL, samples = 1, upper_case_bound = N
     event_duration = c(1, 7, 14, 21, 28),
     ## Serial mean (normal)
     serial = list(tibble::tibble(
-      serial_type = c("MERS-like", "SARS-like", "initial SARS-like"),
-      serial_mean = c(6.8, 8.4, 10),
-      serial_sd = c(4.1, 3.8, 2.8),
-      serial_fn = c(WuhanSeedingVsTransmission::rgamma_with_mean_sd, 
+      serial_type = c("MERS-like", 
+                      "2019-nCoV",
+                      "SARS-like", 
+                      "initial SARS-like"),
+      serial_mean = c(6.8, 7.5, 8.4, 10),
+      serial_sd = c(4.1, 3.4, 3.8, 2.8),
+      serial_fn = c(WuhanSeedingVsTransmission::rgamma_with_mean_sd,
+                    WuhanSeedingVsTransmission::rweibull_with_mean_sd,
                     WuhanSeedingVsTransmission::rweibull_with_mean_sd,
                     WuhanSeedingVsTransmission::rweibull_with_mean_sd)
     )),
-    #From Lispsitch et al. (2003);  6, 4, 12 assumption driven
+    #From Lispsitch et al. (2003);
     ## Bounds on the reproduction number
     ## Sampled from a uniform distribution 
     R0 = list(tibble::tibble(upper_R0 = c(1, 2, 3, 4),
