@@ -33,6 +33,10 @@ get_linelist <- function() {
            "?single=true&output=csv&gid=", gids)
   linelists <- lapply(urls, readr::read_csv)
   
+  drops <- c("chroDisea_Yes(1)/No(0)")
+  linelists[[1]] = linelists[[1]][ , !(names(linelists[[1]]) %in% drops)]
+  linelists[[2]] = linelists[[2]][ , !(names(linelists[[2]]) %in% drops)]
+  
   
   
   linelists <- dplyr::bind_rows(linelists) %>% 
