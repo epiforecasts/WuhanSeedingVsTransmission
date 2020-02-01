@@ -1,5 +1,5 @@
 # Set up parallisation
-future::plan(future::multiprocess)
+future::plan("multiprocess")
 
 
 # Run grid
