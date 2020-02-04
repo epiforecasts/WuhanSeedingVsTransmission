@@ -3,7 +3,8 @@
 ##' @return a tibble with the linelist
 ##'   delays to randomly sample
 ##' @importFrom readr read_csv
-##' @importFrom dplyr bind_rows rename mutate
+##' @importFrom dplyr bind_rows rename mutate mutate_at
+##' @importFrom purrr map
 ##' @author Sebastian Funk <sebastian.funk@lshtm.ac.uk>
 ##'
 ##' @export
@@ -33,11 +34,21 @@ get_linelist <- function() {
            "?single=true&output=csv&gid=", gids)
   linelists <- lapply(urls, readr::read_csv)
   
+  ## Drop columns
   drops <- c("chroDisea_Yes(1)/No(0)")
-  linelists[[1]] = linelists[[1]][ , !(names(linelists[[1]]) %in% drops)]
-  linelists[[2]] = linelists[[2]][ , !(names(linelists[[2]]) %in% drops)]
+  linelists[[1]] <- linelists[[1]][ , !(names(linelists[[1]]) %in% drops)]
+  linelists[[2]] <-  linelists[[2]][ , !(names(linelists[[2]]) %in% drops)]
   
-  
+  ##Munge dataset specific data
+  linelists <- linelists %>% 
+    purrr::map(
+      function(data) {
+        dplyr::mutate_at(data,
+                         .vars = c("longitude", "latitude"), 
+                         ~ ifelse(. %in% "#REF!", NA, .) %>% 
+                           stringr::str_trim() %>% 
+                           as.numeric())
+        })
   
   linelists <- dplyr::bind_rows(linelists) %>% 
     dplyr::rename(
