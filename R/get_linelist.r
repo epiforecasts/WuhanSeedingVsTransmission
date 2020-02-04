@@ -5,6 +5,7 @@
 ##' @importFrom readr read_csv
 ##' @importFrom dplyr bind_rows rename mutate mutate_at
 ##' @importFrom purrr map
+##' @importFrom stringr str_trim
 ##' @author Sebastian Funk <sebastian.funk@lshtm.ac.uk>
 ##'
 ##' @export
