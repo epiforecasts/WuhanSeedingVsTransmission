@@ -85,7 +85,7 @@
   <a href="../news/index.html">News</a>
 </li>
 <li>
-  <a href="../reference/index.htm">
+  <a href="../reference/index.html">
     <span class="fa fa-file-code-o"></span>
      
     Functions
@@ -152,6 +152,16 @@ delays to randomly sample</p>
 #&gt;         "1itaohdPiAeniCXNlntNztZ_oRvjh0HsGuJXUJWET008/pub", "?single=true&amp;output=csv&amp;gid=", 
 #&gt;         gids)
 #&gt;     linelists &lt;- lapply(urls, readr::read_csv)
+#&gt;     drops &lt;- c("chroDisea_Yes(1)/No(0)")
+#&gt;     linelists[[1]] &lt;- linelists[[1]][, !(names(linelists[[1]]) %in% 
+#&gt;         drops)]
+#&gt;     linelists[[2]] &lt;- linelists[[2]][, !(names(linelists[[2]]) %in% 
+#&gt;         drops)]
+#&gt;     linelists &lt;- linelists %&gt;% purrr::map(function(data) {
+#&gt;         dplyr::mutate_at(data, .vars = c("longitude", "latitude"), 
+#&gt;             ~ifelse(. %in% "#REF!", NA, .) %&gt;% stringr::str_trim() %&gt;% 
+#&gt;                 as.numeric())
+#&gt;     })
 #&gt;     linelists &lt;- dplyr::bind_rows(linelists) %&gt;% dplyr::rename(date_onset_symptoms_str = "date_onset_symptoms", 
 #&gt;         date_admission_hospital_str = "date_admission_hospital", 
 #&gt;         date_confirmation_str = "date_confirmation") %&gt;% dplyr::mutate(date_onset_symptoms = as.Date(date_onset_symptoms_str, 
@@ -162,7 +172,7 @@ delays to randomly sample</p>
 #&gt;         date_onset_symptoms)
 #&gt;     return(linelists)
 #&gt; }
-#&gt; &lt;bytecode: 0x564d492c4b80&gt;
+#&gt; &lt;bytecode: 0x55a6b5c1c6d8&gt;
 #&gt; &lt;environment: namespace:WuhanSeedingVsTransmission&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -17,7 +17,7 @@ navbar:
       href: news/index.html
     - icon: fa-file-code-o 
       text: "Functions"
-      href: reference/index.htm
+      href: reference/index.html
   right:
     - icon: fa-github
       href: https://github.com/epiforecasts/WuhanSeedingVsTransmission
