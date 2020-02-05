@@ -4,8 +4,8 @@
 [![Build Status](https://travis-ci.com/epiforecasts/WuhanSeedingVsTransmission.svg?branch=master)](https://travis-ci.com/epiforecasts/WuhanSeedingVsTransmission)
 [![develVersion](https://img.shields.io/badge/devel%20version-0.1.0-green.svg?style=flat)](https://github.com/epiforecasts/WuhanSeedingVsTransmission)
 [![Documentation](https://img.shields.io/badge/Package-documentation-lightgrey.svg?style=flat)](https://epiforecasts.io/WuhanSeedingVsTransmission)
-[![pdf](https://img.shields.io/badge/Report-pdf-lightred.svg?style=flat)](https://epiforecasts.io/WuhanSeedingVsTransmission/articles/rendered_output/output.pdf)
 [![DOI](https://zenodo.org/badge/235766896.svg)](https://zenodo.org/badge/latestdoi/235766896)
+[![paper](https://img.shields.io/badge/Paper-10.12688/wellcomeopenres.15718.1-lightred.svg?style=flat)](https://doi.org/10.12688/wellcomeopenres.15718.1)
 
 ## Abstract
 
