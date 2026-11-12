@@ -1,5 +1,7 @@
 # The transmissibility of novel Coronavirus in the early stages of the 2019-20 outbreak in Wuhan: Exploring initial point-source exposure sizes and durations using scenario analysis
 
+> **Archived.** No longer maintained; last updated February 2020.
+
 [![badge](https://img.shields.io/badge/Launch-analysis-lightblue.svg)](https://mybinder.org/v2/gh/epiforecasts/WuhanSeedingVsTransmission/master?urlpath=rstudio)
 [![Build Status](https://travis-ci.com/epiforecasts/WuhanSeedingVsTransmission.svg?branch=master)](https://travis-ci.com/epiforecasts/WuhanSeedingVsTransmission)
 [![develVersion](https://img.shields.io/badge/devel%20version-0.1.0-green.svg?style=flat)](https://github.com/epiforecasts/WuhanSeedingVsTransmission)
